@@ -1,16 +1,19 @@
 {
+    "redirects": [
+        {
+            "source": "/casino",
+            "destination": "/casino/",
+            "permanent": false
+        }
+    ],
     "rewrites": [
         {
             "source": "/casino/assets/:path*",
-            "destination": "https://casino-xi-swart.vercel.app/casino/assets/:path*"
+            "destination": "https://casino-xi-swart.vercel.app/assets/:path*"
         },
         {
             "source": "/casino/:path*",
-            "destination": "https://casino-xi-swart.vercel.app/casino/:path*"
-        },
-        {
-            "source": "/casino",
-            "destination": "https://casino-xi-swart.vercel.app/casino/"
+            "destination": "https://casino-xi-swart.vercel.app/:path*"
         }
     ]
 }
