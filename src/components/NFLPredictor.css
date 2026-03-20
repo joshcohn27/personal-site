@@ -1,0 +1,246 @@
+:root {
+    /* Assuming these variables are defined elsewhere, e.g., in a main app CSS */
+    --primary: #9d4edc; /* A deep purple */
+    --secondary: #00b4d8; /* A bright cyan/blue */
+    --bg-card: #1c142c; /* Slightly lighter dark background for the card */
+    --bg-dark: #120e1a; /* Very dark background */
+    --text-light: #e0e0e0;
+    --text-primary: #f8f8f8;
+    --error-red: #ff5252;
+}
+
+.nfl-predictor {
+    padding: 2rem;
+    background: var(--bg-card);
+    border-radius: 16px; /* Slightly larger radius for a modern look */
+    max-width: 800px;
+    margin: 2rem auto;
+    box-shadow: 0 5px 30px rgba(157, 78, 221, 0.2); /* Stronger, deeper shadow */
+    color: var(--text-light);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Headers Refinement */
+.nfl-predictor h2 {
+    color: var(--secondary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(0, 180, 255, 0.5);
+}
+
+.nfl-predictor h3 {
+    color: var(--primary);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Separator Refinement */
+.nfl-predictor hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(28, 20, 44, 0), var(--primary), rgba(28, 20, 44, 0));
+    margin: 3rem 0;
+}
+
+/* Input Grid */
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem; /* Increased gap */
+    margin-bottom: 1.5rem;
+}
+
+.input-grid label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    color: var(--text-light); /* Changed to text-light for better contrast */
+}
+
+.input-grid strong {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.input-grid input,
+.input-grid select {
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #2a1e3f;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-grid input:focus,
+.input-grid select:focus {
+    outline: none;
+    border-color: var(--secondary);
+    box-shadow: 0 0 10px rgba(0, 180, 255, 0.5);
+}
+
+/* --- New Selector Button Styling --- */
+
+.selector-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.selector-group .button-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.selector-btn {
+    flex: 1; /* Make buttons equally sized */
+    padding: 0.75rem 0.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--primary);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.selector-btn:hover:not(.active) {
+    background-color: #2a1e3f; /* Darker hover effect */
+    border-color: var(--secondary);
+}
+
+.selector-btn.active {
+    border-color: var(--secondary);
+    background: linear-gradient(135deg, var(--primary) 20%, var(--secondary) 100%);
+    color: var(--text-primary);
+    box-shadow: 0 2px 15px rgba(0, 180, 255, 0.4);
+    transform: scale(1.05);
+}
+
+/* --- Buttons --- */
+.nfl-btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--text-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%; /* Full width button */
+    margin-top: 1rem;
+}
+
+.nfl-btn.train-btn {
+    width: auto;
+    align-self: flex-start;
+}
+
+.nfl-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 180, 255, 0.45);
+}
+
+.nfl-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* --- Prediction Results --- */
+.prediction-result {
+    margin-top: 2rem;
+    background: var(--bg-dark);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid var(--primary);
+}
+
+.prediction-result table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.prediction-result th,
+.prediction-result td {
+    border: none;
+    padding: 0.8rem 0.5rem;
+    text-align: left;
+    color: var(--text-light);
+}
+
+.prediction-result tr:nth-child(even) {
+    background-color: #1a1428;
+}
+
+.prediction-result th {
+    color: var(--secondary);
+    font-weight: 700;
+    border-bottom: 2px solid var(--secondary);
+}
+
+/* --- Admin Panel --- */
+.admin-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.admin-toggle input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--secondary);
+}
+
+.admin-panel {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    background: #1a1428;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(157, 78, 221, 0.3);
+}
+
+.admin-panel label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.admin-panel input,
+.admin-panel select {
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #2a1e3f;
+    background: var(--bg-dark);
+    color: var(--text-light);
+}
+
+.message {
+    margin-top: 1rem;
+    font-weight: bold;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background-color: #1a2a2f; /* Subtle success background */
+    color: var(--secondary);
+    border: 1px solid var(--secondary);
+}
+
+.message.error-message {
+    background-color: #3f1e1e; /* Distinct error background */
+    color: var(--error-red);
+    border: 1px solid var(--error-red);
+}
