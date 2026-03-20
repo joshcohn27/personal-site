@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+        {
+            "source": "/casino/:path*",
+            "destination": "https://casino-xi-swart.vercel.app/:path*"
+        },
+        {
+            "source": "/casino",
+            "destination": "https://casino-xi-swart.vercel.app"
+        }
+    ]
+}
