@@ -8,8 +8,8 @@
     ],
     "rewrites": [
         {
-            "source": "/casino/assets/:path*",
-            "destination": "https://casino-xi-swart.vercel.app/assets/:path*"
+            "source": "/casino/",
+            "destination": "https://casino-xi-swart.vercel.app/"
         },
         {
             "source": "/casino/:path*",
