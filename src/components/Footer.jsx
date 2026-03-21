@@ -1,7 +1,10 @@
 export default function Footer() {
   return (
-    <footer className="footer">
-      <p>© {new Date().getFullYear()} Joshua Cohn</p>
+    <footer className="site-footer">
+      <div className="container footer-inner">
+        <p>© {new Date().getFullYear()} Josh Cohn</p>
+        <p>Built with React</p>
+      </div>
     </footer>
   );
 }

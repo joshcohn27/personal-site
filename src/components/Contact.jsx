@@ -1,35 +1,41 @@
-import { FaLinkedin } from "react-icons/fa";
-
-
 export default function Contact() {
     return (
-        <section id="contact" className="contact">
-            <h2>Contact Me</h2>
-            <p>
-                I'm always open to connecting about development, design, or new
-                opportunities. Reach out any time!
-            </p>
+        <section id="contact" className="section section-alt">
+            <div className="container">
+                <div className="contact-panel">
+                    <div>
+                        <p className="section-label">Contact</p>
+                        <h2>Let's connect.</h2>
+                        <p className="contact-text">
+                            I'm always interested in opportunities to build, learn, and
+                            contribute to projects that have real impact.
+                        </p>
+                    </div>
 
-            <div className="contact-info">
-                <div className="contact-item">
-                    <span className="contact-label">Email:</span>
-                    <a href="mailto:josh.cohn@example.com">joshcohn27@gmail.com</a>
-                </div>
-
-                <div className="contact-item">
-                    <span className="contact-label">Phone:</span>
-                    <a href="tel:+11234567890">+1 (610) 290-2280</a>
-                </div>
-
-                <div className="contact-item">
-                    <span className="contact-label">LinkedIn:</span>
-                    <a
-                        href="https://www.linkedin.com/in/josh-cohn-2226061ba/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <FaLinkedin className="linkedin-icon" />
-                    </a>
+                    <div className="contact-links">
+                        <a href="mailto:joshcohn27@gmail.com" className="contact-link">
+                            joshcohn27@gmail.com
+                        </a>
+                        <a href="tel:+16102902280" className="contact-link">
+                            (610) 290-2280
+                        </a>
+                        <a
+                            href="https://github.com/joshcohn27"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="contact-link"
+                        >
+                            GitHub
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/josh-cohn-2226061ba/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="contact-link"
+                        >
+                            LinkedIn
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

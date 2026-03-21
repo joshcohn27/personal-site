@@ -1,19 +1,27 @@
 export default function Header() {
-  return (
-    <header className="header">
-      <h1 className="logo">Josh Cohn</h1>
-      <nav className="nav">
-        <a href="#about">About</a>
-        <a
-          href="https://github.com/joshcohn27"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Github
-        </a>
+    return (
+        <header className="site-header">
+            <div className="container header-inner">
+                <a href="#top" className="brand">
+                    Josh Cohn
+                </a>
 
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-  );
+                <nav className="site-nav" aria-label="Primary navigation">
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#values">Why I Build</a>
+                    <a href="#interests">Beyond Tech</a>
+                    <a href="#contact">Contact</a>
+                    <a
+                        href="https://github.com/joshcohn27"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="nav-button"
+                    >
+                        GitHub
+                    </a>
+                </nav>
+            </div>
+        </header>
+    );
 }
