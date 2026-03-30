@@ -6,7 +6,7 @@ export default function Hero() {
 					<p className="eyebrow">Software Engineer · RIT '26 · Exton, PA</p>
 
 					<h1>
-						I build software that is thoughtful, reliable, and actually useful.
+						I build software and care deeply about who it impacts
 					</h1>
 
 					<p className="hero-text">
@@ -43,20 +43,28 @@ export default function Hero() {
 					<div className="hero-card">
 						<p className="hero-card-label">Experience</p>
 						<ul className="hero-list">
-							<li>Flutter and Dart mobile development at Discovery Machine</li>
-							<li>Cloud infrastructure with Terraform, Docker, and Go at Chameleon</li>
-							<li>Full-stack web apps with React and Spring Boot</li>
-							<li>Developer tooling and VS Code extension work</li>
+							<li>
+								Taught myself Flutter and Dart on the job, then built out majority of webapp screens from wireframes at Discovery Machine Inc.
+							</li>
+							<li>
+								Owned frontend features for a team senior project, integrating with a REST API built by a teammate
+							</li>
+							<li>
+								Led staff teams at Camp Seneca Lake across multiple summers, stepping into new roles, learning quickly, and earning trust from people I was responsible for
+							</li>
+							<li>
+								Worked on cloud infrastructure and automation using Terraform, Docker, and Go at Chameleon Consulting
+							</li>
 						</ul>
 					</div>
 
 					<div className="hero-card">
 						<p className="hero-card-label">What I'm focused on</p>
 						<p className="hero-card-text">
-							Finishing my degree at RIT, building side projects, and looking for
-							a full-time software engineering role. I am especially interested in
-							teams working on tools, infrastructure, or applied AI where I can
-							contribute to building things that are both useful and responsible.
+							Heading to Drexel in Fall 2026 for my MS in AI and Machine Learning.
+							I'm open to part-time opportunities during school where I can keep
+							contributing and learning. I care as much about the people I work with
+							as the problems I'm solving, and I try to bring that into my everyday life.
 						</p>
 					</div>
 				</aside>

@@ -32,8 +32,10 @@ export default function About() {
                             <li><strong>Languages:</strong> JavaScript/TypeScript, Python, Java, Go, C#, Dart</li>
                             <li><strong>Frontend:</strong> React, Angular, Flutter, HTML/CSS</li>
                             <li><strong>Backend:</strong> Spring Boot, Node.js, REST APIs</li>
-                            <li><strong>Cloud/DevOps:</strong> AWS, Azure, Docker, Terraform, Git</li>
-                            <li><strong>Other:</strong> SQL, OOP/design patterns, Agile delivery</li>
+                            <li><strong>Databases:</strong> SQL, Oracle, ODBC/JDBC</li>
+                            <li><strong>Cloud/DevOps:</strong> AWS, Azure, Docker, Terraform, Bash, Git</li>
+                            <li><strong>Testing:</strong> JUnit, Pytest</li>
+                            <li><strong>Other:</strong> OOP/design patterns, Agile delivery, MVC frameworks</li>
                         </ul>
                     </div>
                 </div>
