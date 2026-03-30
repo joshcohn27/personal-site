@@ -27,7 +27,7 @@ export default function About() {
                     </div>
 
                     <div className="content-card">
-                        <h3>Stack</h3>
+                        <h3>Technical Skills</h3>
                         <ul className="bullet-list">
                             <li><strong>Languages:</strong> JavaScript/TypeScript, Python, Java, Go, C#, Dart</li>
                             <li><strong>Frontend:</strong> React, Angular, Flutter, HTML/CSS</li>
@@ -35,7 +35,7 @@ export default function About() {
                             <li><strong>Databases:</strong> SQL, Oracle, ODBC/JDBC</li>
                             <li><strong>Cloud/DevOps:</strong> AWS, Azure, Docker, Terraform, Bash, Git</li>
                             <li><strong>Testing:</strong> JUnit, Pytest</li>
-                            <li><strong>Other:</strong> OOP/design patterns, Agile delivery, MVC frameworks</li>
+                            <li><strong>Other:</strong> OOP/design patterns, Agile Methodologies, MVC frameworks</li>
                         </ul>
                     </div>
                 </div>
