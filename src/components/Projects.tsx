@@ -9,8 +9,9 @@ const projects = [
     {
         title: "Personal Casino",
         type: "Interactive Web App",
+        link: "https://joshbcohn.com/casino",
         description:
-            "A browser-based casino I built for fun, focused on recreating real table games with accurate logic and a polished UI. It's live at joshbcohn.com/casino. I've always liked the strategy and mechanics behind these games, so this became a way to explore them without involving real money. The biggest challenge has been managing complex game state, animations, and edge cases while keeping the experience smooth. It's been my best project for pushing frontend architecture and building something that actually feels like a real product.",
+            "A browser-based casino I built for fun, focused on recreating real table games with accurate logic and a polished UI. I've always liked the strategy and mechanics behind these games, so this became a way to explore them without involving real money. The biggest challenge has been managing complex game state, animations, and edge cases while keeping the experience smooth. It's been my best project for pushing frontend architecture and building something that actually feels like a real product.",
         stack: "React, TypeScript, state management, game logic, UI/UX",
     },
     {
@@ -44,6 +45,18 @@ export default function Projects() {
                             <p className="project-type">{project.type}</p>
                             <h3>{project.title}</h3>
                             <p className="project-description">{project.description}</p>
+
+                            {project.link && (
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="project-link"
+                                >
+                                    View Live →
+                                </a>
+                            )}
+
                             <p className="project-stack">{project.stack}</p>
                         </article>
                     ))}
