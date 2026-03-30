@@ -3,29 +3,29 @@ const projects = [
         title: "Committed",
         type: "VS Code Extension",
         description:
-            "A developer productivity tool focused on improving commit workflows and making day-to-day version control more intentional and efficient.",
-        stack: "VS Code API, JavaScript, GitHub, Extension Development",
+            "A VS Code extension I built as part of a course project to improve commit workflows. I found myself rushing commits or writing messages that weren't useful later, so I focused on adding structure without slowing the process down. The biggest challenge was working with the VS Code extension API and integrating with Git in a clean way. It pushed me to think more about developer experience and how small tools can actually change habits.",
+        stack: "VS Code Extension API, JavaScript, Git",
     },
     {
-        title: "Beehive Monitoring Capstone",
-        type: "Full-Stack Team Project",
+        title: "Personal Casino",
+        type: "Interactive Web App",
         description:
-            "A capstone project centered on monitoring and surfacing meaningful beehive data through a usable, responsive interface and structured engineering process.",
-        stack: "React, frontend architecture, team collaboration, product design",
+            "A browser-based casino I built for fun, focused on recreating real table games with accurate logic and a polished UI. It's live at joshbcohn.com/casino. I've always liked the strategy and mechanics behind these games, so this became a way to explore them without involving real money. The biggest challenge has been managing complex game state, animations, and edge cases while keeping the experience smooth. It's been my best project for pushing frontend architecture and building something that actually feels like a real product.",
+        stack: "React, TypeScript, state management, game logic, UI/UX",
     },
     {
-        title: "FundGoodDeeds App",
-        type: "Java MVC Application",
+        title: "OD Scheduler",
+        type: "Python Utility",
         description:
-            "A software engineering project using MVC and design patterns to manage needs, funding sources, and logs with a maintainable project structure.",
-        stack: "Java, Swing, MVC, CSV persistence, Composite pattern",
+            "A scheduling tool I built for my summer camp where staff needed to be assigned on-duty (OD) days. Creating these schedules by hand would take hours and was hard to keep fair, so I wrote a program to automate it. The goal was to distribute shifts evenly while avoiding things like back-to-back assignments and days off. The challenge was turning fairness into logic that worked across all cases. What used to take hours could now be done in under a minute, which made a real difference for the team.",
+        stack: "Python, algorithms, problem solving, scripting",
     },
     {
-        title: "Personal Site",
-        type: "Frontend Engineering",
+        title: "Beehive Monitoring System",
+        type: "Full-Stack Capstone",
         description:
-            "This site itself is a project: designed to communicate technical ability, product judgment, visual restraint, and a clear professional identity.",
-        stack: "React, CSS, responsive design, information architecture",
+            "A team capstone project to collect and display beehive sensor data through a web interface. I led frontend architecture and helped coordinate work across the team. One of the biggest challenges was keeping things consistent while multiple people were building features at once. It taught me a lot about communication, structuring a frontend others can build on, and working like a real engineering team.",
+        stack: "React, REST API, Agile, frontend architecture, team collaboration",
     },
 ];
 
@@ -35,7 +35,7 @@ export default function Projects() {
             <div className="container">
                 <div className="section-heading">
                     <p className="section-label">Projects</p>
-                    <h2>Selected work that reflects how I think and build.</h2>
+                    <h2>Selected work.</h2>
                 </div>
 
                 <div className="project-grid">

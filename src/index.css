@@ -468,3 +468,7 @@ select {
 		flex-direction: column;
 	}
 }
+
+section {
+	scroll-margin-top: 80px;
+}

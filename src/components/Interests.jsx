@@ -4,56 +4,63 @@ export default function Interests() {
             <div className="container">
                 <div className="section-heading">
                     <p className="section-label">Beyond Tech</p>
-                    <h2>The things that matter to me outside of software.</h2>
+                    <h2>What I do when I'm not at a keyboard.</h2>
                 </div>
 
                 <div className="interests-grid">
                     <article className="interest-card">
                         <h3>Philadelphia sports</h3>
                         <p>
-                            I'm a huge Philly sports fan. Sports have always been one of the biggest parts of my
-                            life, and they've shaped how I think about teamwork, resilience,
-                            energy, and community.
+                            Lifelong Philly fan. Sports have always been a big part of my life.
+                            They have taught me a lot about resilience, patience, and sticking
+                            with something even when it is frustrating. Also helps that the Eagles
+                            finally got one.
                         </p>
                     </article>
 
                     <article className="interest-card">
-                        <h3>Giving back</h3>
+                        <h3>Volunteering</h3>
                         <p>
-                            I care deeply about helping people, especially through volunteer
-                            work connected to cancer support and related causes. Service is a
-                            meaningful part of who I am, and I want the work I do to make a
-                            positive difference in people's lives. Lately, I have been a volunteer
-                            driver for ACS's Road to Recovery program, giving free rides for patients
-                            to and from cancer treatments.
+                            I volunteer as a driver for the American Cancer Society Road
+                            to Recovery program, giving rides to patients traveling to and
+                            from cancer treatment. It is one of the most rewarding things I do,
+                            and it matters a lot to me.
                         </p>
                     </article>
 
                     <article className="interest-card">
-                        <h3>Nature</h3>
+                        <h3>The outdoors</h3>
                         <p>
-                            I enjoy spending time outdoors and being around nature. It helps
-                            me reset, think more clearly, and stay grounded outside the pace
-                            of school, projects, and everyday life.
+                            I spend time outside whenever I can. Whether it's being near water,
+                            going for walks, or just getting fresh air, it helps me slow down and
+                            think more clearly.
                         </p>
                     </article>
 
                     <article className="interest-card">
                         <h3>Cooking</h3>
                         <p>
-                            I enjoy cooking because I like trying new foods, but more than that, I
-                            really value cooking for other people. There's something special about
-                            creating comfort through a meal. When you cook for someone, it's a
-                            different kind of joy, both for you and for them.
+                            I enjoy trying new foods, but more than that I like cooking for other people.
+                            There is something satisfying about putting a meal in front of someone and
+                            watching them enjoy it. It is a different kind of joy for both of us.
                         </p>
                     </article>
 
                     <article className="interest-card">
                         <h3>Catan</h3>
                         <p>
-                            I'm also a big Catan fan. I love games that mix strategy,
-                            negotiation, and adaptability, and Catan is one of my favorite
-                            ways to relax and compete with friends.
+                            Strategy, negotiation, and a bit of luck. It is a great combination.
+                            I have been playing for years and have played around 1500 games.
+                            I am always up for one more.
+                        </p>
+                    </article>
+
+                    <article className="interest-card">
+                        <h3>Writing Poetry</h3>
+                        <p>
+                            I spend a lot of time writing poetry. It is something I really enjoy
+                            and a way for me to slow down and think differently. It is how I
+                            process my thoughts and a more personal way of telling stories.
                         </p>
                     </article>
                 </div>
