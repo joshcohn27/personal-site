@@ -117,7 +117,7 @@ select {
 
 .hero-grid {
 	display: grid;
-	grid-template-columns: 1.35fr 0.95fr;
+	grid-template-columns: 1fr 1fr;
 	gap: 2rem;
 	align-items: stretch;
 }
@@ -256,7 +256,7 @@ select {
 
 .about-grid {
 	display: grid;
-	grid-template-columns: 1.2fr 0.9fr;
+	grid-template-columns: 1fr 1fr;
 	gap: 1.25rem;
 }
 
