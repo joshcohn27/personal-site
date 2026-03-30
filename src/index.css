@@ -117,7 +117,7 @@ select {
 
 .hero-grid {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1.35fr 0.95fr;
 	gap: 2rem;
 	align-items: stretch;
 }
