@@ -53,7 +53,7 @@ export default function Projects() {
                                     rel="noreferrer"
                                     className="project-link"
                                 >
-                                    View Live →
+                                    View Live...
                                 </a>
                             )}
 
