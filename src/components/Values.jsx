@@ -20,7 +20,9 @@ export default function Values() {
                         <p>
                             Alongside graduate school, I'm looking for a full-time software
                             engineering role where I can contribute early, keep learning, and work
-                            on problems that actually matter. I've grown a liking to frontend work, but still love to work on backend and databases. 
+                            on problems that actually matter. I've found myself really enjoying
+                            frontend work, especially when it comes to building clean and intuitive
+                            interfaces, but I still like working across the stack.
                         </p>
                     </div>
 
@@ -28,15 +30,18 @@ export default function Values() {
                         <h3>What I care about in the work</h3>
                         <p>
                             The best environments I've been part of were the ones where people cared.
-                            Not just about the project, but about building things well and thinking
-                            carefully about the impact of what they were making.
+                            Not just about the project, but about doing things the right way and
+                            thinking through the details instead of just getting something out the door.
+                            That's something I've really noticed from working on real teams, and it
+                            matters a lot to me.
                         </p>
                         <p>
-                            That is especially important to me when it comes to AI. I'm really
-                            interested in how AI gets built into real products, but I also think
-                            ethics and sustainability need to be part of that conversation. I want
-                            to be on teams that take those questions seriously and are intentional
-                            about the work they put into the world.
+                            That carries over into how I think about AI. I care a lot about who actually
+                            benefits from the systems being built. Whether they are helping people who
+                            need it, or just making things more convenient for people who were already
+                            fine. There is a lot of good AI can do, especially in areas like healthcare,
+                            education, and quality of life, but only if it is built with intention and ethics in mind.
+                            That is a big part of why I want to study it seriously.
                         </p>
                     </div>
                 </div>
