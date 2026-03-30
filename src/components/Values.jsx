@@ -40,8 +40,8 @@ export default function Values() {
                             benefits from the systems being built. Whether they are helping people who
                             need it, or just making things more convenient for people who were already
                             fine. There is a lot of good AI can do, especially in areas like healthcare,
-                            education, and quality of life, but only if it is built with intention and ethics in mind.
-                            That is a big part of why I want to study it seriously.
+                            education, and quality of life, but only if it is built with intention.
+                            That is a big part of why I want to study AI, not just use it.
                         </p>
                     </div>
                 </div>
