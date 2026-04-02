@@ -39,7 +39,7 @@ export default function NotFound() {
                                 </Link>
 
                                 <a
-                                    href="http://joshbcohn.com/#projects"
+                                    href="/#projects"
                                     className="inline-flex min-w-[180px] items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
                                 >
                                     View projects
