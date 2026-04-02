@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -6,8 +7,9 @@ import Values from "./components/Values";
 import Interests from "./components/Interests";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import NotFound from "./components/NotFound";
 
-export default function App() {
+function HomePage() {
     return (
         <div className="site-shell">
             <Header />
@@ -21,5 +23,16 @@ export default function App() {
             </main>
             <Footer />
         </div>
+    );
+}
+
+export default function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </BrowserRouter>
     );
 }

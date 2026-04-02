@@ -14,6 +14,10 @@
         {
             "source": "/casino/:path*",
             "destination": "https://casino-xi-swart.vercel.app/:path*"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
         }
     ]
 }
