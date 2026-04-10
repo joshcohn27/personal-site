@@ -297,7 +297,7 @@ export default function Poetry() {
                                     background: "none", border: "none", color: "#94a3b8", cursor: "pointer", fontSize: "1rem", lineHeight: 1,
                                 }}
                             >
-                                ×
+                                x
                             </button>
                         )}
                     </div>
@@ -371,7 +371,12 @@ export default function Poetry() {
                                         {poem.title}
                                         {poem.dedication && <InfoTooltip text={poem.dedication} />}
                                     </span>
-                                    <span style={{ color: "#94a3b8", fontSize: "1.1rem", flexShrink: 0 }}>→</span>
+                                    <span style={{ color: "#94a3b8", fontSize: "1.1rem", flexShrink: 0 }}>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                            <polyline points="12 5 19 12 12 19" />
+                                        </svg>
+                                    </span>
                                 </button>
                             </li>
                         ))}
