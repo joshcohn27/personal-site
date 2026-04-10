@@ -10,8 +10,8 @@ interface Poem {
 type SortOption = "newest" | "oldest" | "az" | "za";
 
 const SORT_LABELS: Record<SortOption, string> = {
-    az: "A → Z",
-    za: "Z → A",
+    az: "A to Z",
+    za: "Z to A",
     newest: "Newest",
     oldest: "Oldest",
 };
