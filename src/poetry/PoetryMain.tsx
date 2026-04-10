@@ -10,10 +10,10 @@ interface Poem {
 type SortOption = "newest" | "oldest" | "az" | "za";
 
 const SORT_LABELS: Record<SortOption, string> = {
-    newest: "Newest",
-    oldest: "Oldest",
     az: "A → Z",
     za: "Z → A",
+    newest: "Newest",
+    oldest: "Oldest",
 };
 
 function InfoTooltip({ text }: { text: string }) {
@@ -245,15 +245,15 @@ export default function Poetry() {
 
                 {/* Page heading */}
                 <h1 style={{
-                        fontSize: "clamp(2rem, 4vw, 3.2rem)",
-                        fontWeight: 800,
-                        letterSpacing: "-0.03em",
-                        lineHeight: 1.1,
-                        color: "#f8fafc",
-                        marginBottom: "40px",
-                    }}>
-                        Poetry
-                    </h1>
+                    fontSize: "clamp(2rem, 4vw, 3.2rem)",
+                    fontWeight: 800,
+                    letterSpacing: "-0.03em",
+                    lineHeight: 1.1,
+                    color: "#f8fafc",
+                    marginBottom: "40px",
+                }}>
+                    Poetry
+                </h1>
                 <div style={{ marginBottom: "2rem" }}>
                     <span style={{
                         display: "inline-block",
