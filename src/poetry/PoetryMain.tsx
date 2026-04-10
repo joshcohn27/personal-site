@@ -97,7 +97,7 @@ export default function Poetry() {
     const [selectedPoem, setSelectedPoem] = useState<Poem | null>(null);
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState("");
-    const [sort, setSort] = useState<SortOption>("newest");
+    const [sort, setSort] = useState<SortOption>("az");
 
     useEffect(() => {
         const fetchPoems = async () => {
