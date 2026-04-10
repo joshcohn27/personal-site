@@ -12,6 +12,7 @@ export default function Header() {
                     <a href="/#future">My Future</a>
                     <a href="/#interests">Beyond Tech</a>
                     <a href="/#contact">Contact</a>
+                    <a href="/poetry">Poetry</a>
                     <a
                         href="https://github.com/joshcohn27"
                         target="_blank"
