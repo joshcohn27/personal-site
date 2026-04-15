@@ -1,0 +1,165 @@
+
+
+/* Top bar */
+.dashTopBar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+	margin-bottom: 1rem;
+}
+
+.brand {
+	font-weight: 800;
+	font-size: 1.25rem;
+}
+
+.hiveSelect {
+	border-radius: 12px;
+	padding: 0.55rem 0.75rem;
+	border: 1px solid rgba(0, 0, 0, 0.16);
+	background: var(--foreground-color, #fff);
+	font-weight: 700;
+}
+
+/* Alert */
+.alertBar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+	padding: 0.75rem 1rem;
+	border-radius: 16px;
+	background: rgba(231, 107, 107, 0.15);
+	border: 1px solid rgba(231, 107, 107, 0.4);
+	margin-bottom: 1rem;
+}
+
+.alertText {
+	font-weight: 800;
+}
+
+.alertLink {
+	border-radius: 12px;
+	padding: 0.5rem 0.75rem;
+	border: 1px solid rgba(0, 0, 0, 0.16);
+	background: rgba(0, 0, 0, 0.03);
+	cursor: pointer;
+	font-weight: 800;
+}
+
+
+.dashLayout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 28rem;
+	grid-template-areas:
+		"temp   temp   obs"
+		"hum    co2    insp"
+		"vol    weight insp";
+	gap: 1rem;
+	align-items: start;
+}
+
+.slotTemp {
+	grid-area: temp;
+}
+
+.slotObs {
+	grid-area: obs;
+}
+
+.slotHum {
+	grid-area: hum;
+}
+
+.slotCO2 {
+	grid-area: co2;
+}
+
+.slotInsp {
+	grid-area: insp;
+}
+
+.slotVol {
+	grid-area: vol;
+}
+
+.slotWeight {
+	grid-area: weight;
+}
+
+/* Overlay button anchor */
+.panelWrap {
+	position: relative;
+	width: 100%;
+}
+
+.cornerBtn {
+	position: absolute;
+	width: 34px;
+	height: 34px;
+	border-radius: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.16);
+	background: rgba(0, 0, 0, 0.03);
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: 800;
+	display: grid;
+	place-items: center;
+}
+
+.plusBtn {
+	top: 12px;
+	right: 12px;
+}
+
+.arrowBtn {
+	bottom: 12px;
+	right: 12px;
+}
+
+.iconBtn {
+	position: absolute;
+	width: 34px;
+	height: 34px;
+	border-radius: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.16);
+	background: rgba(0, 0, 0, 0.03);
+	cursor: pointer;
+	display: grid;
+	place-items: center;
+	padding: 0;
+}
+
+.iconBtn img {
+	width: 18px;
+	height: 18px;
+	display: block;
+}
+
+.brBtn {
+	bottom: 12px;
+	right: 12px;
+}
+
+@media (max-width: 900px) {
+	.dashLayout {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"temp"
+			"obs"
+			"hum"
+			"co2"
+			"insp"
+			"vol"
+			"weight";
+	}
+}
+
+@media (max-width: 420px) {
+	.dashPage {
+		padding: 0.9rem;
+	}
+}
