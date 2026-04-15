@@ -1,0 +1,1065 @@
+{
+  "User": {
+    "User_ID": "21",
+    "First_Name": "Josh",
+    "Last_Name": "Cohn",
+    "Email": "josh@example.com",
+    "Phone": "5551234567",
+    "Death_Notify_Email": false,
+    "Death_Notify_Phone": false,
+    "Death_Notify_Application": true,
+    "Swarm_Notify_Email": false,
+    "Swarm_Notify_Phone": false,
+    "Swarm_Notify_Application": true,
+    "Cleansing_Flight_Notify_Email": false,
+    "Cleansing_Flight_Notify_Phone": false,
+    "Cleansing_Flight_Notify_Application": true,
+    "Organization_ID": "1"
+  },
+  "Hives": [
+    {
+      "Hive_ID": "1",
+      "Hive_Name": "Hive 1",
+      "Hive_Data": [
+        {
+          "TimeStamp": "2026-04-01 12:00:00",
+          "Outside_Temperature": "66.0",
+          "Outside_Humidity": "51.1",
+          "Temperature": "95.7",
+          "Humidity": "65.5",
+          "Carbon_Dioxide": "702",
+          "Volume": "39.0",
+          "Weight": "84.9"
+        },
+        {
+          "TimeStamp": "2026-04-02 12:00:00",
+          "Outside_Temperature": "65.3",
+          "Outside_Humidity": "48.6",
+          "Temperature": "95.9",
+          "Humidity": "64.5",
+          "Carbon_Dioxide": "706",
+          "Volume": "39.2",
+          "Weight": "84.7"
+        },
+        {
+          "TimeStamp": "2026-04-03 12:00:00",
+          "Outside_Temperature": "62.8",
+          "Outside_Humidity": "46.1",
+          "Temperature": "95.9",
+          "Humidity": "63.4",
+          "Carbon_Dioxide": "709",
+          "Volume": "39.4",
+          "Weight": "84.4"
+        },
+        {
+          "TimeStamp": "2026-04-04 12:00:00",
+          "Outside_Temperature": "59.1",
+          "Outside_Humidity": "43.8",
+          "Temperature": "95.8",
+          "Humidity": "62.2",
+          "Carbon_Dioxide": "710",
+          "Volume": "39.6",
+          "Weight": "84.0"
+        },
+        {
+          "TimeStamp": "2026-04-05 12:00:00",
+          "Outside_Temperature": "55.2",
+          "Outside_Humidity": "42.0",
+          "Temperature": "95.5",
+          "Humidity": "61.1",
+          "Carbon_Dioxide": "710",
+          "Volume": "39.7",
+          "Weight": "83.6"
+        },
+        {
+          "TimeStamp": "2026-04-06 12:00:00",
+          "Outside_Temperature": "51.9",
+          "Outside_Humidity": "41.1",
+          "Temperature": "95.1",
+          "Humidity": "60.2",
+          "Carbon_Dioxide": "708",
+          "Volume": "39.7",
+          "Weight": "83.1"
+        },
+        {
+          "TimeStamp": "2026-04-07 12:00:00",
+          "Outside_Temperature": "50.2",
+          "Outside_Humidity": "41.1",
+          "Temperature": "94.7",
+          "Humidity": "59.5",
+          "Carbon_Dioxide": "704",
+          "Volume": "39.7",
+          "Weight": "82.7"
+        },
+        {
+          "TimeStamp": "2026-04-08 12:00:00",
+          "Outside_Temperature": "50.3",
+          "Outside_Humidity": "42.1",
+          "Temperature": "94.2",
+          "Humidity": "59.1",
+          "Carbon_Dioxide": "700",
+          "Volume": "39.6",
+          "Weight": "82.3"
+        },
+        {
+          "TimeStamp": "2026-04-09 12:00:00",
+          "Outside_Temperature": "52.4",
+          "Outside_Humidity": "43.8",
+          "Temperature": "93.8",
+          "Humidity": "59.0",
+          "Carbon_Dioxide": "695",
+          "Volume": "39.4",
+          "Weight": "81.9"
+        },
+        {
+          "TimeStamp": "2026-04-10 12:00:00",
+          "Outside_Temperature": "55.8",
+          "Outside_Humidity": "46.1",
+          "Temperature": "93.4",
+          "Humidity": "59.3",
+          "Carbon_Dioxide": "689",
+          "Volume": "39.2",
+          "Weight": "81.5"
+        },
+        {
+          "TimeStamp": "2026-04-11 12:00:00",
+          "Outside_Temperature": "59.7",
+          "Outside_Humidity": "48.7",
+          "Temperature": "93.2",
+          "Humidity": "59.9",
+          "Carbon_Dioxide": "682",
+          "Volume": "38.9",
+          "Weight": "81.2"
+        },
+        {
+          "TimeStamp": "2026-04-12 12:00:00",
+          "Outside_Temperature": "63.3",
+          "Outside_Humidity": "51.2",
+          "Temperature": "93.1",
+          "Humidity": "60.8",
+          "Carbon_Dioxide": "676",
+          "Volume": "38.6",
+          "Weight": "81.0"
+        },
+        {
+          "TimeStamp": "2026-04-13 12:00:00",
+          "Outside_Temperature": "65.5",
+          "Outside_Humidity": "53.2",
+          "Temperature": "93.2",
+          "Humidity": "61.8",
+          "Carbon_Dioxide": "671",
+          "Volume": "38.3",
+          "Weight": "80.8"
+        },
+        {
+          "TimeStamp": "2026-04-14 19:00:00",
+          "Outside_Temperature": "64.4",
+          "Outside_Humidity": "48.2",
+          "Temperature": "95.4",
+          "Humidity": "63.8",
+          "Carbon_Dioxide": "695",
+          "Volume": "39.0",
+          "Weight": "86.7"
+        },
+        {
+          "TimeStamp": "2026-04-14 19:15:00",
+          "Outside_Temperature": "65.0",
+          "Outside_Humidity": "46.9",
+          "Temperature": "95.6",
+          "Humidity": "63.7",
+          "Carbon_Dioxide": "699",
+          "Volume": "39.3",
+          "Weight": "86.6"
+        },
+        {
+          "TimeStamp": "2026-04-14 19:30:00",
+          "Outside_Temperature": "64.6",
+          "Outside_Humidity": "45.4",
+          "Temperature": "95.8",
+          "Humidity": "63.3",
+          "Carbon_Dioxide": "703",
+          "Volume": "39.5",
+          "Weight": "86.6"
+        },
+        {
+          "TimeStamp": "2026-04-14 19:45:00",
+          "Outside_Temperature": "63.4",
+          "Outside_Humidity": "44.0",
+          "Temperature": "96.0",
+          "Humidity": "62.8",
+          "Carbon_Dioxide": "706",
+          "Volume": "39.7",
+          "Weight": "86.4"
+        },
+        {
+          "TimeStamp": "2026-04-14 20:00:00",
+          "Outside_Temperature": "61.6",
+          "Outside_Humidity": "42.9",
+          "Temperature": "96.0",
+          "Humidity": "62.1",
+          "Carbon_Dioxide": "707",
+          "Volume": "39.8",
+          "Weight": "86.2"
+        },
+        {
+          "TimeStamp": "2026-04-14 20:15:00",
+          "Outside_Temperature": "59.6",
+          "Outside_Humidity": "42.2",
+          "Temperature": "96.0",
+          "Humidity": "61.4",
+          "Carbon_Dioxide": "707",
+          "Volume": "39.8",
+          "Weight": "86.0"
+        },
+        {
+          "TimeStamp": "2026-04-14 20:30:00",
+          "Outside_Temperature": "57.8",
+          "Outside_Humidity": "42.0",
+          "Temperature": "95.8",
+          "Humidity": "60.7",
+          "Carbon_Dioxide": "705",
+          "Volume": "39.7",
+          "Weight": "85.8"
+        },
+        {
+          "TimeStamp": "2026-04-14 20:45:00",
+          "Outside_Temperature": "56.4",
+          "Outside_Humidity": "42.2",
+          "Temperature": "95.6",
+          "Humidity": "60.2",
+          "Carbon_Dioxide": "702",
+          "Volume": "39.6",
+          "Weight": "85.5"
+        },
+        {
+          "TimeStamp": "2026-04-14 21:00:00",
+          "Outside_Temperature": "55.4",
+          "Outside_Humidity": "42.9",
+          "Temperature": "95.3",
+          "Humidity": "60.2",
+          "Carbon_Dioxide": "699",
+          "Volume": "39.4",
+          "Weight": "85.2"
+        },
+        {
+          "TimeStamp": "2026-04-14 21:15:00",
+          "Outside_Temperature": "55.0",
+          "Outside_Humidity": "44.0",
+          "Temperature": "95.0",
+          "Humidity": "60.4",
+          "Carbon_Dioxide": "695",
+          "Volume": "39.2",
+          "Weight": "85.0"
+        },
+        {
+          "TimeStamp": "2026-04-14 21:30:00",
+          "Outside_Temperature": "55.3",
+          "Outside_Humidity": "45.4",
+          "Temperature": "94.8",
+          "Humidity": "60.8",
+          "Carbon_Dioxide": "691",
+          "Volume": "39.1",
+          "Weight": "84.8"
+        },
+        {
+          "TimeStamp": "2026-04-14 21:45:00",
+          "Outside_Temperature": "56.2",
+          "Outside_Humidity": "46.9",
+          "Temperature": "94.8",
+          "Humidity": "61.4",
+          "Carbon_Dioxide": "688",
+          "Volume": "39.0",
+          "Weight": "84.7"
+        },
+        {
+          "TimeStamp": "2026-04-14 22:00:00",
+          "Outside_Temperature": "57.9",
+          "Outside_Humidity": "48.2",
+          "Temperature": "94.8",
+          "Humidity": "62.1",
+          "Carbon_Dioxide": "685",
+          "Volume": "39.0",
+          "Weight": "84.7"
+        }
+      ],
+      "Observations": [
+        {
+          "Observation_ID": "101",
+          "TimeStamp": "2026-04-03 09:00:00",
+          "Description": "Steady foraging activity at the entrance with visible pollen coming in throughout the morning.",
+          "Tags": [
+            {
+              "Tag_ID": "1",
+              "Tag": "Pollen"
+            },
+            {
+              "Tag_ID": "2",
+              "Tag": "Brood"
+            }
+          ]
+        },
+        {
+          "Observation_ID": "102",
+          "TimeStamp": "2026-04-08 14:30:00",
+          "Description": "Some light bearding during the warmer part of the day, but overall behavior stayed calm and consistent.",
+          "Tags": [
+            {
+              "Tag_ID": "3",
+              "Tag": "Bearding"
+            },
+            {
+              "Tag_ID": "4",
+              "Tag": "Temperature"
+            }
+          ]
+        },
+        {
+          "Observation_ID": "103",
+          "TimeStamp": "2026-04-12 11:15:00",
+          "Description": "Hive 1 remained active with normal flight patterns and no unusual congestion near the entrance.",
+          "Tags": [
+            {
+              "Tag_ID": "5",
+              "Tag": "Temperature"
+            },
+            {
+              "Tag_ID": "6",
+              "Tag": "Humidity"
+            }
+          ]
+        }
+      ],
+      "Inspections": [
+        {
+          "Inspection_ID": "111",
+          "TimeStamp": "2026-04-01 10:00:00",
+          "Description": "Frames looked healthy and brood pattern was fairly even across the center of the box.",
+          "Tags": [
+            {
+              "Tag_ID": "11",
+              "Tag": "Good"
+            }
+          ]
+        },
+        {
+          "Inspection_ID": "112",
+          "TimeStamp": "2026-04-09 10:00:00",
+          "Description": "Population looked strong and food stores appeared stable heading into the next week.",
+          "Tags": [
+            {
+              "Tag_ID": "12",
+              "Tag": "Good"
+            }
+          ]
+        },
+        {
+          "Inspection_ID": "113",
+          "TimeStamp": "2026-04-13 10:00:00",
+          "Description": "Recent inspection for hive 1 showed normal activity, good comb use, and no immediate concerns.",
+          "Tags": [
+            {
+              "Tag_ID": "13",
+              "Tag": "Excellent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Hive_ID": "2",
+      "Hive_Name": "Hive 2",
+      "Hive_Data": [
+        {
+          "TimeStamp": "2026-04-01 12:00:00",
+          "Outside_Temperature": "64.7",
+          "Outside_Humidity": "48.6",
+          "Temperature": "96.4",
+          "Humidity": "65.5",
+          "Carbon_Dioxide": "728",
+          "Volume": "40.0",
+          "Weight": "88.7"
+        },
+        {
+          "TimeStamp": "2026-04-02 12:00:00",
+          "Outside_Temperature": "61.6",
+          "Outside_Humidity": "46.1",
+          "Temperature": "96.4",
+          "Humidity": "64.4",
+          "Carbon_Dioxide": "731",
+          "Volume": "40.2",
+          "Weight": "88.4"
+        },
+        {
+          "TimeStamp": "2026-04-03 12:00:00",
+          "Outside_Temperature": "57.1",
+          "Outside_Humidity": "43.8",
+          "Temperature": "96.3",
+          "Humidity": "63.2",
+          "Carbon_Dioxide": "731",
+          "Volume": "40.4",
+          "Weight": "88.0"
+        },
+        {
+          "TimeStamp": "2026-04-04 12:00:00",
+          "Outside_Temperature": "53.5",
+          "Outside_Humidity": "42.0",
+          "Temperature": "96.0",
+          "Humidity": "62.0",
+          "Carbon_Dioxide": "730",
+          "Volume": "40.5",
+          "Weight": "87.6"
+        },
+        {
+          "TimeStamp": "2026-04-05 12:00:00",
+          "Outside_Temperature": "50.8",
+          "Outside_Humidity": "41.1",
+          "Temperature": "95.6",
+          "Humidity": "61.0",
+          "Carbon_Dioxide": "728",
+          "Volume": "40.5",
+          "Weight": "87.1"
+        },
+        {
+          "TimeStamp": "2026-04-06 12:00:00",
+          "Outside_Temperature": "50.0",
+          "Outside_Humidity": "41.1",
+          "Temperature": "95.1",
+          "Humidity": "60.2",
+          "Carbon_Dioxide": "724",
+          "Volume": "40.5",
+          "Weight": "86.6"
+        },
+        {
+          "TimeStamp": "2026-04-07 12:00:00",
+          "Outside_Temperature": "51.9",
+          "Outside_Humidity": "42.1",
+          "Temperature": "94.7",
+          "Humidity": "59.7",
+          "Carbon_Dioxide": "719",
+          "Volume": "40.4",
+          "Weight": "86.2"
+        },
+        {
+          "TimeStamp": "2026-04-08 12:00:00",
+          "Outside_Temperature": "55.8",
+          "Outside_Humidity": "43.8",
+          "Temperature": "94.4",
+          "Humidity": "59.6",
+          "Carbon_Dioxide": "714",
+          "Volume": "40.2",
+          "Weight": "85.8"
+        },
+        {
+          "TimeStamp": "2026-04-09 12:00:00",
+          "Outside_Temperature": "60.0",
+          "Outside_Humidity": "46.1",
+          "Temperature": "94.2",
+          "Humidity": "59.7",
+          "Carbon_Dioxide": "708",
+          "Volume": "40.0",
+          "Weight": "85.4"
+        },
+        {
+          "TimeStamp": "2026-04-10 12:00:00",
+          "Outside_Temperature": "63.3",
+          "Outside_Humidity": "48.7",
+          "Temperature": "94.2",
+          "Humidity": "60.3",
+          "Carbon_Dioxide": "701",
+          "Volume": "39.7",
+          "Weight": "85.1"
+        },
+        {
+          "TimeStamp": "2026-04-11 12:00:00",
+          "Outside_Temperature": "65.5",
+          "Outside_Humidity": "51.2",
+          "Temperature": "94.3",
+          "Humidity": "61.1",
+          "Carbon_Dioxide": "696",
+          "Volume": "39.4",
+          "Weight": "84.9"
+        },
+        {
+          "TimeStamp": "2026-04-12 12:00:00",
+          "Outside_Temperature": "66.0",
+          "Outside_Humidity": "53.2",
+          "Temperature": "94.7",
+          "Humidity": "62.2",
+          "Carbon_Dioxide": "690",
+          "Volume": "39.1",
+          "Weight": "84.7"
+        },
+        {
+          "TimeStamp": "2026-04-13 12:00:00",
+          "Outside_Temperature": "64.7",
+          "Outside_Humidity": "54.4",
+          "Temperature": "95.1",
+          "Humidity": "63.4",
+          "Carbon_Dioxide": "687",
+          "Volume": "38.8",
+          "Weight": "84.7"
+        },
+        {
+          "TimeStamp": "2026-04-14 19:00:00",
+          "Outside_Temperature": "64.6",
+          "Outside_Humidity": "44.3",
+          "Temperature": "95.8",
+          "Humidity": "64.8",
+          "Carbon_Dioxide": "715",
+          "Volume": "40.0",
+          "Weight": "90.2"
+        },
+        {
+          "TimeStamp": "2026-04-14 19:15:00",
+          "Outside_Temperature": "63.4",
+          "Outside_Humidity": "42.9",
+          "Temperature": "96.0",
+          "Humidity": "64.7",
+          "Carbon_Dioxide": "719",
+          "Volume": "40.3",
+          "Weight": "90.1"
+        },
+        {
+          "TimeStamp": "2026-04-14 19:30:00",
+          "Outside_Temperature": "61.6",
+          "Outside_Humidity": "42.2",
+          "Temperature": "96.2",
+          "Humidity": "64.3",
+          "Carbon_Dioxide": "723",
+          "Volume": "40.5",
+          "Weight": "90.1"
+        },
+        {
+          "TimeStamp": "2026-04-14 19:45:00",
+          "Outside_Temperature": "59.6",
+          "Outside_Humidity": "42.0",
+          "Temperature": "96.4",
+          "Humidity": "63.8",
+          "Carbon_Dioxide": "726",
+          "Volume": "40.7",
+          "Weight": "89.9"
+        },
+        {
+          "TimeStamp": "2026-04-14 20:00:00",
+          "Outside_Temperature": "57.8",
+          "Outside_Humidity": "42.2",
+          "Temperature": "96.4",
+          "Humidity": "63.1",
+          "Carbon_Dioxide": "727",
+          "Volume": "40.8",
+          "Weight": "89.7"
+        },
+        {
+          "TimeStamp": "2026-04-14 20:15:00",
+          "Outside_Temperature": "56.4",
+          "Outside_Humidity": "42.9",
+          "Temperature": "96.4",
+          "Humidity": "62.4",
+          "Carbon_Dioxide": "727",
+          "Volume": "40.8",
+          "Weight": "89.5"
+        },
+        {
+          "TimeStamp": "2026-04-14 20:30:00",
+          "Outside_Temperature": "55.4",
+          "Outside_Humidity": "44.3",
+          "Temperature": "96.2",
+          "Humidity": "61.7",
+          "Carbon_Dioxide": "725",
+          "Volume": "40.7",
+          "Weight": "89.3"
+        },
+        {
+          "TimeStamp": "2026-04-14 20:45:00",
+          "Outside_Temperature": "55.0",
+          "Outside_Humidity": "45.8",
+          "Temperature": "96.0",
+          "Humidity": "61.2",
+          "Carbon_Dioxide": "722",
+          "Volume": "40.6",
+          "Weight": "89.0"
+        },
+        {
+          "TimeStamp": "2026-04-14 21:00:00",
+          "Outside_Temperature": "55.3",
+          "Outside_Humidity": "47.2",
+          "Temperature": "95.7",
+          "Humidity": "61.2",
+          "Carbon_Dioxide": "719",
+          "Volume": "40.4",
+          "Weight": "88.7"
+        },
+        {
+          "TimeStamp": "2026-04-14 21:15:00",
+          "Outside_Temperature": "56.2",
+          "Outside_Humidity": "48.3",
+          "Temperature": "95.4",
+          "Humidity": "61.4",
+          "Carbon_Dioxide": "715",
+          "Volume": "40.2",
+          "Weight": "88.5"
+        },
+        {
+          "TimeStamp": "2026-04-14 21:30:00",
+          "Outside_Temperature": "57.9",
+          "Outside_Humidity": "49.0",
+          "Temperature": "95.2",
+          "Humidity": "61.8",
+          "Carbon_Dioxide": "711",
+          "Volume": "40.1",
+          "Weight": "88.3"
+        },
+        {
+          "TimeStamp": "2026-04-14 21:45:00",
+          "Outside_Temperature": "60.2",
+          "Outside_Humidity": "49.3",
+          "Temperature": "95.2",
+          "Humidity": "62.4",
+          "Carbon_Dioxide": "708",
+          "Volume": "40.0",
+          "Weight": "88.2"
+        },
+        {
+          "TimeStamp": "2026-04-14 22:00:00",
+          "Outside_Temperature": "62.7",
+          "Outside_Humidity": "49.0",
+          "Temperature": "95.2",
+          "Humidity": "63.1",
+          "Carbon_Dioxide": "705",
+          "Volume": "40.0",
+          "Weight": "88.2"
+        }
+      ],
+      "Observations": [
+        {
+          "Observation_ID": "201",
+          "TimeStamp": "2026-04-03 09:00:00",
+          "Description": "Steady foraging activity at the entrance with visible pollen coming in throughout the morning.",
+          "Tags": [
+            {
+              "Tag_ID": "1",
+              "Tag": "Pollen"
+            },
+            {
+              "Tag_ID": "2",
+              "Tag": "Brood"
+            }
+          ]
+        },
+        {
+          "Observation_ID": "202",
+          "TimeStamp": "2026-04-08 14:30:00",
+          "Description": "Some light bearding during the warmer part of the day, but overall behavior stayed calm and consistent.",
+          "Tags": [
+            {
+              "Tag_ID": "3",
+              "Tag": "Bearding"
+            },
+            {
+              "Tag_ID": "4",
+              "Tag": "Temperature"
+            }
+          ]
+        },
+        {
+          "Observation_ID": "203",
+          "TimeStamp": "2026-04-12 11:15:00",
+          "Description": "Hive 2 remained active with normal flight patterns and no unusual congestion near the entrance.",
+          "Tags": [
+            {
+              "Tag_ID": "5",
+              "Tag": "Temperature"
+            },
+            {
+              "Tag_ID": "6",
+              "Tag": "Humidity"
+            }
+          ]
+        }
+      ],
+      "Inspections": [
+        {
+          "Inspection_ID": "211",
+          "TimeStamp": "2026-04-01 10:00:00",
+          "Description": "Frames looked healthy and brood pattern was fairly even across the center of the box.",
+          "Tags": [
+            {
+              "Tag_ID": "11",
+              "Tag": "Good"
+            }
+          ]
+        },
+        {
+          "Inspection_ID": "212",
+          "TimeStamp": "2026-04-09 10:00:00",
+          "Description": "Population looked strong and food stores appeared stable heading into the next week.",
+          "Tags": [
+            {
+              "Tag_ID": "12",
+              "Tag": "Good"
+            }
+          ]
+        },
+        {
+          "Inspection_ID": "213",
+          "TimeStamp": "2026-04-13 10:00:00",
+          "Description": "Recent inspection for hive 2 showed normal activity, good comb use, and no immediate concerns.",
+          "Tags": [
+            {
+              "Tag_ID": "13",
+              "Tag": "Excellent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Hive_ID": "3",
+      "Hive_Name": "Hive 3",
+      "Hive_Data": [
+        {
+          "TimeStamp": "2026-04-01 12:00:00",
+          "Outside_Temperature": "60.8",
+          "Outside_Humidity": "46.1",
+          "Temperature": "96.8",
+          "Humidity": "65.4",
+          "Carbon_Dioxide": "756",
+          "Volume": "41.2",
+          "Weight": "92.4"
+        },
+        {
+          "TimeStamp": "2026-04-02 12:00:00",
+          "Outside_Temperature": "56.3",
+          "Outside_Humidity": "43.8",
+          "Temperature": "96.7",
+          "Humidity": "64.2",
+          "Carbon_Dioxide": "756",
+          "Volume": "41.4",
+          "Weight": "92.0"
+        },
+        {
+          "TimeStamp": "2026-04-03 12:00:00",
+          "Outside_Temperature": "52.7",
+          "Outside_Humidity": "42.0",
+          "Temperature": "96.4",
+          "Humidity": "63.0",
+          "Carbon_Dioxide": "755",
+          "Volume": "41.5",
+          "Weight": "91.6"
+        },
+        {
+          "TimeStamp": "2026-04-04 12:00:00",
+          "Outside_Temperature": "50.8",
+          "Outside_Humidity": "41.1",
+          "Temperature": "96.0",
+          "Humidity": "62.0",
+          "Carbon_Dioxide": "753",
+          "Volume": "41.5",
+          "Weight": "91.1"
+        },
+        {
+          "TimeStamp": "2026-04-05 12:00:00",
+          "Outside_Temperature": "50.0",
+          "Outside_Humidity": "41.1",
+          "Temperature": "95.5",
+          "Humidity": "61.2",
+          "Carbon_Dioxide": "749",
+          "Volume": "41.5",
+          "Weight": "90.6"
+        },
+        {
+          "TimeStamp": "2026-04-06 12:00:00",
+          "Outside_Temperature": "51.9",
+          "Outside_Humidity": "42.1",
+          "Temperature": "95.0",
+          "Humidity": "60.7",
+          "Carbon_Dioxide": "744",
+          "Volume": "41.4",
+          "Weight": "90.2"
+        },
+        {
+          "TimeStamp": "2026-04-07 12:00:00",
+          "Outside_Temperature": "55.8",
+          "Outside_Humidity": "43.8",
+          "Temperature": "94.7",
+          "Humidity": "60.6",
+          "Carbon_Dioxide": "739",
+          "Volume": "41.2",
+          "Weight": "89.8"
+        },
+        {
+          "TimeStamp": "2026-04-08 12:00:00",
+          "Outside_Temperature": "60.0",
+          "Outside_Humidity": "46.1",
+          "Temperature": "94.5",
+          "Humidity": "60.7",
+          "Carbon_Dioxide": "733",
+          "Volume": "41.0",
+          "Weight": "89.4"
+        },
+        {
+          "TimeStamp": "2026-04-09 12:00:00",
+          "Outside_Temperature": "63.3",
+          "Outside_Humidity": "48.7",
+          "Temperature": "94.5",
+          "Humidity": "61.3",
+          "Carbon_Dioxide": "726",
+          "Volume": "40.7",
+          "Weight": "89.1"
+        },
+        {
+          "TimeStamp": "2026-04-10 12:00:00",
+          "Outside_Temperature": "65.5",
+          "Outside_Humidity": "51.2",
+          "Temperature": "94.6",
+          "Humidity": "62.1",
+          "Carbon_Dioxide": "721",
+          "Volume": "40.4",
+          "Weight": "88.9"
+        },
+        {
+          "TimeStamp": "2026-04-11 12:00:00",
+          "Outside_Temperature": "66.0",
+          "Outside_Humidity": "53.2",
+          "Temperature": "95.0",
+          "Humidity": "63.2",
+          "Carbon_Dioxide": "715",
+          "Volume": "40.1",
+          "Weight": "88.7"
+        },
+        {
+          "TimeStamp": "2026-04-12 12:00:00",
+          "Outside_Temperature": "64.7",
+          "Outside_Humidity": "54.4",
+          "Temperature": "95.4",
+          "Humidity": "64.4",
+          "Carbon_Dioxide": "712",
+          "Volume": "39.8",
+          "Weight": "88.7"
+        },
+        {
+          "TimeStamp": "2026-04-13 12:00:00",
+          "Outside_Temperature": "61.3",
+          "Outside_Humidity": "54.9",
+          "Temperature": "95.8",
+          "Humidity": "65.5",
+          "Carbon_Dioxide": "710",
+          "Volume": "39.6",
+          "Weight": "88.8"
+        },
+        {
+          "TimeStamp": "2026-04-14 19:00:00",
+          "Outside_Temperature": "61.6",
+          "Outside_Humidity": "42.0",
+          "Temperature": "96.2",
+          "Humidity": "65.8",
+          "Carbon_Dioxide": "735",
+          "Volume": "41.0",
+          "Weight": "93.7"
+        },
+        {
+          "TimeStamp": "2026-04-14 19:15:00",
+          "Outside_Temperature": "59.6",
+          "Outside_Humidity": "42.2",
+          "Temperature": "96.4",
+          "Humidity": "65.7",
+          "Carbon_Dioxide": "739",
+          "Volume": "41.3",
+          "Weight": "93.6"
+        },
+        {
+          "TimeStamp": "2026-04-14 19:30:00",
+          "Outside_Temperature": "57.8",
+          "Outside_Humidity": "42.9",
+          "Temperature": "96.6",
+          "Humidity": "65.3",
+          "Carbon_Dioxide": "743",
+          "Volume": "41.5",
+          "Weight": "93.6"
+        },
+        {
+          "TimeStamp": "2026-04-14 19:45:00",
+          "Outside_Temperature": "56.4",
+          "Outside_Humidity": "44.3",
+          "Temperature": "96.8",
+          "Humidity": "64.8",
+          "Carbon_Dioxide": "746",
+          "Volume": "41.7",
+          "Weight": "93.4"
+        },
+        {
+          "TimeStamp": "2026-04-14 20:00:00",
+          "Outside_Temperature": "55.4",
+          "Outside_Humidity": "45.8",
+          "Temperature": "96.8",
+          "Humidity": "64.1",
+          "Carbon_Dioxide": "747",
+          "Volume": "41.8",
+          "Weight": "93.2"
+        },
+        {
+          "TimeStamp": "2026-04-14 20:15:00",
+          "Outside_Temperature": "55.0",
+          "Outside_Humidity": "47.2",
+          "Temperature": "96.8",
+          "Humidity": "63.4",
+          "Carbon_Dioxide": "747",
+          "Volume": "41.8",
+          "Weight": "93.0"
+        },
+        {
+          "TimeStamp": "2026-04-14 20:30:00",
+          "Outside_Temperature": "55.3",
+          "Outside_Humidity": "48.3",
+          "Temperature": "96.6",
+          "Humidity": "62.7",
+          "Carbon_Dioxide": "745",
+          "Volume": "41.7",
+          "Weight": "92.8"
+        },
+        {
+          "TimeStamp": "2026-04-14 20:45:00",
+          "Outside_Temperature": "56.2",
+          "Outside_Humidity": "49.0",
+          "Temperature": "96.4",
+          "Humidity": "62.2",
+          "Carbon_Dioxide": "742",
+          "Volume": "41.6",
+          "Weight": "92.5"
+        },
+        {
+          "TimeStamp": "2026-04-14 21:00:00",
+          "Outside_Temperature": "57.9",
+          "Outside_Humidity": "49.3",
+          "Temperature": "96.1",
+          "Humidity": "62.2",
+          "Carbon_Dioxide": "739",
+          "Volume": "41.4",
+          "Weight": "92.2"
+        },
+        {
+          "TimeStamp": "2026-04-14 21:15:00",
+          "Outside_Temperature": "60.2",
+          "Outside_Humidity": "49.0",
+          "Temperature": "95.8",
+          "Humidity": "62.4",
+          "Carbon_Dioxide": "735",
+          "Volume": "41.2",
+          "Weight": "92.0"
+        },
+        {
+          "TimeStamp": "2026-04-14 21:30:00",
+          "Outside_Temperature": "62.7",
+          "Outside_Humidity": "48.2",
+          "Temperature": "95.6",
+          "Humidity": "62.8",
+          "Carbon_Dioxide": "731",
+          "Volume": "41.1",
+          "Weight": "91.8"
+        },
+        {
+          "TimeStamp": "2026-04-14 21:45:00",
+          "Outside_Temperature": "64.9",
+          "Outside_Humidity": "46.9",
+          "Temperature": "95.6",
+          "Humidity": "63.4",
+          "Carbon_Dioxide": "728",
+          "Volume": "41.0",
+          "Weight": "91.7"
+        },
+        {
+          "TimeStamp": "2026-04-14 22:00:00",
+          "Outside_Temperature": "66.6",
+          "Outside_Humidity": "45.4",
+          "Temperature": "95.6",
+          "Humidity": "64.1",
+          "Carbon_Dioxide": "725",
+          "Volume": "41.0",
+          "Weight": "91.7"
+        }
+      ],
+      "Observations": [
+        {
+          "Observation_ID": "301",
+          "TimeStamp": "2026-04-03 09:00:00",
+          "Description": "Steady foraging activity at the entrance with visible pollen coming in throughout the morning.",
+          "Tags": [
+            {
+              "Tag_ID": "1",
+              "Tag": "Pollen"
+            },
+            {
+              "Tag_ID": "2",
+              "Tag": "Brood"
+            }
+          ]
+        },
+        {
+          "Observation_ID": "302",
+          "TimeStamp": "2026-04-08 14:30:00",
+          "Description": "Some light bearding during the warmer part of the day, but overall behavior stayed calm and consistent.",
+          "Tags": [
+            {
+              "Tag_ID": "3",
+              "Tag": "Bearding"
+            },
+            {
+              "Tag_ID": "4",
+              "Tag": "Temperature"
+            }
+          ]
+        },
+        {
+          "Observation_ID": "303",
+          "TimeStamp": "2026-04-12 11:15:00",
+          "Description": "Hive 3 remained active with normal flight patterns and no unusual congestion near the entrance.",
+          "Tags": [
+            {
+              "Tag_ID": "5",
+              "Tag": "Temperature"
+            },
+            {
+              "Tag_ID": "6",
+              "Tag": "Humidity"
+            }
+          ]
+        }
+      ],
+      "Inspections": [
+        {
+          "Inspection_ID": "311",
+          "TimeStamp": "2026-04-01 10:00:00",
+          "Description": "Frames looked healthy and brood pattern was fairly even across the center of the box.",
+          "Tags": [
+            {
+              "Tag_ID": "11",
+              "Tag": "Fair"
+            }
+          ]
+        },
+        {
+          "Inspection_ID": "312",
+          "TimeStamp": "2026-04-09 10:00:00",
+          "Description": "Population looked strong and food stores appeared stable heading into the next week.",
+          "Tags": [
+            {
+              "Tag_ID": "12",
+              "Tag": "Good"
+            }
+          ]
+        },
+        {
+          "Inspection_ID": "313",
+          "TimeStamp": "2026-04-13 10:00:00",
+          "Description": "Recent inspection for hive 3 showed normal activity, good comb use, and no immediate concerns.",
+          "Tags": [
+            {
+              "Tag_ID": "13",
+              "Tag": "Fair"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
