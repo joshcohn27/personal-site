@@ -7,7 +7,22 @@ export default function Header() {
                 </a>
 
                 <nav className="site-nav" aria-label="Primary navigation">
-                    <a href="/#projects">Projects</a>
+                    <div className="nav-dropdown">
+                        <button
+                            type="button"
+                            className="nav-dropdown-trigger"
+                            aria-haspopup="true"
+                        >
+                            Projects
+                        </button>
+
+                        <div className="nav-dropdown-menu">
+                            <a href="/#projects">All Projects</a>
+                            <a href="/projects/beehive">Beehive Monitoring System</a>
+                            <a href="/casino">Personal Casino</a>
+                        </div>
+                    </div>
+
                     <a href="/#about">About</a>
                     <a href="/#future">My Future</a>
                     <a href="/#interests">Beyond Tech</a>

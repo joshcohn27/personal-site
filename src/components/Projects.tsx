@@ -7,9 +7,19 @@ const projects = [
         stack: "VS Code Extension API, JavaScript, Git",
     },
     {
+        title: "Beehive Monitoring System",
+        type: "Undergrad Senior Project",
+        link: "https://joshbcohn.com/projects/beehive",
+        linkLabel: "View Beehive Demo",
+        description:
+            "A team capstone project to collect and display beehive sensor data through a web interface. I led frontend architecture and helped coordinate work across the team. One of the biggest challenges was keeping things consistent while multiple people were building features at once. It taught me a lot about communication, structuring a frontend others can build on, and working like a real engineering team.",
+        stack: "React, REST API, Agile, frontend architecture, team collaboration",
+    },
+    {
         title: "Personal Casino",
         type: "Interactive Web App",
         link: "https://joshbcohn.com/casino",
+        linkLabel: "Play Casino App",
         description:
             "A browser-based casino I built for fun, focused on recreating real table games with accurate logic and a polished UI. I've always liked the strategy and mechanics behind these games, so this became a way to explore them without involving real money. The biggest challenge has been managing complex game state, animations, and edge cases while keeping the experience smooth. It's been my best project for pushing frontend architecture and building something that actually feels like a real product.",
         stack: "React, TypeScript, state management, game logic, UI/UX",
@@ -20,13 +30,6 @@ const projects = [
         description:
             "A scheduling tool I built for my summer camp where staff needed to be assigned on-duty (OD) days. Creating these schedules by hand would take hours and was hard to keep fair, so I wrote a program to automate it. The goal was to distribute shifts evenly while avoiding things like back-to-back assignments and days off. The challenge was turning fairness into logic that worked across all cases. What used to take hours could now be done in under a minute, which made a real difference for the team.",
         stack: "Python, algorithms, problem solving, scripting",
-    },
-    {
-        title: "Beehive Monitoring System",
-        type: "Full-Stack Capstone",
-        description:
-            "A team capstone project to collect and display beehive sensor data through a web interface. I led frontend architecture and helped coordinate work across the team. One of the biggest challenges was keeping things consistent while multiple people were building features at once. It taught me a lot about communication, structuring a frontend others can build on, and working like a real engineering team.",
-        stack: "React, REST API, Agile, frontend architecture, team collaboration",
     },
 ];
 
@@ -53,7 +56,7 @@ export default function Projects() {
                                     rel="noreferrer"
                                     className="project-link"
                                 >
-                                    View Live...
+                                    {project.linkLabel}
                                 </a>
                             )}
 
