@@ -19,7 +19,7 @@ export default function Header() {
                         <div className="nav-dropdown-menu">
                             <a href="/#projects">All Projects</a>
                             <a href="/projects/beehive">Beehive Monitoring System</a>
-                            <a href="/casino">Personal Casino</a>
+                            <a href="/casino" target="_blank">Personal Casino</a>
                         </div>
                     </div>
 
