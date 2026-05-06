@@ -9,6 +9,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
 import Poetry from "./poetry/PoetryMain";
+import NHLMockAndLotto from "./lotto/NHLMockAndLotto";
 
 function HomePage() {
     return (
@@ -33,6 +34,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/poetry" element={<Poetry />} />
+                <Route path="/NHLMock" element={<NHLMockAndLotto />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
