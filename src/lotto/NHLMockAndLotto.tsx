@@ -43,8 +43,8 @@ interface LotteryAssignment {
 
 type ProspectPositionFilter = "all" | "centers" | "wingers" | "forwards" | "defense" | "goalies";
 
-const COMBOS_CSV_PATH = "/combos.csv";
-const PROSPECTS_CSV_PATH = "/prospects.csv";
+const COMBOS_CSV_PATH = "/mock/combos.csv";
+const PROSPECTS_CSV_PATH = "/mock/prospects.csv";
 const REDRAW_COMBO = "11,12,13,14";
 
 const REAL_PICK_1_BALLS = [7, 2, 11, 12];
