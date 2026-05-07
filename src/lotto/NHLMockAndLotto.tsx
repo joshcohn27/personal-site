@@ -354,6 +354,8 @@ export default function NHLMockAndLotto() {
     const [search, setSearch] = useState("");
     const [positionFilter, setPositionFilter] = useState<ProspectPositionFilter>("all");
     const [copyLabel, setCopyLabel] = useState("Copy Results");
+    const [lookupOpen, setLookupOpen] = useState(false);
+    const [lookupSearch, setLookupSearch] = useState("");
 
     useEffect(() => {
         fetch(COMBOS_CSV_PATH)
@@ -386,6 +388,19 @@ export default function NHLMockAndLotto() {
                 setProspectStatus("Could not load prospects.csv. Make sure prospects.csv is in /public.");
             });
     }, []);
+
+    useEffect(() => {
+        if (!lookupOpen) return;
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                setLookupOpen(false);
+            }
+        };
+
+        document.addEventListener("keydown", handleKeyDown);
+        return () => document.removeEventListener("keydown", handleKeyDown);
+    }, [lookupOpen]);
 
     const sortedDrawn = useMemo(() => [...drawnBalls].sort((a, b) => a - b), [drawnBalls]);
 
@@ -1033,6 +1048,29 @@ export default function NHLMockAndLotto() {
         return !takenProspects.has(p.rank) && matchesSearch && prospectMatchesPositionFilter(p, positionFilter);
     });
 
+    const filteredComboRows = useMemo(() => {
+        const searchLower = lookupSearch.trim().toLowerCase();
+
+        if (!searchLower) return comboRows;
+
+        return comboRows.filter((row) => {
+            const ballDashText = row.balls.join("-");
+            const ballCommaText = row.balls.join(",");
+            const ballSpaceText = row.balls.join(" ");
+            const sequenceText = row.teamSequence === null ? "" : String(row.teamSequence);
+
+            return (
+                String(row.id).includes(searchLower) ||
+                row.team.toLowerCase().includes(searchLower) ||
+                row.teamCode.toLowerCase().includes(searchLower) ||
+                sequenceText.includes(searchLower) ||
+                ballDashText.includes(searchLower) ||
+                ballCommaText.includes(searchLower) ||
+                ballSpaceText.includes(searchLower)
+            );
+        });
+    }, [comboRows, lookupSearch]);
+
     const S: Record<string, CSSProperties> = {
         app: {
             maxWidth: 1120,
@@ -1335,6 +1373,13 @@ export default function NHLMockAndLotto() {
                                 disabled={comboRows.length === 0}
                             >
                                 Use Real Result
+                            </button>
+                            <button
+                                style={btn({ color: "#f5c842", borderColor: "#f5c842" })}
+                                onClick={() => setLookupOpen(true)}
+                                disabled={comboRows.length === 0}
+                            >
+                                Combo Lookup
                             </button>
                         </div>
 
@@ -1951,6 +1996,271 @@ export default function NHLMockAndLotto() {
                                     </div>
                                 </div>
                             )}
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {lookupOpen && (
+                <div
+                    onClick={() => setLookupOpen(false)}
+                    style={{
+                        position: "fixed",
+                        inset: 0,
+                        background: "rgba(2,6,23,.78)",
+                        zIndex: 1000,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        padding: 24,
+                    }}
+                >
+                    <div
+                        onClick={(event) => event.stopPropagation()}
+                        style={{
+                            width: "min(1040px, 100%)",
+                            maxHeight: "86vh",
+                            background: "linear-gradient(180deg, #111827 0%, #0f172a 100%)",
+                            border: "1px solid #2d3a50",
+                            borderRadius: 16,
+                            boxShadow: "0 24px 70px rgba(0,0,0,.45)",
+                            overflow: "hidden",
+                            display: "flex",
+                            flexDirection: "column",
+                        }}
+                    >
+                        <div
+                            style={{
+                                padding: "18px 20px",
+                                borderBottom: "1px solid #2d3a50",
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "flex-start",
+                                gap: 16,
+                            }}
+                        >
+                            <div>
+                                <div
+                                    style={{
+                                        fontFamily: "'Barlow Condensed', sans-serif",
+                                        fontSize: 28,
+                                        fontWeight: 900,
+                                        letterSpacing: 1.5,
+                                        color: "#f5c842",
+                                        textTransform: "uppercase",
+                                        lineHeight: 1,
+                                    }}
+                                >
+                                    Lottery Combination Lookup
+                                </div>
+                                <div style={{ color: "#94a3b8", fontSize: 13, marginTop: 6 }}>
+                                    Search by team, team code, combination ID, sequence number, or balls.
+                                </div>
+                            </div>
+
+                            <button
+                                style={btn({ color: "#ef4444", borderColor: "#ef4444", padding: "8px 13px" })}
+                                onClick={() => setLookupOpen(false)}
+                            >
+                                Close
+                            </button>
+                        </div>
+
+                        <div
+                            style={{
+                                padding: "14px 20px",
+                                borderBottom: "1px solid #2d3a50",
+                                display: "grid",
+                                gridTemplateColumns: "1fr auto",
+                                gap: 12,
+                                alignItems: "center",
+                            }}
+                        >
+                            <input
+                                style={{
+                                    width: "100%",
+                                    background: "#222d42",
+                                    border: "1px solid #2d3a50",
+                                    borderRadius: 10,
+                                    padding: "11px 13px",
+                                    color: "#e2e8f0",
+                                    fontFamily: "'Barlow', sans-serif",
+                                    fontSize: 15,
+                                    outline: "none",
+                                }}
+                                placeholder="Search combos, teams, balls, or IDs"
+                                value={lookupSearch}
+                                onChange={(event) => setLookupSearch(event.target.value)}
+                                autoFocus
+                            />
+                            <div style={{ color: "#94a3b8", fontSize: 13, whiteSpace: "nowrap" }}>
+                                {filteredComboRows.length} / {comboRows.length} combos
+                            </div>
+                        </div>
+
+                        <div style={{ overflow: "auto" }}>
+                            <table
+                                style={{
+                                    width: "100%",
+                                    borderCollapse: "collapse",
+                                    fontSize: 14,
+                                }}
+                            >
+                                <thead
+                                    style={{
+                                        position: "sticky",
+                                        top: 0,
+                                        background: "#111827",
+                                        zIndex: 1,
+                                    }}
+                                >
+                                    <tr>
+                                        <th
+                                            style={{
+                                                textAlign: "left",
+                                                padding: "11px 14px",
+                                                color: "#7dd3f5",
+                                                borderBottom: "1px solid #2d3a50",
+                                                fontFamily: "'Barlow Condensed', sans-serif",
+                                                fontSize: 14,
+                                                letterSpacing: 1,
+                                                textTransform: "uppercase",
+                                                width: 90,
+                                            }}
+                                        >
+                                            ID
+                                        </th>
+                                        <th
+                                            style={{
+                                                textAlign: "left",
+                                                padding: "11px 14px",
+                                                color: "#7dd3f5",
+                                                borderBottom: "1px solid #2d3a50",
+                                                fontFamily: "'Barlow Condensed', sans-serif",
+                                                fontSize: 14,
+                                                letterSpacing: 1,
+                                                textTransform: "uppercase",
+                                                width: 180,
+                                            }}
+                                        >
+                                            Balls
+                                        </th>
+                                        <th
+                                            style={{
+                                                textAlign: "left",
+                                                padding: "11px 14px",
+                                                color: "#7dd3f5",
+                                                borderBottom: "1px solid #2d3a50",
+                                                fontFamily: "'Barlow Condensed', sans-serif",
+                                                fontSize: 14,
+                                                letterSpacing: 1,
+                                                textTransform: "uppercase",
+                                            }}
+                                        >
+                                            Team
+                                        </th>
+                                        <th
+                                            style={{
+                                                textAlign: "left",
+                                                padding: "11px 14px",
+                                                color: "#7dd3f5",
+                                                borderBottom: "1px solid #2d3a50",
+                                                fontFamily: "'Barlow Condensed', sans-serif",
+                                                fontSize: 14,
+                                                letterSpacing: 1,
+                                                textTransform: "uppercase",
+                                                width: 130,
+                                            }}
+                                        >
+                                            Code
+                                        </th>
+                                        <th
+                                            style={{
+                                                textAlign: "right",
+                                                padding: "11px 14px",
+                                                color: "#7dd3f5",
+                                                borderBottom: "1px solid #2d3a50",
+                                                fontFamily: "'Barlow Condensed', sans-serif",
+                                                fontSize: 14,
+                                                letterSpacing: 1,
+                                                textTransform: "uppercase",
+                                                width: 120,
+                                            }}
+                                        >
+                                            Sequence
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {filteredComboRows.map((row, idx) => (
+                                        <tr
+                                            key={`${row.id}-${row.teamCode}-${row.balls.join("-")}`}
+                                            style={{
+                                                background: idx % 2 === 0 ? "#111827" : "#0f172a",
+                                            }}
+                                        >
+                                            <td style={{ padding: "10px 14px", borderBottom: "1px solid #1f2937", color: "#94a3b8" }}>
+                                                {row.id}
+                                            </td>
+                                            <td style={{ padding: "10px 14px", borderBottom: "1px solid #1f2937" }}>
+                                                <span
+                                                    style={{
+                                                        display: "inline-flex",
+                                                        gap: 5,
+                                                        alignItems: "center",
+                                                        color: "#f5c842",
+                                                        fontFamily: "'Barlow Condensed', sans-serif",
+                                                        fontSize: 18,
+                                                        fontWeight: 800,
+                                                        letterSpacing: 1,
+                                                    }}
+                                                >
+                                                    {row.balls.map((ball) => String(ball).padStart(2, "0")).join(" - ")}
+                                                </span>
+                                            </td>
+                                            <td
+                                                style={{
+                                                    padding: "10px 14px",
+                                                    borderBottom: "1px solid #1f2937",
+                                                    color: row.teamCode === "REDRAW" ? "#ef4444" : "#e2e8f0",
+                                                    fontWeight: 700,
+                                                }}
+                                            >
+                                                {row.team}
+                                            </td>
+                                            <td style={{ padding: "10px 14px", borderBottom: "1px solid #1f2937", color: "#94a3b8" }}>
+                                                {row.teamCode}
+                                            </td>
+                                            <td
+                                                style={{
+                                                    padding: "10px 14px",
+                                                    borderBottom: "1px solid #1f2937",
+                                                    color: "#94a3b8",
+                                                    textAlign: "right",
+                                                }}
+                                            >
+                                                {row.teamSequence ?? "—"}
+                                            </td>
+                                        </tr>
+                                    ))}
+
+                                    {filteredComboRows.length === 0 && (
+                                        <tr>
+                                            <td
+                                                colSpan={5}
+                                                style={{
+                                                    padding: 28,
+                                                    textAlign: "center",
+                                                    color: "#94a3b8",
+                                                    borderBottom: "1px solid #1f2937",
+                                                }}
+                                            >
+                                                No combinations match that search.
+                                            </td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
