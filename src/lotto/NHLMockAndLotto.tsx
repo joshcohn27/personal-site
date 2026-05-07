@@ -880,91 +880,101 @@ export default function NHLMockAndLotto() {
     }
 
     @page {
-      size: letter landscape;
-      margin: 0.28in;
+      size: letter portrait;
+      margin: 0.22in;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: #0a0e1a;
+      color: #111;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
-      margin: 0;
-      min-height: 100vh;
-      background: #0a0e1a;
-      color: #e2e8f0;
-      font-family: Arial, Helvetica, sans-serif;
-      padding: 24px;
+      padding: 18px;
     }
 
     .page {
-      max-width: 1120px;
+      width: 8.06in;
+      min-height: 10.56in;
       margin: 0 auto;
       background: #fff;
       color: #111;
-      border-radius: 16px;
+      border-radius: 14px;
       box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
-      padding: 18px;
+      padding: 0.18in;
+      overflow: hidden;
     }
 
     .header {
       display: flex;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
       align-items: flex-end;
-      padding-bottom: 8px;
+      padding-bottom: 0.08in;
       border-bottom: 2px solid #111;
-      margin-bottom: 10px;
+      margin-bottom: 0.10in;
     }
 
     h1 {
       margin: 0;
       color: #111;
-      font-size: 22px;
-      letter-spacing: .6px;
+      font-size: 20px;
+      letter-spacing: .55px;
       text-transform: uppercase;
-      line-height: 1;
+      line-height: .95;
     }
 
     .subtitle {
       margin-top: 4px;
       color: #444;
-      font-size: 11px;
+      font-size: 10px;
+      line-height: 1;
     }
 
     .status {
       color: #111;
-      font-size: 11px;
+      font-size: 9.5px;
       font-weight: 800;
-      letter-spacing: .6px;
+      letter-spacing: .55px;
       text-transform: uppercase;
       white-space: nowrap;
+      line-height: 1;
     }
 
     .draft-columns {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      gap: 0.13in;
       align-items: start;
     }
 
     .column-header {
       display: grid;
-      grid-template-columns: 28px 1fr 1.1fr;
-      gap: 6px;
-      padding: 0 6px 5px;
+      grid-template-columns: 0.28in minmax(0, 1fr) minmax(0, 1.18fr);
+      gap: 0.05in;
+      padding: 0 0.04in 0.05in;
       border-bottom: 1px solid #111;
       color: #111;
-      font-size: 8px;
+      font-size: 7.5px;
       font-weight: 800;
-      letter-spacing: .55px;
+      letter-spacing: .45px;
       text-transform: uppercase;
+      line-height: 1;
     }
 
     .pick-card {
       display: grid;
-      grid-template-columns: 28px 1fr 1.1fr;
-      gap: 6px;
+      grid-template-columns: 0.28in minmax(0, 1fr) minmax(0, 1.18fr);
+      gap: 0.05in;
       align-items: center;
-      min-height: 31px;
-      padding: 4px 6px;
-      border-bottom: 1px solid #d3d3d3;
+      height: 0.52in;
+      padding: 0.045in 0.04in;
+      border-bottom: 1px solid #d7d7d7;
+      overflow: hidden;
       break-inside: avoid;
       page-break-inside: avoid;
     }
@@ -976,7 +986,7 @@ export default function NHLMockAndLotto() {
     .pick-number {
       color: #111;
       text-align: center;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 900;
       line-height: 1;
     }
@@ -984,7 +994,7 @@ export default function NHLMockAndLotto() {
     .team-name,
     .player-name {
       color: #111;
-      font-size: 9.5px;
+      font-size: 9.2px;
       font-weight: 800;
       line-height: 1.05;
       white-space: nowrap;
@@ -995,7 +1005,7 @@ export default function NHLMockAndLotto() {
     .pick-note,
     .player-meta {
       color: #555;
-      font-size: 7.6px;
+      font-size: 7.1px;
       line-height: 1.05;
       margin-top: 1px;
       white-space: nowrap;
@@ -1025,8 +1035,8 @@ export default function NHLMockAndLotto() {
     @media print {
       html,
       body {
-        width: 11in;
-        height: 8.5in;
+        width: 100%;
+        height: 100%;
         overflow: hidden;
       }
 
@@ -1038,13 +1048,35 @@ export default function NHLMockAndLotto() {
 
       .page {
         width: 100%;
-        max-width: none;
         height: 100%;
+        min-height: 0;
+        max-height: none;
+        margin: 0;
         border: none;
         border-radius: 0;
         box-shadow: none;
         padding: 0;
         background: #fff;
+        overflow: hidden;
+      }
+
+      .header {
+        margin-bottom: 0.08in;
+        padding-bottom: 0.07in;
+      }
+
+      .draft-columns {
+        gap: 0.12in;
+      }
+
+      .column-header {
+        padding-bottom: 0.045in;
+      }
+
+      .pick-card {
+        height: 0.51in;
+        padding-top: 0.04in;
+        padding-bottom: 0.04in;
       }
 
       .actions {
