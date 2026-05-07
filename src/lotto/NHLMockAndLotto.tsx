@@ -434,6 +434,10 @@ function BallSlot({ idx }: { idx: number }) {
 export default function NHLMockAndLotto() {
     const pickLockRef = useRef(false);
 
+    useEffect(() => {
+        document.title = "NHL Mock Draft Simulator";
+    }, []);
+
     const [comboRows, setComboRows] = useState<LotteryComboRow[]>([]);
     const [csvStatus, setCsvStatus] = useState("Loading NHL combination table...");
     const [prospects, setProspects] = useState<Prospect[]>([]);
@@ -828,8 +832,7 @@ export default function NHLMockAndLotto() {
         const lines = draftPicks
             .map(
                 (p) =>
-                    `${p.pick}. ${p.team}${p.note ? " " + p.note : ""}: ${
-                        p.player ? `${p.player.name} (${p.player.pos}${p.player.league ? ", " + p.player.league : ""})` : "—"
+                    `${p.pick}. ${p.team}${p.note ? " " + p.note : ""}: ${p.player ? `${p.player.name} (${p.player.pos}${p.player.league ? ", " + p.player.league : ""})` : "—"
                     }`
             )
             .join("\n");
@@ -1504,10 +1507,10 @@ export default function NHLMockAndLotto() {
                             const fourthBalls = possibleFourthBallsByTeam[team.name] ?? [];
                             const assignedLotteryPick = lottoDone
                                 ? Number(
-                                      Object.entries(buildLotterySlots(lotteryAssignments)).find(
-                                          ([, slotTeam]) => slotTeam === team.name
-                                      )?.[0] ?? idx + 1
-                                  )
+                                    Object.entries(buildLotterySlots(lotteryAssignments)).find(
+                                        ([, slotTeam]) => slotTeam === team.name
+                                    )?.[0] ?? idx + 1
+                                )
                                 : idx + 1;
 
                             return (
