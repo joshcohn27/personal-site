@@ -243,7 +243,7 @@ function resolveCombo(comboRows: LotteryComboRow[], balls: number[]): LotteryCom
         return {
             id: 1001,
             balls: [11, 12, 13, 14],
-            team: "Pick Again",
+            team: "Redraw",
             teamCode: "REDRAW",
             teamSequence: null,
         };
