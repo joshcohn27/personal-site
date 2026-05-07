@@ -35,6 +35,12 @@ interface LotteryComboRow {
     teamSequence: number | null;
 }
 
+interface LotteryAssignment {
+    team: string;
+    pick: number;
+    source: "draw" | "default";
+}
+
 type ProspectPositionFilter = "all" | "centers" | "wingers" | "forwards" | "defense" | "goalies";
 
 const COMBOS_CSV_PATH = "/combos.csv";
@@ -276,6 +282,104 @@ function escapeHtml(value: string | number | null | undefined): string {
         .replace(/'/g, "&#039;");
 }
 
+
+function getLotteryRank(teamName: string): number {
+    return LOTTERY_TEAMS.findIndex((team) => team.name === teamName) + 1;
+}
+
+function getHighestAllowedPick(teamName: string): number {
+    const rank = getLotteryRank(teamName);
+    if (rank <= 0) return 16;
+
+    return Math.max(1, rank - 10);
+}
+
+function getOccupiedPicks(assignments: LotteryAssignment[]): Set<number> {
+    return new Set(assignments.map((assignment) => assignment.pick));
+}
+
+function getAssignedTeams(assignments: LotteryAssignment[]): Set<string> {
+    return new Set(assignments.map((assignment) => assignment.team));
+}
+
+function getAwardedPick(teamName: string, targetPick: number, occupiedPicks: Set<number>): number {
+    const highestAllowedPick = getHighestAllowedPick(teamName);
+    const firstPossiblePick = Math.max(targetPick, highestAllowedPick);
+
+    for (let pick = firstPossiblePick; pick <= 16; pick++) {
+        if (!occupiedPicks.has(pick)) return pick;
+    }
+
+    return firstPossiblePick;
+}
+
+function buildLotterySlots(assignments: LotteryAssignment[]): Record<number, string> {
+    const slots: Record<number, string> = {};
+    const assignedTeams = getAssignedTeams(assignments);
+
+    [...assignments]
+        .sort((a, b) => a.pick - b.pick)
+        .forEach((assignment) => {
+            slots[assignment.pick] = assignment.team;
+        });
+
+    const remainingLotteryTeams = LOTTERY_TEAMS.map((team) => team.name).filter(
+        (teamName) => !assignedTeams.has(teamName)
+    );
+
+    let remainingIdx = 0;
+
+    for (let pick = 1; pick <= 16; pick++) {
+        if (slots[pick]) continue;
+
+        slots[pick] = remainingLotteryTeams[remainingIdx];
+        remainingIdx++;
+    }
+
+    return slots;
+}
+
+function getNextOpenLotteryPick(assignments: LotteryAssignment[]): number {
+    const occupiedPicks = getOccupiedPicks(assignments);
+
+    for (let pick = 1; pick <= 16; pick++) {
+        if (!occupiedPicks.has(pick)) return pick;
+    }
+
+    return 16;
+}
+
+function getDefaultTeamForPick(assignments: LotteryAssignment[], pick: number): string | null {
+    return buildLotterySlots(assignments)[pick] ?? null;
+}
+
+function applyLotteryDrawAssignment(
+    existingAssignments: LotteryAssignment[],
+    winner: string,
+    targetPick: number
+): { assignments: LotteryAssignment[]; awardedPick: number; defaultLockedTeam: string | null } {
+    const occupiedPicks = getOccupiedPicks(existingAssignments);
+    const awardedPick = getAwardedPick(winner, targetPick, occupiedPicks);
+    const drawAssignment: LotteryAssignment = { team: winner, pick: awardedPick, source: "draw" };
+    const withWinner = [...existingAssignments, drawAssignment];
+
+    if (awardedPick === targetPick) {
+        return { assignments: withWinner, awardedPick, defaultLockedTeam: null };
+    }
+
+    const defaultLockedTeam = getDefaultTeamForPick(withWinner, targetPick);
+
+    if (!defaultLockedTeam || getAssignedTeams(withWinner).has(defaultLockedTeam)) {
+        return { assignments: withWinner, awardedPick, defaultLockedTeam: null };
+    }
+
+    return {
+        assignments: [...withWinner, { team: defaultLockedTeam, pick: targetPick, source: "default" }],
+        awardedPick,
+        defaultLockedTeam,
+    };
+}
+
 function DrawnBall({ n, isNew }: { n: number; isNew: boolean }) {
     const [bg, light] = BALL_COLORS[n - 1] ?? ["#555", "#888"];
 
@@ -341,6 +445,7 @@ export default function NHLMockAndLotto() {
     const [pick2Winner, setPick2Winner] = useState<string | null>(null);
     const [pick1AwardedSlot, setPick1AwardedSlot] = useState<number | null>(null);
     const [pick2AwardedSlot, setPick2AwardedSlot] = useState<number | null>(null);
+    const [lotteryAssignments, setLotteryAssignments] = useState<LotteryAssignment[]>([]);
     const [resultLabel, setResultLabel] = useState("Ready to draw");
     const [resultTeam, setResultTeam] = useState("");
     const [lottoPhase, setLottoPhase] = useState<"lottery" | "draft">("lottery");
@@ -514,43 +619,10 @@ export default function NHLMockAndLotto() {
         [draftActionDisabled, prospects]
     );
 
-    const getLotteryRank = useCallback((teamName: string) => {
-        return LOTTERY_TEAMS.findIndex((team) => team.name === teamName) + 1;
-    }, []);
+    const currentTargetPick = useMemo(() => getNextOpenLotteryPick(lotteryAssignments), [lotteryAssignments]);
 
-    const getHighestAllowedPick = useCallback(
-        (teamName: string) => {
-            const rank = getLotteryRank(teamName);
-            if (rank <= 0) return 16;
-
-            return Math.max(1, rank - 10);
-        },
-        [getLotteryRank]
-    );
-
-    const buildOrderFromLotteryWinners = useCallback((winners: { team: string; pick: number }[]) => {
-        const slots: Record<number, string> = {};
-        const winnerTeams = new Set(winners.map((winner) => winner.team));
-
-        [...winners]
-            .sort((a, b) => a.pick - b.pick)
-            .forEach((winner) => {
-                slots[winner.pick] = winner.team;
-            });
-
-        const remainingLotteryTeams = LOTTERY_TEAMS.map((team) => team.name).filter(
-            (teamName) => !winnerTeams.has(teamName)
-        );
-
-        let remainingIdx = 0;
-
-        for (let pick = 1; pick <= 16; pick++) {
-            if (slots[pick]) continue;
-
-            slots[pick] = remainingLotteryTeams[remainingIdx];
-            remainingIdx++;
-        }
-
+    const buildOrderFromLotteryAssignments = useCallback((assignments: LotteryAssignment[]) => {
+        const slots = buildLotterySlots(assignments);
         const order: DraftPick[] = [];
 
         for (let pick = 1; pick <= 16; pick++) {
@@ -565,8 +637,8 @@ export default function NHLMockAndLotto() {
     }, []);
 
     const finalizeLottery = useCallback(
-        (winners: { team: string; pick: number }[]) => {
-            const order = buildOrderFromLotteryWinners(winners);
+        (assignments: LotteryAssignment[]) => {
+            const order = buildOrderFromLotteryAssignments(assignments);
 
             pickLockRef.current = false;
             setDraftPicks(order);
@@ -575,25 +647,11 @@ export default function NHLMockAndLotto() {
             setSelectedProspect(null);
             setLottoDone(true);
         },
-        [buildOrderFromLotteryWinners]
-    );
-
-    const getAwardedPick = useCallback(
-        (teamName: string, targetPick: number, occupiedPicks: Set<number>) => {
-            const highestAllowedPick = getHighestAllowedPick(teamName);
-            const firstPossiblePick = Math.max(targetPick, highestAllowedPick);
-
-            for (let pick = firstPossiblePick; pick <= 16; pick++) {
-                if (!occupiedPicks.has(pick)) return pick;
-            }
-
-            return firstPossiblePick;
-        },
-        [getHighestAllowedPick]
+        [buildOrderFromLotteryAssignments]
     );
 
     const evaluateCombo = useCallback(
-        (balls: number[], draw: number, p1w: string | null) => {
+        (balls: number[], draw: number, p1w: string | null, assignmentsBeforeDraw: LotteryAssignment[]) => {
             const resolved = resolveCombo(comboRows, balls);
 
             if (!resolved || resolved.teamCode === "REDRAW") {
@@ -603,63 +661,72 @@ export default function NHLMockAndLotto() {
                 setTimeout(() => {
                     setDrawnBalls([]);
                     setNewBallIdx(null);
-                    setResultLabel(draw === 1 ? "Draw 1 ready" : "Draw 2 ready");
+                    setResultLabel(draw === 1 ? "Draw 1 ready" : `Draw ${draw} ready`);
                 }, 1800);
 
                 return;
             }
 
             const winner = resolved.team;
+            const alreadyAssigned = assignmentsBeforeDraw.some((assignment) => assignment.team === winner);
 
-            if (draw === 1) {
-                const awardedPick = getAwardedPick(winner, 1, new Set());
-
-                setPick1Winner(winner);
-                setPick1AwardedSlot(awardedPick);
-                setResultLabel(awardedPick === 1 ? "Pick 1 awarded to" : `Lottery win — moves up to Pick ${awardedPick}`);
-                setResultTeam(winner);
-
-                setTimeout(() => {
-                    setCurrentDraw(2);
-                    setDrawnBalls([]);
-                    setNewBallIdx(null);
-                    setResultLabel("Draw 2 ready");
-                    setResultTeam("");
-                }, 1400);
-
-                return;
-            }
-
-            if (winner === p1w) {
-                setResultLabel("REDRAW — Same team won both!");
+            if (alreadyAssigned || winner === p1w) {
+                setResultLabel("REDRAW — Team already assigned a pick");
                 setResultTeam(winner);
 
                 setTimeout(() => {
                     setDrawnBalls([]);
                     setNewBallIdx(null);
-                    setResultLabel("Draw 2 ready");
+                    setResultLabel(`Draw ${draw} ready`);
                     setResultTeam("");
                 }, 1800);
 
                 return;
             }
 
-            const firstWinner = p1w!;
-            const firstAwardedPick = getAwardedPick(firstWinner, 1, new Set());
-            const occupiedPicks = new Set([firstAwardedPick]);
-            const secondAwardedPick = getAwardedPick(winner, 2, occupiedPicks);
+            const targetPick = getNextOpenLotteryPick(assignmentsBeforeDraw);
+            const { assignments, awardedPick, defaultLockedTeam } = applyLotteryDrawAssignment(
+                assignmentsBeforeDraw,
+                winner,
+                targetPick
+            );
+
+            if (draw === 1) {
+                setPick1Winner(winner);
+                setPick1AwardedSlot(awardedPick);
+                setLotteryAssignments(assignments);
+                setResultLabel(awardedPick === targetPick ? `Pick ${targetPick} awarded to` : `Lottery win — moves up to Pick ${awardedPick}`);
+                setResultTeam(
+                    defaultLockedTeam
+                        ? `${winner} · ${defaultLockedTeam} locks Pick ${targetPick}`
+                        : winner
+                );
+
+                setTimeout(() => {
+                    const nextPick = getNextOpenLotteryPick(assignments);
+                    setCurrentDraw(2);
+                    setDrawnBalls([]);
+                    setNewBallIdx(null);
+                    setResultLabel(`Draw 2 ready — Pick ${nextPick}`);
+                    setResultTeam("");
+                }, 1400);
+
+                return;
+            }
 
             setPick2Winner(winner);
-            setPick2AwardedSlot(secondAwardedPick);
-            setResultLabel(secondAwardedPick === 2 ? "Pick 2 awarded to" : `Lottery win — moves up to Pick ${secondAwardedPick}`);
-            setResultTeam(winner);
+            setPick2AwardedSlot(awardedPick);
+            setLotteryAssignments(assignments);
+            setResultLabel(awardedPick === targetPick ? `Pick ${targetPick} awarded to` : `Lottery win — moves up to Pick ${awardedPick}`);
+            setResultTeam(
+                defaultLockedTeam
+                    ? `${winner} · ${defaultLockedTeam} locks Pick ${targetPick}`
+                    : winner
+            );
 
-            finalizeLottery([
-                { team: firstWinner, pick: firstAwardedPick },
-                { team: winner, pick: secondAwardedPick },
-            ]);
+            finalizeLottery(assignments);
         },
-        [comboRows, finalizeLottery, getAwardedPick]
+        [comboRows, finalizeLottery]
     );
 
     const drawOneBall = useCallback(() => {
@@ -675,9 +742,9 @@ export default function NHLMockAndLotto() {
         setNewBallIdx(newBalls.length - 1);
 
         if (newBalls.length === 4) {
-            evaluateCombo(newBalls, currentDraw, pick1Winner);
+            evaluateCombo(newBalls, currentDraw, pick1Winner, lotteryAssignments);
         }
-    }, [comboRows.length, currentDraw, drawnBalls, evaluateCombo, lottoDone, pick1Winner]);
+    }, [comboRows.length, currentDraw, drawnBalls, evaluateCombo, lottoDone, lotteryAssignments, pick1Winner]);
 
     const simDraw = useCallback(() => {
         if (lottoDone || comboRows.length === 0) return;
@@ -693,8 +760,8 @@ export default function NHLMockAndLotto() {
 
         setDrawnBalls(balls);
         setNewBallIdx(null);
-        evaluateCombo(balls, currentDraw, pick1Winner);
-    }, [comboRows.length, currentDraw, drawnBalls, evaluateCombo, lottoDone, pick1Winner]);
+        evaluateCombo(balls, currentDraw, pick1Winner, lotteryAssignments);
+    }, [comboRows.length, currentDraw, drawnBalls, evaluateCombo, lottoDone, lotteryAssignments, pick1Winner]);
 
     const resetLottery = useCallback(() => {
         pickLockRef.current = false;
@@ -704,6 +771,7 @@ export default function NHLMockAndLotto() {
         setPick2Winner(null);
         setPick1AwardedSlot(null);
         setPick2AwardedSlot(null);
+        setLotteryAssignments([]);
         setResultLabel("Ready to draw");
         setResultTeam("");
         setLottoDone(false);
@@ -732,10 +800,13 @@ export default function NHLMockAndLotto() {
         setResultLabel("Real 2026 NHL lottery result");
         setResultTeam("Toronto — Pick 1 · San Jose — Pick 2");
 
-        finalizeLottery([
-            { team: "Toronto", pick: 1 },
-            { team: "San Jose", pick: 2 },
-        ]);
+        const realAssignments: LotteryAssignment[] = [
+            { team: "Toronto", pick: 1, source: "draw" },
+            { team: "San Jose", pick: 2, source: "draw" },
+        ];
+
+        setLotteryAssignments(realAssignments);
+        finalizeLottery(realAssignments);
 
         setLottoDone(true);
         setNewBallIdx(null);
@@ -1329,7 +1400,7 @@ export default function NHLMockAndLotto() {
                     <section style={S.machine}>
                         <div style={S.machineTitleStyle}>Lottery Draw</div>
                         <div style={S.phaseLabel}>
-                            {currentDraw === 1 ? "Drawing 1 — 1st Overall Pick" : "Drawing 2 — 2nd Overall Pick"}
+                            {`Drawing ${currentDraw} — Pick ${currentTargetPick}`}
                         </div>
 
                         <div style={S.ballDisplay}>
@@ -1431,6 +1502,13 @@ export default function NHLMockAndLotto() {
                             const wonAndDone = lottoDone && won;
                             const elimAndDone = lottoDone && !won;
                             const fourthBalls = possibleFourthBallsByTeam[team.name] ?? [];
+                            const assignedLotteryPick = lottoDone
+                                ? Number(
+                                      Object.entries(buildLotterySlots(lotteryAssignments)).find(
+                                          ([, slotTeam]) => slotTeam === team.name
+                                      )?.[0] ?? idx + 1
+                                  )
+                                : idx + 1;
 
                             return (
                                 <div
@@ -1592,7 +1670,7 @@ export default function NHLMockAndLotto() {
                                                     borderRadius: 4,
                                                 }}
                                             >
-                                                {lottoDone ? idx + 3 : idx + 1}
+                                                {assignedLotteryPick}
                                             </span>
                                         )}
                                     </span>
