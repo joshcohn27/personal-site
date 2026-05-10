@@ -1,27 +1,20 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
     return (
         <header className="site-header">
             <div className="container header-inner">
-                <a href="#top" className="brand">
+                <Link to="/" className="brand">
                     Josh Cohn
-                </a>
+                </Link>
 
                 <nav className="site-nav" aria-label="Primary navigation">
-                    <div className="nav-dropdown">
-                        <button
-                            type="button"
-                            className="nav-dropdown-trigger"
-                            aria-haspopup="true"
-                        >
-                            Projects
-                        </button>
-
-                        <div className="nav-dropdown-menu">
-                            <a href="/#projects">All Projects</a>
-                            <a href="/projects/beehive">Beehive Monitoring System</a>
-                            <a href="/casino" target="_blank">Personal Casino</a>
-                        </div>
-                    </div>
+                    <Link to="/projects" onClick={() => window.scrollTo(0, 0)} style={{ color: "var(--muted)", fontWeight: 500, transition: "color 0.18s ease" }}
+                        onMouseEnter={e => (e.currentTarget.style.color = "var(--heading)")}
+                        onMouseLeave={e => (e.currentTarget.style.color = "var(--muted)")}
+                    >
+                        Projects
+                    </Link>
 
                     <a href="/#about">About</a>
                     <a href="/#future">My Future</a>

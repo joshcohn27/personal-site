@@ -11,11 +11,11 @@ export default function Values() {
                     <div className="content-card">
                         <h3>What's next</h3>
                         <p>
-                            I'm graduating from RIT in May 2026 and heading to Drexel in Fall 2026
-                            for my MS in AI and Machine Learning. I'm excited to keep growing
-                            technically, especially in AI, but I want that growth to stay grounded
-                            in real impact. I care a lot more about building things that are useful,
-                            thoughtful, and responsible than chasing whatever is newest.
+                            I graduated from RIT in May 2026 and I'm heading to Drexel in Fall 2026
+                            for my MS in AI and Machine Learning. ML in particular is what draws me
+                            most. I think it is one of the most powerful tools we have right now, and
+                            I want to understand it deeply enough to use it responsibly and build
+                            things that genuinely help people.
                         </p>
                         <p>
                             Alongside graduate school, I'm looking for a full-time software

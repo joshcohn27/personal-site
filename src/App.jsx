@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
 import Poetry from "./poetry/PoetryMain";
 import NHLMockAndLotto from "./lotto/NHLMockAndLotto";
+import ProjectsPage from "./projects/ProjectsPage";
 
 function HomePage() {
     return (
@@ -33,6 +34,7 @@ export default function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/poetry" element={<Poetry />} />
                 <Route path="/NHLMock" element={<NHLMockAndLotto />} />
                 <Route path="*" element={<NotFound />} />
