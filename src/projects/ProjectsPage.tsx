@@ -17,25 +17,25 @@ const projects: Project[] = [
         title: "NHL Draft Lottery Simulator",
         type: "Interactive Web App",
         description:
-            "Built solo over two months, evolving from a Python script into a full React/TypeScript web app. The only online tool combining animated ping-pong ball lottery draws with a complete round-one mock draft simulator. Draw balls one at a time, simulate the full draw, or load the real 2026 results, then move into a mock draft with a live prospect board, position filters, and a printable draft sheet.",
+            "Built an interactive NHL draft lottery and mock draft simulator that combines two tools fans usually have to use separately. The app models real lottery constraints, visualizes the ping-pong ball draw, and then carries the finalized draft order directly into a mock draft workflow. What started as a small Python script became a full React and TypeScript project focused on accurate rules logic, data-driven rankings, and a smooth user experience.",
         stack: ["React", "TypeScript", "CSV parsing", "game logic", "UI/UX"],
         link: "https://nhlmock.joshbcohn.com",
         linkLabel: "Open Simulator",
     },
     {
-        title: "Personal Casino",
+        title: "Table Game Simulator",
         type: "Interactive Web App",
         description:
-            "A browser-based recreation of real table games built so my friends and I could enjoy the strategy and mechanics of casino games without real money on the line. The focus was accurate game logic, smooth state management, and a UI that actually feels like a real product. Has 10+ active players.",
+            "Built a browser-based casino-style table game simulator focused on accurate game rules, clean interaction design, and complex state handling. The project includes multiple games and variants, each requiring careful logic for betting flows, hand evaluation, payouts, edge cases, and player/dealer actions. A small group of friends use it regularly, which has helped me improve the app through real feedback instead of just building in isolation.",
         stack: ["React", "TypeScript", "state management", "game logic", "UI/UX"],
         link: "https://joshbcohn.com/casino",
-        linkLabel: "Play Casino",
+        linkLabel: "Open Simulator",
     },
     {
         title: "Beehive Monitoring System",
         type: "Undergrad Senior Capstone",
         description:
-            "A full-stack senior capstone tracking live hive conditions from a sensor inside the beehive, transmitting wirelessly to a campus receiver, through a Node/Oracle backend, to a React dashboard. I led frontend architecture and helped with database design, establishing component structure and standards the team built on throughout the project.",
+            "Led frontend development for a six-person senior capstone project that monitored data from a physical beehive and displayed it through a React dashboard. I established the frontend structure, built core dashboard and inspection views, and helped create patterns the rest of the team could build on. I also contributed to the Oracle database design, giving me experience working across the full stack from sensor data to backend services to user-facing visualization.",
         stack: ["React", "Node.js", "Oracle", "REST API", "frontend architecture"],
         link: "https://joshbcohn.com/projects/beehive",
         linkLabel: "View Demo",
@@ -44,14 +44,14 @@ const projects: Project[] = [
         title: "Committed",
         type: "VS Code Extension",
         description:
-            "A VS Code extension that uses a local LLM (Ollama) to analyze your working diff, classify changes as a feature, bug fix, or refactor, filter relevant code hunks, and generate a commit message for your review before pushing. Built with a team of five in an Agile environment. I owned the sidebar UI and VS Code interface layer.",
+            "Built the VS Code interface for a team project that uses a local LLM to review uncommitted code changes and generate commit messages for developer approval. I owned the sidebar UI and extension integration work, connecting the user-facing VS Code experience with Git data and local model output. The project gave me hands-on experience designing AI-assisted developer tooling that keeps the human in control.",
         stack: ["VS Code Extension API", "Node.js", "Ollama", "Git", "JavaScript"],
     },
     {
         title: "OD Scheduler",
         type: "Python Utility",
         description:
-            "A Python scheduling tool built to automate on-duty day assignments for my camp unit of 25 to 30 staff, then shared with two other unit leaders who used it successfully. Turning fairness constraints like avoiding back-to-backs and balancing distribution into reliable logic was the core challenge. What previously took hours of manual work ran in under a minute.",
+            "Created a Python scheduling tool for my summer camp unit of 25 to 30 staff members to replace a manual, time-consuming on-duty scheduling process. The script helped balance assignments more fairly and reduced hours of planning work. After using it myself, I shared it with two other unit leaders who adopted it for their own schedules.",
         stack: ["Python", "algorithms", "scripting"],
     },
 ];
@@ -64,8 +64,7 @@ export default function ProjectsPage() {
                 <section className="section" style={{ paddingTop: "3.5rem" }}>
                     <div className="container">
                         <div className="section-heading" style={{ marginBottom: "2rem" }}>
-                            <p className="section-label">Projects</p>
-                            <h2>Things I've built.</h2>
+                            <h2>Projects.</h2>
                             <p style={{ color: "var(--muted)", marginTop: "0.6rem", maxWidth: "52ch", fontSize: "1.05rem" }}>
                                 A mix of work projects, personal tools, and things I built because no one else had.
                             </p>
