@@ -18,9 +18,11 @@ export default function Values() {
                             things that genuinely help people.
                         </p>
                         <p>
-                            Alongside graduate school, I'm looking for a full-time software
-                            engineering role where I can contribute early, keep learning, and work
-                            on problems that actually matter. I've found myself really enjoying
+                            As I begin graduate school, I'm looking for a software engineering role that
+                            fits a co-op or part-time structure during the academic year, with the goal of
+                            growing into full-time work after. I'm especially interested in opportunities 
+                            where I can contribute early, keep learning, and work on problems that actually 
+                            matter to me. I've found myself really enjoying
                             frontend work, especially when it comes to building clean and intuitive
                             interfaces, but I still like working across the stack.
                         </p>
