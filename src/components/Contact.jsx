@@ -16,9 +16,9 @@ export default function Contact() {
                         <a href="mailto:joshcohn27@gmail.com" className="contact-link">
                             joshcohn27@gmail.com
                         </a>
-                        <a href="tel:+16102902280" className="contact-link">
+                        {/* <a href="tel:+16102902280" className="contact-link">
                             (610) 290-2280
-                        </a>
+                        </a> */}
                         <a
                             href="https://github.com/joshcohn27"
                             target="_blank"
