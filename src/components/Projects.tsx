@@ -39,6 +39,7 @@ export default function Projects() {
                     </div>
                     <Link
                         to="/projects"
+                        onClick={() => window.scrollTo(0, 0)}
                         style={{
                             color: "var(--accent)",
                             fontWeight: 700,

@@ -25,7 +25,7 @@ export default function Hero() {
 					</p>
 
 					<div className="hero-actions">
-						<a href="#projects" className="button button-primary">
+						<a href="/projects" className="button button-primary" onClick={() => window.scrollTo(0, 0)}>
 							View Projects
 						</a>
 						<a
