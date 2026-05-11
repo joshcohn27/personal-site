@@ -132,6 +132,7 @@ export default function ProjectsPage() {
                         <div style={{ marginTop: "2.5rem", paddingTop: "1.5rem", borderTop: "1px solid var(--line)" }}>
                             <Link
                                 to="/"
+                                onClick={() => window.scrollTo(0, 0)}
                                 style={{
                                     color: "var(--muted)",
                                     fontWeight: 600,
