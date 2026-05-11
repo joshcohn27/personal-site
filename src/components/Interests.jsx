@@ -9,7 +9,7 @@ export default function Interests() {
 
                 <div className="interests-grid">
                     <article className="interest-card">
-                        <h3>Philadelphia sports</h3>
+                        <h3>Philadelphia Sports</h3>
                         <p>
                             Lifelong Philly fan. Sports have always been a big part of my life.
                             They have taught me a lot about resilience, patience, and sticking
@@ -29,7 +29,7 @@ export default function Interests() {
                     </article>
 
                     <article className="interest-card">
-                        <h3>The outdoors</h3>
+                        <h3>The Outdoors</h3>
                         <p>
                             I spend time outside whenever I can. Whether it's being near water,
                             going for walks, or just getting fresh air, it helps me slow down and
