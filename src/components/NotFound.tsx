@@ -80,7 +80,7 @@ export default function NotFound() {
                                 </Link>
 
                                 <a
-                                    href="/#projects"
+                                    href="/projects"
                                     className="button button-secondary"
                                     style={{ minWidth: '160px', textDecoration: 'none' }}
                                 >
