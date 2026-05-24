@@ -8,47 +8,92 @@ export default function NotFound() {
             <Header />
 
             <main className="relative overflow-hidden">
-                <section className="relative mx-auto flex min-h-[75vh] w-full max-w-7xl items-center justify-center px-6 py-24 sm:px-8 lg:px-12">
-                    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                        <div className="absolute left-1/2 top-24 h-72 w-72 -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl" />
-                        <div className="absolute bottom-10 left-10 h-56 w-56 rounded-full bg-cyan-500/10 blur-3xl" />
-                        <div className="absolute right-10 top-16 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
-                    </div>
-
-                    <div className="relative w-full max-w-3xl">
-                        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 text-center shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-12">
-                            <div className="mx-auto mb-6 inline-flex items-center rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.3em] text-emerald-300">
+                <section style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
+                    minHeight: '75vh',
+                    padding: '6rem 1.5rem'
+                }}>
+                    <div style={{ width: '100%', maxWidth: '640px' }}>
+                        <div style={{
+                            borderRadius: '2rem',
+                            border: '1px solid rgba(148, 163, 184, 0.18)',
+                            background: 'rgba(255,255,255,0.05)',
+                            padding: '3rem 2.5rem',
+                            textAlign: 'center',
+                            boxShadow: '0 20px 60px rgba(2, 6, 23, 0.35)',
+                            backdropFilter: 'blur(20px)',
+                        }}>
+                            <div style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                borderRadius: '999px',
+                                border: '1px solid rgba(248, 113, 113, 0.25)',
+                                background: 'rgba(239, 68, 68, 0.1)',
+                                padding: '0.35rem 0.9rem',
+                                fontSize: '0.75rem',
+                                fontWeight: 800,
+                                letterSpacing: '0.3em',
+                                textTransform: 'uppercase',
+                                color: '#fca5a5',
+                                marginBottom: '1.5rem',
+                            }}>
                                 404 Error
                             </div>
 
-                            <h1 className="mx-auto max-w-2xl text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl">
+                            <h1 style={{
+                                fontSize: 'clamp(2.2rem, 5vw, 3.5rem)',
+                                fontWeight: 600,
+                                letterSpacing: '-0.03em',
+                                color: '#f8fafc',
+                                lineHeight: 1.1,
+                                marginBottom: '1.25rem',
+                            }}>
                                 Page not found
                             </h1>
 
-                            <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-white/70 sm:text-lg">
+                            <p style={{
+                                color: '#94a3b8',
+                                fontSize: '1.05rem',
+                                lineHeight: 1.7,
+                                maxWidth: '42ch',
+                                margin: '0 auto 2.5rem',
+                            }}>
                                 The page you were trying to reach does not exist, may have been moved,
                                 or has not been created yet.
                             </p>
 
-                            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
+                            <div style={{
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                gap: '1rem',
+                                justifyContent: 'center',
+                                marginBottom: '2.5rem',
+                            }}>
                                 <Link
                                     to="/"
-                                    style={{ textDecoration: 'none' }}
-                                    className="inline-flex min-w-[180px] items-center justify-center rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-neutral-950 shadow-lg transition hover:-translate-y-0.5 hover:bg-white/90"
+                                    className="button button-primary"
+                                    style={{ minWidth: '160px', textDecoration: 'none' }}
                                 >
                                     Back to home
                                 </Link>
 
                                 <a
                                     href="/#projects"
-                                    style={{ textDecoration: 'none' }}
-                                    className="inline-flex min-w-[180px] items-center justify-center rounded-full border-2 border-white/30 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-white/15"
+                                    className="button button-secondary"
+                                    style={{ minWidth: '160px', textDecoration: 'none' }}
                                 >
                                     View projects
                                 </a>
                             </div>
 
-                            <div className="mt-10 border-t border-white/10 pt-6 text-sm text-white/45">
+                            <div style={{
+                                borderTop: '1px solid rgba(148, 163, 184, 0.18)',
+                                paddingTop: '1.25rem',
+                                fontSize: '0.9rem',
+                                color: 'rgba(148, 163, 184, 0.5)',
+                            }}>
                                 joshbcohn.com
                             </div>
                         </div>
