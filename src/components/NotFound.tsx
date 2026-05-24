@@ -30,17 +30,19 @@ export default function NotFound() {
                                 or has not been created yet.
                             </p>
 
-                            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+                            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
                                 <Link
                                     to="/"
-                                    className="inline-flex min-w-[180px] items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:-translate-y-0.5 hover:bg-white/90"
+                                    style={{ textDecoration: 'none' }}
+                                    className="inline-flex min-w-[180px] items-center justify-center rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-neutral-950 shadow-lg transition hover:-translate-y-0.5 hover:bg-white/90"
                                 >
                                     Back to home
                                 </Link>
 
                                 <a
                                     href="/#projects"
-                                    className="inline-flex min-w-[180px] items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+                                    style={{ textDecoration: 'none' }}
+                                    className="inline-flex min-w-[180px] items-center justify-center rounded-full border-2 border-white/30 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-white/15"
                                 >
                                     View projects
                                 </a>
