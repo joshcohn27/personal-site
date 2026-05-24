@@ -30,7 +30,7 @@ export default function NotFound() {
                                 or has not been created yet.
                             </p>
 
-                            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
                                 <Link
                                     to="/"
                                     className="inline-flex min-w-[180px] items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:-translate-y-0.5 hover:bg-white/90"
