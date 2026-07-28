@@ -1,25 +1,12 @@
 {
     "redirects": [
         {
-            "source": "/casino",
-            "destination": "/casino/",
-            "permanent": false
-        },
-        {
             "source": "/projects/beehive",
             "destination": "/projects/beehive/",
             "permanent": false
         }
     ],
     "rewrites": [
-        {
-            "source": "/casino/",
-            "destination": "https://casino-xi-swart.vercel.app/"
-        },
-        {
-            "source": "/casino/:path*",
-            "destination": "https://casino-xi-swart.vercel.app/:path*"
-        },
         {
             "source": "/projects/beehive/",
             "destination": "https://beehive-frontend-pi.vercel.app/"

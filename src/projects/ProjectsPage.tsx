@@ -28,7 +28,7 @@ const projects: Project[] = [
         description:
             "Built a browser-based casino-style table game simulator focused on accurate game rules, clean interaction design, and complex state handling. The project includes multiple games and variants, each requiring careful logic for betting flows, hand evaluation, payouts, edge cases, and player/dealer actions. A small group of friends use it regularly, which has helped me improve the app through real feedback instead of just building in isolation.",
         stack: ["React", "TypeScript", "state management", "game logic", "UI/UX"],
-        link: "https://joshbcohn.com/casino",
+        link: "https://casino.joshbcohn.com",
         linkLabel: "Open Simulator",
     },
     {
