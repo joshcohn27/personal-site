@@ -1,10 +1,19 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 
 interface Poem {
     title: string;
     body: string;
     index: number;
     dedication?: string;
+    slug: string;
+}
+
+function slugify(title: string): string {
+    return title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
 }
 
 type SortOption = "newest" | "oldest" | "az" | "za";
@@ -98,6 +107,8 @@ export default function Poetry() {
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState("");
     const [sort, setSort] = useState<SortOption>("az");
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [copied, setCopied] = useState(false);
 
     useEffect(() => {
         const fetchPoems = async () => {
@@ -121,7 +132,7 @@ export default function Poetry() {
                     }
 
                     const body = lines.slice(bodyStart).join("\n").trimStart();
-                    loaded.push({ title, body, index: i, dedication });
+                    loaded.push({ title, body, index: i, dedication, slug: slugify(title) });
                     i++;
                 } catch {
                     break;
@@ -135,7 +146,40 @@ export default function Poetry() {
         fetchPoems();
     }, []);
 
-    const closeModal = useCallback(() => setSelectedPoem(null), []);
+    const closeModal = useCallback(() => {
+        setSelectedPoem(null);
+        setSearchParams(prev => {
+            const next = new URLSearchParams(prev);
+            next.delete("poem");
+            return next;
+        }, { replace: true });
+    }, [setSearchParams]);
+
+    const openPoem = useCallback((poem: Poem) => {
+        setSelectedPoem(poem);
+        setSearchParams(prev => {
+            const next = new URLSearchParams(prev);
+            next.set("poem", poem.slug);
+            return next;
+        });
+    }, [setSearchParams]);
+
+    const handleShare = useCallback(async () => {
+        if (!selectedPoem) return;
+        const url = `${window.location.origin}/poetry?poem=${selectedPoem.slug}`;
+        const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+        if (isIOS) {
+            try {
+                await navigator.share({ url, title: selectedPoem.title });
+            } catch {
+                // user dismissed the native share sheet
+            }
+        } else {
+            await navigator.clipboard.writeText(url);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        }
+    }, [selectedPoem]);
 
     useEffect(() => {
         const handleKey = (e: KeyboardEvent) => {
@@ -149,6 +193,14 @@ export default function Poetry() {
         document.body.style.overflow = selectedPoem ? "hidden" : "";
         return () => { document.body.style.overflow = ""; };
     }, [selectedPoem]);
+
+    useEffect(() => {
+        if (poems.length === 0) return;
+        const poemSlug = searchParams.get("poem");
+        if (!poemSlug) return;
+        const match = poems.find(p => p.slug === poemSlug);
+        if (match) setSelectedPoem(match);
+    }, [poems, searchParams]);
 
     const filtered = useMemo(() => {
         const q = search.trim().toLowerCase();
@@ -339,7 +391,7 @@ export default function Poetry() {
                         {filtered.map((poem) => (
                             <li key={poem.index}>
                                 <button
-                                    onClick={() => setSelectedPoem(poem)}
+                                    onClick={() => openPoem(poem)}
                                     style={{
                                         width: "100%",
                                         textAlign: "left",
@@ -414,40 +466,81 @@ export default function Poetry() {
                             boxShadow: "0 20px 60px rgba(2, 6, 23, 0.6)",
                         }}
                     >
-                        <button
-                            onClick={closeModal}
-                            style={{
-                                position: "absolute",
-                                top: "1.25rem",
-                                right: "1.25rem",
-                                background: "rgba(255,255,255,0.06)",
-                                border: "1px solid rgba(148, 163, 184, 0.18)",
-                                borderRadius: "999px",
-                                color: "#94a3b8",
-                                fontSize: "0.85rem",
-                                fontWeight: 600,
-                                cursor: "pointer",
-                                padding: "0.3rem 0.75rem",
-                                fontFamily: "inherit",
-                                transition: "color 0.15s, background 0.15s",
-                            }}
-                            onMouseEnter={e => {
-                                (e.currentTarget as HTMLButtonElement).style.color = "#f8fafc";
-                                (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.1)";
-                            }}
-                            onMouseLeave={e => {
-                                (e.currentTarget as HTMLButtonElement).style.color = "#94a3b8";
-                                (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.06)";
-                            }}
-                        >
-                            X
-                        </button>
+                        <div style={{
+                            position: "absolute",
+                            top: "1.25rem",
+                            right: "1.25rem",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "0.6rem",
+                        }}>
+                            {copied && (
+                                <span style={{
+                                    fontSize: "0.78rem",
+                                    color: "#93c5fd",
+                                    whiteSpace: "nowrap",
+                                }}>
+                                    Copied to clipboard
+                                </span>
+                            )}
+                            <button
+                                onClick={handleShare}
+                                title="Share this poem"
+                                style={{
+                                    background: "rgba(255,255,255,0.06)",
+                                    border: "1px solid rgba(148, 163, 184, 0.18)",
+                                    borderRadius: "999px",
+                                    color: "#94a3b8",
+                                    fontSize: "0.85rem",
+                                    fontWeight: 600,
+                                    cursor: "pointer",
+                                    padding: "0.3rem 0.75rem",
+                                    fontFamily: "inherit",
+                                    transition: "color 0.15s, background 0.15s",
+                                }}
+                                onMouseEnter={e => {
+                                    (e.currentTarget as HTMLButtonElement).style.color = "#f8fafc";
+                                    (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.1)";
+                                }}
+                                onMouseLeave={e => {
+                                    (e.currentTarget as HTMLButtonElement).style.color = "#94a3b8";
+                                    (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.06)";
+                                }}
+                            >
+                                Share
+                            </button>
+                            <button
+                                onClick={closeModal}
+                                style={{
+                                    background: "rgba(255,255,255,0.06)",
+                                    border: "1px solid rgba(148, 163, 184, 0.18)",
+                                    borderRadius: "999px",
+                                    color: "#94a3b8",
+                                    fontSize: "0.85rem",
+                                    fontWeight: 600,
+                                    cursor: "pointer",
+                                    padding: "0.3rem 0.75rem",
+                                    fontFamily: "inherit",
+                                    transition: "color 0.15s, background 0.15s",
+                                }}
+                                onMouseEnter={e => {
+                                    (e.currentTarget as HTMLButtonElement).style.color = "#f8fafc";
+                                    (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.1)";
+                                }}
+                                onMouseLeave={e => {
+                                    (e.currentTarget as HTMLButtonElement).style.color = "#94a3b8";
+                                    (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.06)";
+                                }}
+                            >
+                                X
+                            </button>
+                        </div>
 
                         <h2 style={{
                             fontSize: "1.4rem",
                             fontWeight: 700,
                             color: "#f8fafc",
-                            margin: "0 3rem 0.5rem 0",
+                            margin: "0 6.5rem 0.5rem 0",
                             letterSpacing: "-0.02em",
                             lineHeight: 1.2,
                         }}>
