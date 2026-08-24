@@ -49,10 +49,12 @@ const projects: Project[] = [
     },
     {
         title: "OD Scheduler",
-        type: "Python Utility",
+        type: "Interactive Web App",
         description:
-            "Created a Python scheduling tool for my summer camp unit of 25 to 30 staff members to replace a manual, time-consuming on-duty scheduling process. The script helped balance assignments more fairly and reduced hours of planning work. After using it myself, I shared it with two other unit leaders who adopted it for their own schedules.",
-        stack: ["Python", "algorithms", "scripting"],
+            "Built a scheduling tool for Camp Seneca Lake to automate nightly on-duty staff coverage across 5 villages with 20-30 staff and uneven bunk groups, replacing a manual process that used to take hours every session. The engine runs 1,200+ candidate schedules per generation, scores each one against fairness rules covering night-type severity, raw duty counts, and pairing diversity, and picks the best one that passes validation, with bunk-based slot restrictions and automatic fallback to floater staff when a bunk can't fill its own slot. Includes admin controls to freeze, lock out, or manually override any assignment, and I stress-tested the algorithm across dozens of synthetic rosters to make sure the fairness held up on edge cases, not just typical ones. Also built a second independent scheduling mode for Porch OD / Director-on-Duty coverage, plus print-ready Word calendar export.",
+        stack: ["React", "TypeScript", "Vite", "scheduling algorithms", "state management"],
+        link: "https://scheduler.joshbcohn.com",
+        linkLabel: "Open Scheduler",
     },
 ];
 
