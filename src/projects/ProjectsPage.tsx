@@ -56,6 +56,33 @@ const projects: Project[] = [
         link: "https://scheduler.joshbcohn.com",
         linkLabel: "Open Scheduler",
     },
+    {
+        title: "Autopick",
+        type: "Interactive Web App",
+        description:
+            "A live draft assistant for my fantasy league that reads our Google Sheet and tells whoever is on the clock who to take, with reasoning and runner-ups. It shows who is on the clock, suggests the best pick for that team, and tracks trades as they happen. There is also an ADP board and a view of every team's roster, and the whole thing works without a backend.",
+        stack: ["React", "TypeScript", "Vite", "Vitest", "Google Sheets API"],
+        link: "https://autopick.joshbcohn.com",
+        linkLabel: "Open Autopick",
+    },
+    {
+        title: "Weekly Period Schedule Builder",
+        type: "Interactive Web App",
+        description:
+            "A schedule builder I made for camp staff to plan a four week session of activity periods, with auto-merging, Excel import and export, and one click schedule generation. A tracking tab counts program areas per bunk, and the auto generate button builds a full week while keeping totals fair across the session. It runs entirely in the browser with no backend.",
+        stack: ["React", "TypeScript", "Vite", "SheetJS"],
+        link: "https://weekly.joshbcohn.com",
+        linkLabel: "Open Builder",
+    },
+    {
+        title: "Wrapped",
+        type: "Interactive Web App",
+        description:
+            "My own Spotify Wrapped built from my full streaming history, 2016 to 2026, with a stats dashboard and search. Anyone can upload their own export and see theirs. A build script precomputes the stats so the page loads fast, and uploaded exports are processed entirely in the browser and never sent anywhere.",
+        stack: ["HTML", "CSS", "JavaScript", "Node.js", "Web Workers", "IndexedDB"],
+        link: "https://wrapped.joshbcohn.com",
+        linkLabel: "Open Wrapped",
+    },
 ];
 
 export default function ProjectsPage() {
