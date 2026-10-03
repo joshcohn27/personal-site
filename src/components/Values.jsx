@@ -9,18 +9,17 @@ export default function Values() {
 
                 <div className="about-grid">
                     <div className="content-card">
-                        <h3>What's next</h3>
+                        <h3>Where I am now</h3>
                         <p>
-                            I graduated from RIT in May 2026 and I'm heading to Drexel in Fall 2026
-                            for my MS in AI and Machine Learning. ML in particular is what draws me
+                            I graduated from RIT and I'm pursuing my MS in AI and Machine Learning
+                            at Drexel. ML in particular is what draws me
                             most. I think it is one of the most powerful tools we have right now, and
                             I want to understand it deeply enough to use it responsibly and build
                             things that genuinely help people.
                         </p>
                         <p>
-                            As I begin graduate school, I'm looking for a software engineering role that
-                            fits a co-op or part-time structure during the academic year, with the goal of
-                            growing into full-time work after. I'm especially interested in opportunities 
+                            I'm open to full-time opportunities and co-ops in and around AI/ML software
+                            engineering or frontend software engineering. I'm especially interested in opportunities
                             where I can contribute early, keep learning, and work on problems that actually 
                             matter to me. I've found myself really enjoying
                             frontend work, especially when it comes to building clean and intuitive

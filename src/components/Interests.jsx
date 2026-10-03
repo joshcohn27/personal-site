@@ -14,7 +14,7 @@ export default function Interests() {
                             Lifelong Philly fan. Sports have always been a big part of my life.
                             They have taught me a lot about resilience, patience, and sticking
                             with something even when it is frustrating. Also helps that the Eagles
-                            finally got one.
+                            have given me some unforgettable moments.
                         </p>
                     </article>
 

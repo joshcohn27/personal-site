@@ -3,18 +3,18 @@ export default function Hero() {
 		<section id="top" className="hero-section">
 			<div className="container hero-grid">
 				<div className="hero-copy">
-					<p className="eyebrow">Software Engineer · RIT '26 · Exton, PA</p>
+					<p className="eyebrow">Software Engineer · RIT '26 · Philadelphia, PA</p>
 
 					<h1>
 						I build software and care deeply about who it impacts
 					</h1>
 
 					<p className="hero-text">
-						I'm Josh Cohn, a Computing and Information Technologies student at
-						RIT graduating in May 2026, with a minor in Software Engineering.
-						Over the past two years, I have worked in full-time engineering roles
-						building mobile apps at Discovery Machine and working on cloud
-						infrastructure at Chameleon Consulting.
+						I'm Josh Cohn. I graduated from RIT with a BS in Computing and
+						Information Technologies and a minor in Software Engineering, and
+						I'm pursuing an MS in AI and Machine Learning at Drexel. I've worked
+						in full-time engineering roles building mobile apps at Discovery
+						Machine and cloud infrastructure at Chameleon Consulting Group LLC.
 					</p>
 
 					<p className="hero-text">
@@ -44,16 +44,19 @@ export default function Hero() {
 						<p className="hero-card-label">Experience</p>
 						<ul className="hero-list">
 							<li>
-								Taught myself Flutter and Dart on the job, then built out majority of webapp screens from wireframes at Discovery Machine Inc.
+								Taught myself Flutter and Dart on the job, then built the majority of a cross-platform app's screens from design mockups at Discovery Machine Inc.
 							</li>
 							<li>
 								Owned frontend features for a team senior project, integrating with a REST API built by a teammate
 							</li>
 							<li>
-								Led staff teams at Camp Seneca Lake across multiple summers, stepping into new roles, learning quickly, and earning trust from people I was responsible for
+								Grew from camper to staff to leadership over 14 summers at Camp Seneca Lake, with 6 summers on staff and 4 of them on the Seasonal Leadership Team
 							</li>
 							<li>
-								Worked on cloud infrastructure and automation using Terraform, Docker, and Go at Chameleon Consulting
+								Serve as Operations & Logistics Manager and Pool Director at Camp Seneca Lake, and I'm a certified ARC Lifeguarding Instructor, Water Safety Instructor, and CPR Instructor
+							</li>
+							<li>
+								Worked on cloud infrastructure and automation using Terraform, Docker, and Go at Chameleon Consulting Group LLC
 							</li>
 						</ul>
 					</div>
@@ -61,9 +64,9 @@ export default function Hero() {
 					<div className="hero-card">
 						<p className="hero-card-label">What I'm focused on</p>
 						<p className="hero-card-text">
-							Heading to Drexel in Fall 2026 for my MS in AI and Machine Learning.
-							I'm open to part-time opportunities during school where I can keep
-							contributing and learning. I care as much about the people I work with
+							I'm pursuing my MS in AI and Machine Learning at Drexel. I'm open
+							to full-time opportunities and co-ops in and around AI/ML software
+							engineering or frontend software engineering. I care as much about the people I work with
 							as the problems I'm solving, and I try to bring that into my everyday life.
 						</p>
 					</div>

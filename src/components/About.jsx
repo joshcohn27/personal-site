@@ -10,11 +10,11 @@ export default function About() {
                 <div className="about-grid">
                     <div className="content-card">
                         <p>
-                            I'm a software engineer finishing my BS in Computing and Information
-                            Technologies at RIT in May 2026, with a minor in Software Engineering.
-                            I've been coding since 2017, and over the past two years I've worked on
-                            real engineering teams. At Discovery Machine, I built a cross-platform
-                            mobile app in Flutter. At Chameleon Consulting Group (now Clarity), I
+                            I'm a software engineer with a BS in Computing and Information
+                            Technologies from RIT and a minor in Software Engineering.
+                            I've been coding since 2017, and I've worked on real engineering
+                            teams along the way. At Discovery Machine, I built a cross-platform
+                            mobile app in Flutter. At Chameleon Consulting Group LLC, I
                             worked on cloud deployments and backend automation.
                         </p>
                         <p>
@@ -30,12 +30,13 @@ export default function About() {
                         <h3>Technical Skills</h3>
                         <ul className="bullet-list">
                             <li><strong>Languages:</strong> JavaScript/TypeScript, Python, Java, Go, C#, Dart</li>
-                            <li><strong>Frontend:</strong> React, Angular, Flutter, HTML/CSS</li>
-                            <li><strong>Backend:</strong> Spring Boot, Node.js, REST APIs</li>
+                            <li><strong>Frontend:</strong> React, Angular, Flutter, Vite, HTML/CSS</li>
+                            <li><strong>Backend:</strong> Spring Boot, Node.js, Supabase, REST APIs</li>
+                            <li><strong>ML:</strong> PyTorch, scikit-learn</li>
                             <li><strong>Databases:</strong> SQL, Oracle, ODBC/JDBC</li>
                             <li><strong>Cloud/DevOps:</strong> AWS, Azure, Docker, Terraform, Bash, Git</li>
                             <li><strong>Testing:</strong> JUnit, Pytest</li>
-                            <li><strong>Other:</strong> OOP/design patterns, Agile Methodologies, MVC frameworks</li>
+                            <li><strong>Other:</strong> OOP/design patterns, Agile Methodologies, MVC frameworks, AI-assisted development (Claude Code)</li>
                         </ul>
                     </div>
                 </div>
