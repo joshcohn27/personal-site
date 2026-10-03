@@ -837,7 +837,7 @@ export default function NHLMockAndLotto() {
             )
             .join("\n");
 
-        navigator.clipboard.writeText(`2026 NHL Mock Draft - Round 1\n\n${lines}`).then(() => {
+        navigator.clipboard.writeText(`2027 NHL Mock Draft - Round 1\n\n${lines}`).then(() => {
             setCopyLabel("Copied!");
             setTimeout(() => setCopyLabel("Copy Results"), 2000);
         });
@@ -873,7 +873,7 @@ export default function NHLMockAndLotto() {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>2026 NHL Mock Draft - Round 1</title>
+  <title>2027 NHL Mock Draft - Round 1</title>
   <style>
     * {
       box-sizing: border-box;
@@ -1089,7 +1089,7 @@ export default function NHLMockAndLotto() {
   <main class="page">
     <div class="header">
       <div>
-        <h1>2026 NHL Mock Draft</h1>
+        <h1>2027 NHL Mock Draft</h1>
         <div class="subtitle">Round 1 · Picks 1-32</div>
       </div>
       <div class="status">${isDraftDone ? "Draft Complete" : "Draft In Progress"}</div>
@@ -1137,7 +1137,7 @@ export default function NHLMockAndLotto() {
         const link = document.createElement("a");
 
         link.href = url;
-        link.download = "2026-nhl-mock-draft.html";
+        link.download = "2027-nhl-mock-draft.html";
         link.click();
 
         URL.revokeObjectURL(url);
@@ -1424,7 +1424,7 @@ export default function NHLMockAndLotto() {
       `}</style>
 
             <header style={S.header}>
-                <h1 style={S.h1}>2026 NHL Draft Lottery Simulator</h1>
+                <h1 style={S.h1}>2027 NHL Draft Lottery Simulator</h1>
                 {/* <div style={S.sub}>
           {csvStatus} · {prospectStatus}
         </div> */}
@@ -1767,7 +1767,7 @@ export default function NHLMockAndLotto() {
                                 textTransform: "uppercase",
                             }}
                         >
-                            2026 Mock Draft - Round 1
+                            2027 Mock Draft - Round 1
                         </h2>
                         <div style={S.btnRow}>
                             <button
