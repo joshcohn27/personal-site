@@ -48,13 +48,13 @@ Some poems have a dedication, which shows up as a small info icon in the list an
 
 ### NHL mock draft page
 
-`/NHLMock` is a version of my NHL draft lottery simulator that lives in this repo. It runs the lottery draw ball by ball, has a lookup for the full combination table, then moves into a mock draft with prospect search and position filters. Results can be copied or printed. It reads its data from two CSV files in `public/mock/`. The version I actually link to from the site is the standalone one at nhlmock.joshbcohn.com.
+`/NHLMock` is a version of my NHL draft lottery simulator that lives in this repo. It runs the lottery draw ball by ball, has a lookup for the full combination table, then moves into a mock draft with prospect search and position filters. Results can be copied or printed. It reads its data from two CSV files in `public/mock/`. The version I actually link to from the site is the standalone one at hockeylotto.com.
 
 ## Where the projects live
 
-The projects shown on the site are not in this repo. Each one has its own repo and is deployed separately on its own joshbcohn.com subdomain:
+The projects shown on the site are not in this repo. Each one has its own repo and is deployed separately. Most are on their own joshbcohn.com subdomain, and the NHL simulator has its own domain:
 
-- https://nhlmock.joshbcohn.com
+- https://hockeylotto.com
 - https://casino.joshbcohn.com
 - https://scheduler.joshbcohn.com
 - https://autopick.joshbcohn.com

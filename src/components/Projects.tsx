@@ -6,7 +6,7 @@ const featured = [
         type: "Interactive Web App",
         description:
             "An interactive simulator that models the NHL draft lottery, visualizes the ping-pong ball draw, and carries the final order directly into a mock draft workflow.",
-        link: "https://nhlmock.joshbcohn.com",
+        link: "https://hockeylotto.com",
         linkLabel: "Open Simulator",
     },
     {

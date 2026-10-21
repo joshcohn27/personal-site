@@ -19,7 +19,7 @@ const projects: Project[] = [
         description:
             "Built an interactive NHL draft lottery and mock draft simulator that combines two tools fans usually have to use separately. The app models real lottery constraints, visualizes the ping-pong ball draw, and then carries the finalized draft order directly into a mock draft workflow. What started as a small Python script became a full React and TypeScript project focused on accurate rules logic, data-driven rankings, and a smooth user experience.",
         stack: ["React", "TypeScript", "CSV parsing", "game logic", "UI/UX"],
-        link: "https://nhlmock.joshbcohn.com",
+        link: "https://hockeylotto.com",
         linkLabel: "Open Simulator",
     },
     {
