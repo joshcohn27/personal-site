@@ -2,9 +2,9 @@
 	--bg: #0b1120;
 	--surface: #0f172a;
 	--line: #1e293b;
-	--text: #e5e7eb;
-	--muted: #94a3b8;
-	--heading: #f8fafc;
+	--text: #d4d4d4;
+	--muted: #a3a3a3;
+	--heading: #fafafa;
 	--accent: #60a5fa;
 	--on-accent: #0b1120;
 	--radius: 6px;
@@ -230,7 +230,7 @@ select {
 
 .text-block p,
 .bullet-list {
-	color: var(--muted);
+	color: var(--text);
 }
 
 .bullet-list {
@@ -262,7 +262,7 @@ select {
 .project-description {
 	margin-top: 8px;
 	font-size: 16px;
-	color: var(--muted);
+	color: var(--text);
 }
 
 .project-stack {
@@ -291,12 +291,12 @@ select {
 }
 
 .interest p {
-	color: var(--muted);
+	color: var(--text);
 }
 
 .contact-text {
 	margin-top: 8px;
-	color: var(--muted);
+	color: var(--text);
 	max-width: 60ch;
 }
 

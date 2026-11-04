@@ -23,7 +23,7 @@ export default function NotFound() {
                         </h1>
 
                         <p style={{
-                            color: "var(--muted)",
+                            color: "var(--text)",
                             maxWidth: "60ch",
                             marginBottom: "24px",
                         }}>
