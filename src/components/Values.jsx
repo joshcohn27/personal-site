@@ -6,8 +6,8 @@ export default function Values() {
                     <h2>Goals and values</h2>
                 </div>
 
-                <div className="about-grid">
-                    <div className="content-card">
+                <div className="text-stack">
+                    <div className="text-block">
                         <h3>Where I am now</h3>
                         <p>
                             I graduated from RIT and I'm pursuing my MS in AI and Machine Learning
@@ -26,7 +26,7 @@ export default function Values() {
                         </p>
                     </div>
 
-                    <div className="content-card">
+                    <div className="text-block">
                         <h3>What I value</h3>
                         <p>
                             The best environments I've been part of were the ones where people cared.

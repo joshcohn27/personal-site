@@ -6,8 +6,8 @@ export default function About() {
                     <h2>Background and skills</h2>
                 </div>
 
-                <div className="about-grid">
-                    <div className="content-card">
+                <div className="text-stack">
+                    <div className="text-block">
                         <p>
                             I'm a software engineer with a BS in Computing and Information
                             Technologies from RIT and a minor in Software Engineering.
@@ -26,7 +26,7 @@ export default function About() {
                         </p>
                     </div>
 
-                    <div className="content-card">
+                    <div className="text-block">
                         <h3>Technical Skills</h3>
                         <ul className="bullet-list">
                             <li><strong>Languages:</strong> Python, Java, TypeScript, JavaScript, C#, Dart, HTML, CSS</li>

@@ -7,7 +7,7 @@ export default function Interests() {
                 </div>
 
                 <div className="interests-grid">
-                    <article className="interest-card">
+                    <article className="interest">
                         <h3>Philadelphia Sports</h3>
                         <p>
                             Lifelong Philly fan. Sports have always been a big part of my life.
@@ -17,7 +17,7 @@ export default function Interests() {
                         </p>
                     </article>
 
-                    <article className="interest-card">
+                    <article className="interest">
                         <h3>Volunteering</h3>
                         <p>
                             I volunteer as a driver for the American Cancer Society Road
@@ -27,7 +27,7 @@ export default function Interests() {
                         </p>
                     </article>
 
-                    <article className="interest-card">
+                    <article className="interest">
                         <h3>The Outdoors</h3>
                         <p>
                             I spend time outside whenever I can. Whether it's being near water,
@@ -36,7 +36,7 @@ export default function Interests() {
                         </p>
                     </article>
 
-                    <article className="interest-card">
+                    <article className="interest">
                         <h3>Cooking</h3>
                         <p>
                             I enjoy trying new foods, but more than that I like cooking for other people.
@@ -45,7 +45,7 @@ export default function Interests() {
                         </p>
                     </article>
 
-                    <article className="interest-card">
+                    <article className="interest">
                         <h3>Catan</h3>
                         <p>
                             Strategy, negotiation, and a bit of luck. It is a great combination.
@@ -54,7 +54,7 @@ export default function Interests() {
                         </p>
                     </article>
 
-                    <article className="interest-card">
+                    <article className="interest">
                         <h3>Writing Poetry</h3>
                         <p>
                             I spend a lot of time writing poetry. It is something I really enjoy

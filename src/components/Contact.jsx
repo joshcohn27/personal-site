@@ -2,7 +2,7 @@ export default function Contact() {
     return (
         <section id="contact" className="section">
             <div className="container">
-                <div className="contact-panel">
+                <div className="contact">
                     <div>
                         <h2>Get in touch</h2>
                         <p className="contact-text">
@@ -12,17 +12,17 @@ export default function Contact() {
                     </div>
 
                     <div className="contact-links">
-                        <a href="mailto:joshcohn27@gmail.com" className="contact-link">
+                        <a href="mailto:joshcohn27@gmail.com" className="text-link">
                             joshcohn27@gmail.com
                         </a>
-                        {/* <a href="tel:+16102902280" className="contact-link">
+                        {/* <a href="tel:+16102902280" className="text-link">
                             (610) 290-2280
                         </a> */}
                         <a
                             href="https://github.com/joshcohn27"
                             target="_blank"
                             rel="noreferrer"
-                            className="contact-link"
+                            className="text-link"
                         >
                             GitHub
                         </a>
@@ -30,7 +30,7 @@ export default function Contact() {
                             href="https://www.linkedin.com/in/josh-cohn-2226061ba/"
                             target="_blank"
                             rel="noreferrer"
-                            className="contact-link"
+                            className="text-link"
                         >
                             LinkedIn
                         </a>

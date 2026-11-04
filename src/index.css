@@ -180,9 +180,7 @@ select {
 	text-decoration: underline;
 }
 
-.content-card,
-.project-card,
-.contact-panel {
+.project-card {
 	background: var(--surface);
 	border: 1px solid var(--line);
 	border-radius: var(--radius);
@@ -194,49 +192,53 @@ select {
 }
 
 .section {
-	padding: 2.5rem 0;
+	padding: 32px 0;
+}
+
+.section + .section {
+	border-top: 1px solid var(--line);
 }
 
 .section-heading {
 	margin-bottom: 24px;
 }
 
-.section-heading h2 {
+.section-heading h2,
+.contact h2 {
 	font-size: clamp(28px, 3.2vw, 36px);
 	line-height: 1.2;
 }
 
-.about-grid {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 1.25rem;
+.text-block {
+	max-width: 72ch;
 }
 
-.content-card {
-	padding: 1.5rem;
+.text-block + .text-block {
+	margin-top: 24px;
+	padding-top: 24px;
+	border-top: 1px solid var(--line);
 }
 
-.content-card h3 {
-	color: var(--heading);
-	margin-bottom: 0.8rem;
-	font-size: 1.1rem;
+.text-block h3 {
+	margin-bottom: 8px;
+	font-size: 20px;
 }
 
-.content-card p+p {
-	margin-top: 1rem;
+.text-block p + p {
+	margin-top: 16px;
 }
 
-.content-card p,
+.text-block p,
 .bullet-list {
 	color: var(--muted);
 }
 
 .bullet-list {
-	padding-left: 1.1rem;
+	padding-left: 16px;
 }
 
-.bullet-list li+li {
-	margin-top: 0.7rem;
+.bullet-list li + li {
+	margin-top: 8px;
 }
 
 .project-grid {
@@ -280,60 +282,29 @@ select {
 .interests-grid {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 1.25rem;
+	gap: 24px 32px;
 }
 
-.interest-card {
-	background: var(--surface);
-	border: 1px solid var(--line);
-	border-radius: var(--radius);
-	padding: 24px;
+.interest h3 {
+	font-size: 20px;
+	margin-bottom: 8px;
 }
 
-.interest-card h3 {
-	color: var(--heading);
-	font-size: 1.15rem;
-	margin-bottom: 0.75rem;
-}
-
-.interest-card p {
+.interest p {
 	color: var(--muted);
-}
-
-.contact-panel {
-	padding: 1.6rem;
-	display: grid;
-	grid-template-columns: 1.15fr 0.85fr;
-	gap: 1.5rem;
-	align-items: start;
-}
-
-.contact-panel h2 {
-	color: var(--heading);
-	margin-top: 0.3rem;
-	font-size: clamp(1.8rem, 3vw, 2.5rem);
 }
 
 .contact-text {
-	margin-top: 0.9rem;
+	margin-top: 8px;
 	color: var(--muted);
-	max-width: 48ch;
+	max-width: 60ch;
 }
 
 .contact-links {
-	display: grid;
-	gap: 0.85rem;
-}
-
-.contact-link {
-	border: 1px solid var(--line);
-	color: var(--heading);
-	border-radius: var(--radius);
-	padding: 16px;
-}
-
-.contact-link:hover {
-	color: var(--accent);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 24px;
+	margin-top: 16px;
 }
 
 .site-footer {
@@ -354,8 +325,6 @@ select {
 @media (max-width: 960px) {
 
 	.hero-grid,
-	.about-grid,
-	.contact-panel,
 	.project-grid,
 	.interests-grid {
 		grid-template-columns: 1fr;
@@ -381,9 +350,7 @@ select {
 		gap: 0.85rem;
 	}
 
-	.content-card,
-	.project-card,
-	.contact-panel {
+	.project-card {
 		padding: 16px;
 	}
 
