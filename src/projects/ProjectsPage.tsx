@@ -21,6 +21,7 @@ const projects: Project[] = [
         stack: ["React", "Node.js", "Oracle", "REST API", "frontend architecture"],
         link: "https://joshbcohn.com/projects/beehive",
         linkLabel: "View Demo",
+        repo: "https://github.com/joshcohn27/beehive-frontend",
     },
     {
         title: "NHL Draft Lottery Simulator",
@@ -30,6 +31,7 @@ const projects: Project[] = [
         stack: ["React", "TypeScript", "CSV parsing", "game logic", "UI/UX"],
         link: "https://hockeylotto.com",
         linkLabel: "Open Simulator",
+        repo: "https://github.com/joshcohn27/nhl-lottery-sim",
     },
     {
         title: "OD Scheduler",
@@ -39,6 +41,7 @@ const projects: Project[] = [
         stack: ["React", "TypeScript", "Vite", "CSS Modules", "docx"],
         link: "https://scheduler.joshbcohn.com",
         linkLabel: "Open Scheduler",
+        repo: "https://github.com/joshcohn27/od_new",
     },
     {
         title: "Committed",
@@ -55,6 +58,7 @@ const projects: Project[] = [
         stack: ["React", "TypeScript", "Vite", "Vitest", "Google Sheets API"],
         link: "https://autopick.joshbcohn.com",
         linkLabel: "Open Autopick",
+        repo: "https://github.com/joshcohn27/autopick-react",
     },
     {
         title: "Wrapped",
@@ -64,6 +68,7 @@ const projects: Project[] = [
         stack: ["HTML", "CSS", "JavaScript", "Node.js", "Web Workers", "IndexedDB"],
         link: "https://wrapped.joshbcohn.com",
         linkLabel: "Open Wrapped",
+        repo: "https://github.com/joshcohn27/wrapped",
     },
     {
         title: "Table Game Simulator",
@@ -73,6 +78,7 @@ const projects: Project[] = [
         stack: ["React", "TypeScript", "state management", "game logic", "UI/UX"],
         link: "https://casino.joshbcohn.com",
         linkLabel: "Open Simulator",
+        repo: "https://github.com/joshcohn27/casino",
     },
     {
         title: "Weekly Period Schedule Builder",
@@ -82,6 +88,7 @@ const projects: Project[] = [
         stack: ["React", "TypeScript", "Vite", "SheetJS"],
         link: "https://weekly.joshbcohn.com",
         linkLabel: "Open Builder",
+        repo: "https://github.com/joshcohn27/weekly-schedule",
     },
 ];
 
@@ -99,78 +106,50 @@ export default function ProjectsPage() {
                             </p>
                         </div>
 
-                        <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                            {projects.map((project, i) => (
-                                <article
-                                    key={project.title}
-                                    className="project-card"
-                                    style={{
-                                        padding: "1.75rem",
-                                        display: "grid",
-                                        gridTemplateColumns: "1fr auto",
-                                        gap: "1.5rem",
-                                        alignItems: "start",
-                                        animationDelay: `${i * 60}ms`,
-                                    }}
-                                >
-                                    <div>
-                                        <p className="project-type">{project.type}</p>
-                                        <h3 style={{ marginTop: "0.4rem", fontSize: "1.3rem" }}>
-                                            {project.title}
-                                        </h3>
-                                        <p className="project-description" style={{ marginTop: "0.75rem", maxWidth: "72ch" }}>
-                                            {project.description}
-                                        </p>
-                                        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.45rem", marginTop: "1rem" }}>
-                                            {project.stack.map((tag) => (
-                                                <span
-                                                    key={tag}
-                                                    style={{
-                                                        padding: "0.3rem 0.7rem",
-                                                        borderRadius: "999px",
-                                                        border: "1px solid var(--line)",
-                                                        color: "var(--muted)",
-                                                        fontSize: "0.82rem",
-                                                        fontWeight: 600,
-                                                        background: "rgba(255,255,255,0.02)",
-                                                    }}
+                        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                            {projects.map((project) => (
+                                <article key={project.title} className="project-card">
+                                    <p className="project-type">{project.type}</p>
+                                    <h3>{project.title}</h3>
+                                    <p className="project-description" style={{ maxWidth: "72ch" }}>
+                                        {project.description}
+                                    </p>
+                                    <p className="project-stack">{project.stack.join(", ")}</p>
+                                    {(project.link || project.repo) && (
+                                        <div className="project-links">
+                                            {project.link && (
+                                                <a
+                                                    href={project.link}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="project-link"
                                                 >
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {project.link && (
-                                        <div style={{ flexShrink: 0, paddingTop: "0.25rem" }}>
-                                            <a
-                                                href={project.link}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                                className="project-link"
-                                                style={{ whiteSpace: "nowrap" }}
-                                            >
-                                                {project.linkLabel}
-                                            </a>
+                                                    {project.linkLabel}
+                                                </a>
+                                            )}
+                                            {project.repo && (
+                                                <a
+                                                    href={project.repo}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="project-link"
+                                                >
+                                                    GitHub
+                                                </a>
+                                            )}
                                         </div>
                                     )}
                                 </article>
                             ))}
                         </div>
 
-                        <div style={{ marginTop: "2.5rem", paddingTop: "1.5rem", borderTop: "1px solid var(--line)" }}>
+                        <div style={{ marginTop: "32px", paddingTop: "24px", borderTop: "1px solid var(--line)" }}>
                             <Link
                                 to="/"
                                 onClick={() => window.scrollTo(0, 0)}
-                                style={{
-                                    color: "var(--muted)",
-                                    fontWeight: 600,
-                                    fontSize: "0.95rem",
-                                }}
-                                onMouseEnter={e => (e.currentTarget.style.color = "var(--heading)")}
-                                onMouseLeave={e => (e.currentTarget.style.color = "var(--muted)")}
+                                className="button button-secondary"
                             >
-                                ← Back to home
+                                Back to home
                             </Link>
                         </div>
                     </div>
