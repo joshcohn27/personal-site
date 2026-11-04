@@ -16,14 +16,11 @@ export default function Hero() {
 					</p>
 
 					<div className="hero-actions">
-						<a href="/projects" className="button button-primary" onClick={() => window.scrollTo(0, 0)}>
-							View Projects
-						</a>
 						<a
 							href="/resume.pdf"
 							target="_blank"
 							rel="noreferrer"
-							className="button button-secondary"
+							className="button button-primary"
 						>
 							View Resume
 						</a>
