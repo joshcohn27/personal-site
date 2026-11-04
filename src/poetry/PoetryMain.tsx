@@ -49,12 +49,12 @@ function InfoTooltip({ text }: { text: string }) {
                     border: "none",
                     cursor: "pointer",
                     padding: "0 0.25rem",
-                    color: visible ? "#93c5fd" : "#94a3b8",
+                    color: visible ? "#a78bfa" : "#94a3b8",
                     display: "flex",
                     alignItems: "center",
                     transition: "color 0.15s",
                 }}
-                onMouseEnter={e => (e.currentTarget.style.color = "#93c5fd")}
+                onMouseEnter={e => (e.currentTarget.style.color = "#a78bfa")}
                 onMouseLeave={e => { if (!visible) e.currentTarget.style.color = "#94a3b8"; }}
             >
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -236,11 +236,11 @@ export default function Poetry() {
     };
 
     const sortBtnStyle = (active: boolean): React.CSSProperties => ({
-        background: active ? "rgba(96, 165, 250, 0.14)" : "rgba(15, 23, 42, 0.92)",
-        border: `1px solid ${active ? "rgba(96, 165, 250, 0.35)" : "rgba(148, 163, 184, 0.18)"}`,
+        background: active ? "rgba(167, 139, 250, 0.14)" : "rgba(15, 23, 42, 0.92)",
+        border: `1px solid ${active ? "rgba(167, 139, 250, 0.35)" : "rgba(148, 163, 184, 0.18)"}`,
         borderRadius: "999px",
         padding: "0.4rem 0.85rem",
-        color: active ? "#93c5fd" : "#94a3b8",
+        color: active ? "#a78bfa" : "#94a3b8",
         fontSize: "0.82rem",
         fontWeight: active ? 700 : 500,
         fontFamily: "inherit",
@@ -279,8 +279,8 @@ export default function Poetry() {
                     }}
                     onMouseEnter={e => {
                         e.currentTarget.style.color = "#f8fafc";
-                        e.currentTarget.style.borderColor = "rgba(96, 165, 250, 0.35)";
-                        e.currentTarget.style.background = "rgba(96, 165, 250, 0.06)";
+                        e.currentTarget.style.borderColor = "rgba(167, 139, 250, 0.35)";
+                        e.currentTarget.style.background = "rgba(167, 139, 250, 0.06)";
                     }}
                     onMouseLeave={e => {
                         e.currentTarget.style.color = "#94a3b8";
@@ -312,8 +312,8 @@ export default function Poetry() {
                         marginBottom: "0.75rem",
                         padding: "0.45rem 0.8rem",
                         borderRadius: "999px",
-                        background: "rgba(96, 165, 250, 0.14)",
-                        color: "#bfdbfe",
+                        background: "rgba(167, 139, 250, 0.14)",
+                        color: "#a78bfa",
                         fontSize: "0.82rem",
                         // fontWeight: 700,
                         letterSpacing: "0.08em",
@@ -338,7 +338,7 @@ export default function Poetry() {
                             value={search}
                             onChange={e => setSearch(e.target.value)}
                             style={inputStyle}
-                            onFocus={e => (e.currentTarget.style.borderColor = "rgba(96, 165, 250, 0.45)")}
+                            onFocus={e => (e.currentTarget.style.borderColor = "rgba(167, 139, 250, 0.45)")}
                             onBlur={e => (e.currentTarget.style.borderColor = "rgba(148, 163, 184, 0.18)")}
                         />
                         {search && (
@@ -412,7 +412,7 @@ export default function Poetry() {
                                     }}
                                     onMouseEnter={e => {
                                         (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                                        (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(96, 165, 250, 0.35)";
+                                        (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(167, 139, 250, 0.35)";
                                     }}
                                     onMouseLeave={e => {
                                         (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
@@ -477,7 +477,7 @@ export default function Poetry() {
                             {copied && (
                                 <span style={{
                                     fontSize: "0.78rem",
-                                    color: "#93c5fd",
+                                    color: "#a78bfa",
                                     whiteSpace: "nowrap",
                                 }}>
                                     Copied to clipboard
