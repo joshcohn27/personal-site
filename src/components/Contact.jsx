@@ -1,6 +1,6 @@
 export default function Contact() {
     return (
-        <section id="contact" className="section section-alt">
+        <section id="contact" className="section">
             <div className="container">
                 <div className="contact-panel">
                     <div>

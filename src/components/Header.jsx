@@ -9,10 +9,7 @@ export default function Header() {
                 </Link>
 
                 <nav className="site-nav" aria-label="Primary navigation">
-                    <Link to="/projects" onClick={() => window.scrollTo(0, 0)} style={{ color: "var(--muted)", fontWeight: 500, transition: "color 0.18s ease" }}
-                        onMouseEnter={e => (e.currentTarget.style.color = "var(--heading)")}
-                        onMouseLeave={e => (e.currentTarget.style.color = "var(--muted)")}
-                    >
+                    <Link to="/projects" onClick={() => window.scrollTo(0, 0)}>
                         Projects
                     </Link>
 
@@ -25,7 +22,6 @@ export default function Header() {
                         href="https://github.com/joshcohn27"
                         target="_blank"
                         rel="noreferrer"
-                        className="nav-button"
                     >
                         GitHub
                     </a>

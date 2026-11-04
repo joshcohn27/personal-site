@@ -29,7 +29,7 @@ const featured = [
 
 export default function Projects() {
     return (
-        <section id="projects" className="section section-alt">
+        <section id="projects" className="section">
             <div className="container">
                 <div
                     className="section-heading"
@@ -53,7 +53,6 @@ export default function Projects() {
                             fontWeight: 700,
                             fontSize: "0.95rem",
                             whiteSpace: "nowrap",
-                            transition: "color 0.18s ease",
                         }}
                         onMouseEnter={e => (e.currentTarget.style.color = "var(--heading)")}
                         onMouseLeave={e => (e.currentTarget.style.color = "var(--accent)")}

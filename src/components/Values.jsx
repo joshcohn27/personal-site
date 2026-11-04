@@ -1,6 +1,6 @@
 export default function Values() {
     return (
-        <section id="future" className="section section-alt">
+        <section id="future" className="section">
             <div className="container">
                 <div className="section-heading">
                     <p className="section-label">What's Next</p>

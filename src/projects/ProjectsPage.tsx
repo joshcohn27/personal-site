@@ -166,7 +166,6 @@ export default function ProjectsPage() {
                                     color: "var(--muted)",
                                     fontWeight: 600,
                                     fontSize: "0.95rem",
-                                    transition: "color 0.18s ease",
                                 }}
                                 onMouseEnter={e => (e.currentTarget.style.color = "var(--heading)")}
                                 onMouseLeave={e => (e.currentTarget.style.color = "var(--muted)")}
