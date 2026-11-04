@@ -22,7 +22,7 @@ export default function About() {
                             including a VS Code extension to improve commit workflows, a full-stack
                             financial platform with Spring Boot and Angular, and a beehive monitoring
                             system. I care about writing software that is clear, maintainable, and
-                            actually useful to the people relying on it.
+                            useful to the people relying on it.
                         </p>
                     </div>
 

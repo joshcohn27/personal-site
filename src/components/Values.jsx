@@ -10,39 +10,29 @@ export default function Values() {
                     <div className="text-block">
                         <h3>Where I am now</h3>
                         <p>
-                            I graduated from RIT and I'm pursuing my MS in AI and Machine Learning
-                            at Drexel. ML in particular is what draws me
-                            most. I think it is one of the most powerful tools we have right now, and
-                            I want to understand it deeply enough to use it responsibly and build
-                            things that genuinely help people.
+                            I'm working on my MS in AI and Machine Learning at Drexel. I think ML is
+                            one of the most powerful tools we have, and I want to understand it well
+                            enough to use it responsibly.
                         </p>
                         <p>
-                            I'm open to full-time opportunities and co-ops in and around AI/ML software
-                            engineering or frontend software engineering. I'm especially interested in opportunities
-                            where I can contribute early, keep learning, and work on problems that actually 
-                            matter to me. I've found myself really enjoying
-                            frontend work, especially when it comes to building clean and intuitive
-                            interfaces, but I still like working across the stack.
+                            I'm open to full-time roles and co-ops in AI/ML or frontend software
+                            engineering. I've really enjoyed frontend work lately, especially building
+                            clean, easy-to-use interfaces, but I like working across the stack too.
                         </p>
                     </div>
 
                     <div className="text-block">
                         <h3>What I value</h3>
                         <p>
-                            The best environments I've been part of were the ones where people cared.
-                            Not just about the project, but about doing things the right way and
-                            thinking through the details instead of just getting something out the door.
-                            That's something I've really noticed from working on real teams, and it
-                            matters a lot to me. I care as much about the people I work with as the
-                            problems I'm solving.
+                            The best teams I've been on were the ones where people cared. They cared
+                            about the details and doing things the right way, not just getting something
+                            out the door. I care as much about the people I work with as the problems
+                            we're solving.
                         </p>
                         <p>
-                            That carries over into how I think about AI. I care a lot about who actually
-                            benefits from the systems being built. Whether they are helping people who
-                            need it, or just making things more convenient for people who were already
-                            fine. There is a lot of good AI can do, especially in areas like healthcare,
-                            education, and quality of life, but only if it is built with intention.
-                            That is a big part of why I want to study AI, not just use it.
+                            That's how I think about AI too. I care about who it actually helps. AI can
+                            do a lot of good in areas like healthcare and education, but only if it's
+                            built with intention. That's why I want to study it, not just use it.
                         </p>
                     </div>
                 </div>
