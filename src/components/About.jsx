@@ -10,17 +10,27 @@ export default function About() {
                     <div className="text-block">
                         <h3>Background</h3>
                         <p>
-                            I have a BS in Computing and Information Technologies from RIT with a
-                            minor in Software Engineering. I've been coding since 2017.
+                            I started coding in high school. My school offered programming classes all
+                            four years, which I was lucky to have, and I took every one. They were all
+                            taught by the same teacher, and he believed in my ability to solve problems.
                         </p>
                         <p>
-                            At Discovery Machine, I built most of a cross-platform Air Force app in
-                            Flutter. At Chameleon Consulting Group, I automated virtual machine setup
-                            with Docker, worked on a Flask API, and set up GitLab pipelines.
+                            I learned Java and Python there and kept going. I got my BS in Computing and
+                            Information Technologies from RIT with a minor in Software Engineering.
                         </p>
                         <p>
-                            I care about writing software that's clear, maintainable, and useful to
-                            the people relying on it.
+                            My internships at Discovery Machine and Chameleon Consulting Group let me
+                            keep learning while putting my skills to work on real teams. They taught me
+                            things you can only learn on the job.
+                        </p>
+                        <p>
+                            What keeps me going is that there's always something new to learn, big or
+                            small. I love solving problems, especially when I get to find a different
+                            way to solve them.
+                        </p>
+                        <p>
+                            I care about writing software that's clear, maintainable, and useful to the
+                            people relying on it.
                         </p>
                     </div>
 
