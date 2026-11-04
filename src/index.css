@@ -270,29 +270,36 @@ select {
 	margin-top: 16px;
 }
 
-.text-block p,
-.skills-list {
+.text-block p {
 	color: var(--text);
 }
 
-.skills-list {
+.skill-group + .skill-group {
+	margin-top: 16px;
+}
+
+.skill-group h4 {
+	margin-bottom: 8px;
+	font-size: 15px;
+	font-weight: 700;
+	color: var(--heading);
+}
+
+.skill-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
 	list-style: none;
 }
 
-.skills-list li {
-	display: grid;
-	grid-template-columns: 184px minmax(0, 1fr);
-	gap: 16px;
-	padding: 8px 0;
-}
-
-.skills-list li + li {
-	border-top: 1px solid var(--line);
-}
-
-.skills-label {
-	font-weight: 700;
-	color: var(--heading);
+.skill-tags li {
+	padding: 4px 12px;
+	font-size: 15px;
+	line-height: 1.5;
+	color: var(--text);
+	background: var(--surface);
+	border: 1px solid var(--line);
+	border-radius: 4px;
 }
 
 .project-grid {
@@ -621,11 +628,6 @@ select {
 
 	.project-card {
 		padding: 16px;
-	}
-
-	.skills-list li {
-		grid-template-columns: 1fr;
-		gap: 0;
 	}
 
 	.button {

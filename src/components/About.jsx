@@ -26,14 +26,65 @@ export default function About() {
 
                     <div className="text-block">
                         <h3>Technical skills</h3>
-                        <ul className="skills-list">
-                            <li><span className="skills-label">Languages:</span><span>Python, Java, TypeScript, JavaScript, C#, Dart, HTML, CSS</span></li>
-                            <li><span className="skills-label">Frameworks/Libraries:</span><span>React, Node.js, Flutter, BLoC, Flask, FastAPI, Spring Boot, Angular, ASP.NET MVC</span></li>
-                            <li><span className="skills-label">Cloud/DevOps:</span><span>Azure, Bicep, Docker, GitLab Pipelines, Git, Bash</span></li>
-                            <li><span className="skills-label">AI/Developer Tools:</span><span>Claude Code (AI-Assisted Development), Vercel, Supabase</span></li>
-                            <li><span className="skills-label">Architecture/APIs:</span><span>REST API, JSON, Design Patterns, Object-Oriented Design</span></li>
-                            <li><span className="skills-label">Databases/Data/Testing:</span><span>SQL, Oracle, ODBC, JDBC, NumPy, scikit-learn, JUnit, Pytest</span></li>
-                        </ul>
+                        <div className="skill-group">
+                            <h4>Languages</h4>
+                            <ul className="skill-tags">
+                                <li>Python</li>
+                                <li>TypeScript</li>
+                                <li>JavaScript</li>
+                                <li>Java</li>
+                                <li>C#</li>
+                                <li>SQL</li>
+                            </ul>
+                        </div>
+                        <div className="skill-group">
+                            <h4>Frontend</h4>
+                            <ul className="skill-tags">
+                                <li>React</li>
+                                <li>Angular</li>
+                                <li>Flutter</li>
+                                <li>HTML</li>
+                                <li>CSS</li>
+                            </ul>
+                        </div>
+                        <div className="skill-group">
+                            <h4>Backend</h4>
+                            <ul className="skill-tags">
+                                <li>Node.js</li>
+                                <li>Flask</li>
+                                <li>FastAPI</li>
+                                <li>Spring Boot</li>
+                                <li>ASP.NET MVC</li>
+                                <li>REST APIs</li>
+                            </ul>
+                        </div>
+                        <div className="skill-group">
+                            <h4>Data and ML</h4>
+                            <ul className="skill-tags">
+                                <li>NumPy</li>
+                                <li>scikit-learn</li>
+                                <li>Oracle</li>
+                            </ul>
+                        </div>
+                        <div className="skill-group">
+                            <h4>Tools</h4>
+                            <ul className="skill-tags">
+                                <li>Git</li>
+                                <li>Docker</li>
+                                <li>GitLab CI/CD</li>
+                                <li>Azure</li>
+                                <li>Vercel</li>
+                                <li>Supabase</li>
+                                <li>Claude Code</li>
+                            </ul>
+                        </div>
+                        <div className="skill-group">
+                            <h4>Testing</h4>
+                            <ul className="skill-tags">
+                                <li>Pytest</li>
+                                <li>JUnit</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
