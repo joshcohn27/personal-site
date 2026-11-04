@@ -14,17 +14,10 @@ export default function Header() {
                     </Link>
 
                     <a href="/#about">About</a>
-                    <a href="/#future">What's Next</a>
-                    <a href="/#interests">Beyond Tech</a>
+                    <a href="/#future">Goals</a>
+                    <a href="/#interests">Outside of Work</a>
                     <a href="/#contact">Contact</a>
                     <a href="/poetry">Poetry</a>
-                    <a
-                        href="https://github.com/joshcohn27"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        GitHub
-                    </a>
                 </nav>
             </div>
         </header>
