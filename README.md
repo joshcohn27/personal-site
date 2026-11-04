@@ -102,7 +102,6 @@ src/
 
 A few things in the repo are not part of the live site:
 
-- `src/components/NFLPredictor.jsx` and the `backend/` folder are an old NFL play predictor experiment. The component is not routed anywhere and the backend is not deployed. This is also why `express`, `cors`, `body-parser`, and `axios` are in `package.json`.
 - `dist/` is a committed build from an earlier version of the site. `npm run build` overwrites it.
 - `src.zip` is an old snapshot of the `src` folder.
 
