@@ -90,6 +90,16 @@ const projects: Project[] = [
         linkLabel: "Open Builder",
         repo: "https://github.com/joshcohn27/weekly-schedule",
     },
+    {
+        title: "Flight Overhead",
+        type: "Interactive Web App",
+        description:
+            "Flight Overhead tells you which plane is flying closest to you right now. It shows the airline, the route, the aircraft type, and where to look in the sky. It's like FlightAware or Flightradar24, but it only shows the one plane over your head. It runs as a web app on my phone using live public flight data.",
+        stack: ["React", "TypeScript", "Vite", "Vercel serverless functions"],
+        link: "https://flight.joshbcohn.com",
+        linkLabel: "Open Tracker",
+        repo: "https://github.com/joshcohn27/flight-app",
+    },
 ];
 
 export default function ProjectsPage() {
