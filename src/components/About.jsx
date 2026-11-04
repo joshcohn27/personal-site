@@ -3,7 +3,6 @@ export default function About() {
         <section id="about" className="section">
             <div className="container">
                 <div className="section-heading">
-                    <p className="section-label">About</p>
                     <h2>Background and skills</h2>
                 </div>
 

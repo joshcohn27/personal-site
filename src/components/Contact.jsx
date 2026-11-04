@@ -4,7 +4,6 @@ export default function Contact() {
             <div className="container">
                 <div className="contact-panel">
                     <div>
-                        <p className="section-label">Contact</p>
                         <h2>Get in touch</h2>
                         <p className="contact-text">
                             I'm always interested in opportunities to build, learn, and

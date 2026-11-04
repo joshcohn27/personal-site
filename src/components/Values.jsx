@@ -3,7 +3,6 @@ export default function Values() {
         <section id="future" className="section">
             <div className="container">
                 <div className="section-heading">
-                    <p className="section-label">What's Next</p>
                     <h2>Goals and values</h2>
                 </div>
 

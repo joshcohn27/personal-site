@@ -188,7 +188,6 @@ select {
 	border-radius: var(--radius);
 }
 
-.section-label,
 .project-type {
 	font-size: 0.82rem;
 	text-transform: uppercase;
@@ -202,15 +201,12 @@ select {
 }
 
 .section-heading {
-	margin-bottom: 1.25rem;
+	margin-bottom: 24px;
 }
 
 .section-heading h2 {
-	font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-	line-height: 1.1;
-	letter-spacing: -0.03em;
-	color: var(--heading);
-	margin-top: 0.3rem;
+	font-size: clamp(28px, 3.2vw, 36px);
+	line-height: 1.2;
 }
 
 .about-grid {

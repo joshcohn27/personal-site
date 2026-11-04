@@ -3,7 +3,6 @@ export default function Interests() {
         <section id="interests" className="section">
             <div className="container">
                 <div className="section-heading">
-                    <p className="section-label">Beyond Tech</p>
                     <h2>Outside of work</h2>
                 </div>
 
