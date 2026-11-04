@@ -6,7 +6,7 @@ export default function About() {
                     <h2>Background and skills</h2>
                 </div>
 
-                <div className="text-stack">
+                <div className="about-columns">
                     <div className="text-block">
                         <p>
                             I'm a software engineer with a BS in Computing and Information

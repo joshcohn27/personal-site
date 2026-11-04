@@ -219,6 +219,19 @@ select {
 	border-top: 1px solid var(--line);
 }
 
+.about-columns {
+	display: grid;
+	grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+	gap: 32px;
+	align-items: start;
+}
+
+.about-columns .text-block + .text-block {
+	margin-top: 0;
+	padding-top: 0;
+	border-top: 0;
+}
+
 .text-block h3 {
 	margin-bottom: 8px;
 	font-size: 20px;
@@ -325,6 +338,7 @@ select {
 @media (max-width: 960px) {
 
 	.hero-grid,
+	.about-columns,
 	.project-grid,
 	.interests-grid {
 		grid-template-columns: 1fr;
@@ -332,6 +346,12 @@ select {
 
 	.hero-photo {
 		width: min(280px, 100%);
+	}
+
+	.about-columns .text-block + .text-block {
+		margin-top: 24px;
+		padding-top: 24px;
+		border-top: 1px solid var(--line);
 	}
 }
 
