@@ -274,8 +274,10 @@ select {
 	color: var(--text);
 }
 
-.skill-group + .skill-group {
-	margin-top: 16px;
+.skill-groups {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 24px 32px;
 }
 
 .skill-group h4 {
@@ -293,7 +295,7 @@ select {
 }
 
 .skill-tags li {
-	padding: 4px 12px;
+	padding: 3px 8px;
 	font-size: 15px;
 	line-height: 1.5;
 	color: var(--text);
@@ -586,6 +588,10 @@ select {
 
 @media (max-width: 960px) {
 
+	.skill-groups {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
 	.hero-grid,
 	.about-columns,
 	.project-grid,
@@ -628,6 +634,10 @@ select {
 
 	.project-card {
 		padding: 16px;
+	}
+
+	.skill-groups {
+		grid-template-columns: 1fr;
 	}
 
 	.button {

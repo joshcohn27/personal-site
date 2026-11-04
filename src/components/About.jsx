@@ -6,7 +6,7 @@ export default function About() {
                     <h2>Background and skills</h2>
                 </div>
 
-                <div className="about-columns">
+                <div className="about-stack">
                     <div className="text-block">
                         <h3>Background</h3>
                         <p>
@@ -26,64 +26,66 @@ export default function About() {
 
                     <div className="text-block">
                         <h3>Technical skills</h3>
-                        <div className="skill-group">
-                            <h4>Languages</h4>
-                            <ul className="skill-tags">
-                                <li>Python</li>
-                                <li>TypeScript</li>
-                                <li>JavaScript</li>
-                                <li>Java</li>
-                                <li>C#</li>
-                                <li>SQL</li>
-                            </ul>
-                        </div>
-                        <div className="skill-group">
-                            <h4>Frontend</h4>
-                            <ul className="skill-tags">
-                                <li>React</li>
-                                <li>Angular</li>
-                                <li>Flutter</li>
-                                <li>HTML</li>
-                                <li>CSS</li>
-                            </ul>
-                        </div>
-                        <div className="skill-group">
-                            <h4>Backend</h4>
-                            <ul className="skill-tags">
-                                <li>Node.js</li>
-                                <li>Flask</li>
-                                <li>FastAPI</li>
-                                <li>Spring Boot</li>
-                                <li>ASP.NET MVC</li>
-                                <li>REST APIs</li>
-                            </ul>
-                        </div>
-                        <div className="skill-group">
-                            <h4>Data and ML</h4>
-                            <ul className="skill-tags">
-                                <li>NumPy</li>
-                                <li>scikit-learn</li>
-                                <li>Oracle</li>
-                            </ul>
-                        </div>
-                        <div className="skill-group">
-                            <h4>Tools</h4>
-                            <ul className="skill-tags">
-                                <li>Git</li>
-                                <li>Docker</li>
-                                <li>GitLab CI/CD</li>
-                                <li>Azure</li>
-                                <li>Vercel</li>
-                                <li>Supabase</li>
-                                <li>Claude Code</li>
-                            </ul>
-                        </div>
-                        <div className="skill-group">
-                            <h4>Testing</h4>
-                            <ul className="skill-tags">
-                                <li>Pytest</li>
-                                <li>JUnit</li>
-                            </ul>
+                        <div className="skill-groups">
+                            <div className="skill-group">
+                                <h4>Languages</h4>
+                                <ul className="skill-tags">
+                                    <li>Python</li>
+                                    <li>TypeScript</li>
+                                    <li>JavaScript</li>
+                                    <li>Java</li>
+                                    <li>C#</li>
+                                    <li>SQL</li>
+                                </ul>
+                            </div>
+                            <div className="skill-group">
+                                <h4>Frontend</h4>
+                                <ul className="skill-tags">
+                                    <li>React</li>
+                                    <li>Angular</li>
+                                    <li>Flutter</li>
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                </ul>
+                            </div>
+                            <div className="skill-group">
+                                <h4>Backend</h4>
+                                <ul className="skill-tags">
+                                    <li>Node.js</li>
+                                    <li>Flask</li>
+                                    <li>FastAPI</li>
+                                    <li>Spring Boot</li>
+                                    <li>ASP.NET MVC</li>
+                                    <li>REST APIs</li>
+                                </ul>
+                            </div>
+                            <div className="skill-group">
+                                <h4>Data and ML</h4>
+                                <ul className="skill-tags">
+                                    <li>NumPy</li>
+                                    <li>scikit-learn</li>
+                                    <li>Oracle</li>
+                                </ul>
+                            </div>
+                            <div className="skill-group">
+                                <h4>Tools</h4>
+                                <ul className="skill-tags">
+                                    <li>Git</li>
+                                    <li>Docker</li>
+                                    <li>GitLab CI/CD</li>
+                                    <li>Azure</li>
+                                    <li>Vercel</li>
+                                    <li>Supabase</li>
+                                    <li>Claude Code</li>
+                                </ul>
+                            </div>
+                            <div className="skill-group">
+                                <h4>Testing</h4>
+                                <ul className="skill-tags">
+                                    <li>Pytest</li>
+                                    <li>JUnit</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
