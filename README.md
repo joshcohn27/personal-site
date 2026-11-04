@@ -100,10 +100,9 @@ src/
 
 ### Leftovers
 
-A few things in the repo are not part of the live site:
+One thing in the repo is not part of the live site:
 
 - `dist/` is a committed build from an earlier version of the site. `npm run build` overwrites it.
-- `src.zip` is an old snapshot of the `src` folder.
 
 ## Running it locally
 
