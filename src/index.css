@@ -51,6 +51,11 @@ p,
 	max-width: 65ch;
 }
 
+/* Background on the homepage spans the full content width to line up with the skills grid */
+.full-width-text p {
+	max-width: none;
+}
+
 a {
 	color: inherit;
 	text-decoration: none;

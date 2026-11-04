@@ -7,7 +7,7 @@ export default function About() {
                 </div>
 
                 <div className="about-stack">
-                    <div className="text-block">
+                    <div className="text-block full-width-text">
                         <h3>Background</h3>
                         <p>
                             I started coding in high school. My school offered programming classes all
