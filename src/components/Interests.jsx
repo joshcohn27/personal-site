@@ -13,7 +13,8 @@ export default function Interests() {
                             Lifelong Philly fan. Sports have always been a big part of my life.
                             They have taught me a lot about resilience, patience, and sticking
                             with something even when it is frustrating. Also helps that the Eagles
-                            have given me some unforgettable moments.
+                            have given me some unforgettable moments. At RIT, I was a member of
+                            Sports Fans of RIT and served as the club's treasurer.
                         </p>
                     </article>
 
@@ -60,6 +61,14 @@ export default function Interests() {
                             I spend a lot of time writing poetry. It is something I really enjoy
                             and a way for me to slow down and think differently. It is how I
                             process my thoughts and a more personal way of telling stories.
+                        </p>
+                    </article>
+
+                    <article className="interest">
+                        <h3>Teaching</h3>
+                        <p>
+                            I'm a certified American Red Cross instructor for lifeguarding, water
+                            safety, and CPR.
                         </p>
                     </article>
                 </div>
