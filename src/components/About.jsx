@@ -30,12 +30,12 @@ export default function About() {
                     <div className="text-block">
                         <h3>Technical skills</h3>
                         <ul className="skills-list">
-                            <li><strong>Languages:</strong> Python, Java, TypeScript, JavaScript, C#, Dart, HTML, CSS</li>
-                            <li><strong>Frameworks/Libraries:</strong> React, Node.js, Flutter, BLoC, Flask, FastAPI, Spring Boot, Angular, ASP.NET MVC</li>
-                            <li><strong>Cloud/DevOps:</strong> Azure, Bicep, Docker, GitLab Pipelines, Git, Bash</li>
-                            <li><strong>AI/Developer Tools:</strong> Claude Code (AI-Assisted Development), Vercel, Supabase</li>
-                            <li><strong>Architecture/APIs:</strong> REST API, JSON, Design Patterns, Object-Oriented Design</li>
-                            <li><strong>Databases/Data/Testing:</strong> SQL, Oracle, ODBC, JDBC, NumPy, scikit-learn, JUnit, Pytest</li>
+                            <li><span className="skills-label">Languages:</span><span>Python, Java, TypeScript, JavaScript, C#, Dart, HTML, CSS</span></li>
+                            <li><span className="skills-label">Frameworks/Libraries:</span><span>React, Node.js, Flutter, BLoC, Flask, FastAPI, Spring Boot, Angular, ASP.NET MVC</span></li>
+                            <li><span className="skills-label">Cloud/DevOps:</span><span>Azure, Bicep, Docker, GitLab Pipelines, Git, Bash</span></li>
+                            <li><span className="skills-label">AI/Developer Tools:</span><span>Claude Code (AI-Assisted Development), Vercel, Supabase</span></li>
+                            <li><span className="skills-label">Architecture/APIs:</span><span>REST API, JSON, Design Patterns, Object-Oriented Design</span></li>
+                            <li><span className="skills-label">Databases/Data/Testing:</span><span>SQL, Oracle, ODBC, JDBC, NumPy, scikit-learn, JUnit, Pytest</span></li>
                         </ul>
                     </div>
                 </div>
