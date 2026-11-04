@@ -13,7 +13,7 @@ The site is a single page React app with client side routing. The routes are def
 | `/` | Homepage |
 | `/projects` | Full list of projects |
 | `/poetry` | My poems |
-| `/NHLMock` | An NHL draft lottery and mock draft simulator (not linked in the nav) |
+| `/NHLMock` | Permanent redirect to https://hockeylotto.com (set in `vercel.json`) |
 | anything else | 404 page with links back to home and projects |
 
 ### Homepage
@@ -45,10 +45,6 @@ The header links to each section, plus Projects, Poetry, and my GitHub.
 Opening a poem puts a `poem` query parameter in the URL, like `/poetry?poem=the-one`, where the value is a slug made from the title. Visiting a link like that opens the poem directly. The Share button copies that link to the clipboard, or opens the native share sheet on iOS.
 
 Some poems have a dedication, which shows up as a small info icon in the list and as a line under the title in the modal.
-
-### NHL mock draft page
-
-`/NHLMock` is a version of my NHL draft lottery simulator that lives in this repo. It runs the lottery draw ball by ball, has a lookup for the full combination table, then moves into a mock draft with prospect search and position filters. Results can be copied or printed. It reads its data from two CSV files in `public/mock/`. The version I actually link to from the site is the standalone one at hockeylotto.com.
 
 ## Where the projects live
 
@@ -84,7 +80,6 @@ public/
   resume.pdf            Resume linked from the hero
   jc.png                Favicon
   poems/                One text file per poem (poem1.txt, poem2.txt, ...)
-  mock/                 CSV data for the /NHLMock page
 src/
   main.jsx              React entry point
   App.jsx               Routes and the homepage layout
@@ -92,7 +87,6 @@ src/
   components/           Header, footer, homepage sections, and the 404 page
   projects/             ProjectsPage.tsx, the /projects page
   poetry/               PoetryMain.tsx, the /poetry page
-  lotto/                NHLMockAndLotto.tsx, the /NHLMock page
 ```
 
 ### Where to edit content
@@ -103,7 +97,6 @@ src/
 - **Homepage text**: each section is its own file in `src/components/` (`Hero.jsx`, `About.jsx`, `Values.jsx`, `Interests.jsx`, `Contact.jsx`)
 - **Nav links**: `src/components/Header.jsx`
 - **Resume**: replace `public/resume.pdf`
-- **NHL mock data**: `public/mock/combos.csv` and `public/mock/prospects.csv`. The team lists and odds are hardcoded in `src/lotto/NHLMockAndLotto.tsx`.
 
 ### Leftovers
 

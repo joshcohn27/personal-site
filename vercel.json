@@ -4,6 +4,26 @@
             "source": "/projects/beehive",
             "destination": "/projects/beehive/",
             "permanent": false
+        },
+        {
+            "source": "/NHLMock",
+            "destination": "https://hockeylotto.com",
+            "permanent": true
+        },
+        {
+            "source": "/NHLMock/:path*",
+            "destination": "https://hockeylotto.com",
+            "permanent": true
+        },
+        {
+            "source": "/nhlmock",
+            "destination": "https://hockeylotto.com",
+            "permanent": true
+        },
+        {
+            "source": "/nhlmock/:path*",
+            "destination": "https://hockeylotto.com",
+            "permanent": true
         }
     ],
     "rewrites": [
