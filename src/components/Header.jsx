@@ -17,7 +17,7 @@ export default function Header() {
                     </Link>
 
                     <a href="/#about">About</a>
-                    <a href="/#future">My Future</a>
+                    <a href="/#future">What's Next</a>
                     <a href="/#interests">Beyond Tech</a>
                     <a href="/#contact">Contact</a>
                     <a href="/poetry">Poetry</a>

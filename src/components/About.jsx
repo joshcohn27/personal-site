@@ -4,7 +4,7 @@ export default function About() {
             <div className="container">
                 <div className="section-heading">
                     <p className="section-label">About</p>
-                    <h2>Background and what I work with.</h2>
+                    <h2>Background and skills</h2>
                 </div>
 
                 <div className="about-grid">
@@ -15,7 +15,8 @@ export default function About() {
                             I've been coding since 2017, and I've worked on real engineering
                             teams along the way. At Discovery Machine, I built a cross-platform
                             mobile app in Flutter. At Chameleon Consulting Group LLC, I
-                            worked on cloud deployments and backend automation.
+                            automated virtual machine spin-up in Docker, modified a Flask API in
+                            an air-gapped environment, and configured GitLab pipelines.
                         </p>
                         <p>
                             I've built a range of projects both on my own and through school,
@@ -29,14 +30,12 @@ export default function About() {
                     <div className="content-card">
                         <h3>Technical Skills</h3>
                         <ul className="bullet-list">
-                            <li><strong>Languages:</strong> JavaScript/TypeScript, Python, Java, Go, C#, Dart</li>
-                            <li><strong>Frontend:</strong> React, Angular, Flutter, Vite, HTML/CSS</li>
-                            <li><strong>Backend:</strong> Spring Boot, Node.js, Supabase, REST APIs</li>
-                            <li><strong>ML:</strong> PyTorch, scikit-learn</li>
-                            <li><strong>Databases:</strong> SQL, Oracle, ODBC/JDBC</li>
-                            <li><strong>Cloud/DevOps:</strong> AWS, Azure, Docker, Terraform, Bash, Git</li>
-                            <li><strong>Testing:</strong> JUnit, Pytest</li>
-                            <li><strong>Other:</strong> OOP/design patterns, Agile Methodologies, MVC frameworks, AI-assisted development (Claude Code)</li>
+                            <li><strong>Languages:</strong> Python, Java, TypeScript, JavaScript, C#, Dart, HTML, CSS</li>
+                            <li><strong>Frameworks/Libraries:</strong> React, Node.js, Flutter, BLoC, Flask, FastAPI, Spring Boot, Angular, ASP.NET MVC</li>
+                            <li><strong>Cloud/DevOps:</strong> Azure, Bicep, Docker, GitLab Pipelines, Git, Bash</li>
+                            <li><strong>AI/Developer Tools:</strong> Claude Code (AI-Assisted Development), Vercel, Supabase</li>
+                            <li><strong>Architecture/APIs:</strong> REST API, JSON, Design Patterns, Object-Oriented Design</li>
+                            <li><strong>Databases/Data/Testing:</strong> SQL, Oracle, ODBC, JDBC, NumPy, scikit-learn, JUnit, Pytest</li>
                         </ul>
                     </div>
                 </div>

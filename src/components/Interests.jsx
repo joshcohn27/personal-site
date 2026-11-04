@@ -1,10 +1,10 @@
 export default function Interests() {
     return (
-        <section id="interests" className="section section-alt">
+        <section id="interests" className="section">
             <div className="container">
                 <div className="section-heading">
                     <p className="section-label">Beyond Tech</p>
-                    <h2>What I do when I'm not at a keyboard.</h2>
+                    <h2>Outside of work</h2>
                 </div>
 
                 <div className="interests-grid">

@@ -5,7 +5,7 @@ export default function Contact() {
                 <div className="contact-panel">
                     <div>
                         <p className="section-label">Contact</p>
-                        <h2>Let's connect.</h2>
+                        <h2>Get in touch</h2>
                         <p className="contact-text">
                             I'm always interested in opportunities to build, learn, and
                             contribute to projects that have real impact.

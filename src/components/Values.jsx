@@ -1,10 +1,10 @@
 export default function Values() {
     return (
-        <section id="future" className="section">
+        <section id="future" className="section section-alt">
             <div className="container">
                 <div className="section-heading">
-                    <p className="section-label">What I'm Looking For Next</p>
-                    <h2>Where I'm headed, and what matters to me.</h2>
+                    <p className="section-label">What's Next</p>
+                    <h2>Goals and values</h2>
                 </div>
 
                 <div className="about-grid">
@@ -28,13 +28,14 @@ export default function Values() {
                     </div>
 
                     <div className="content-card">
-                        <h3>What I care about in the work</h3>
+                        <h3>What I value</h3>
                         <p>
                             The best environments I've been part of were the ones where people cared.
                             Not just about the project, but about doing things the right way and
                             thinking through the details instead of just getting something out the door.
                             That's something I've really noticed from working on real teams, and it
-                            matters a lot to me.
+                            matters a lot to me. I care as much about the people I work with as the
+                            problems I'm solving.
                         </p>
                         <p>
                             That carries over into how I think about AI. I care a lot about who actually

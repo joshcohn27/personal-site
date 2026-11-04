@@ -117,9 +117,19 @@ select {
 
 .hero-grid {
 	display: grid;
-	grid-template-columns: 1.35fr 0.95fr;
+	grid-template-columns: minmax(0, 1fr) auto;
 	gap: 2rem;
-	align-items: stretch;
+	align-items: center;
+}
+
+.hero-photo {
+	width: clamp(240px, 24vw, 320px);
+	height: auto;
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+	border-radius: 28px;
+	border: 1px solid var(--line);
+	box-shadow: var(--shadow);
 }
 
 .hero-copy {
@@ -190,11 +200,6 @@ select {
 	background: rgba(255, 255, 255, 0.03);
 }
 
-.hero-panel {
-	display: grid;
-	gap: 1rem;
-}
-
 .hero-card,
 .content-card,
 .project-card,
@@ -217,21 +222,6 @@ select {
 	letter-spacing: 0.08em;
 	color: #93c5fd;
 	font-weight: 800;
-}
-
-.hero-list {
-	margin-top: 0.85rem;
-	padding-left: 1.1rem;
-	color: var(--muted);
-}
-
-.hero-list li+li {
-	margin-top: 0.55rem;
-}
-
-.hero-card-text {
-	margin-top: 0.75rem;
-	color: var(--muted);
 }
 
 .section {
@@ -424,6 +414,11 @@ select {
 
 	.hero-copy h1 {
 		max-width: 12ch;
+	}
+
+	.hero-photo {
+		width: min(280px, 100%);
+		justify-self: center;
 	}
 }
 

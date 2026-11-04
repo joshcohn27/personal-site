@@ -43,7 +43,7 @@ export default function Projects() {
                 >
                     <div>
                         <p className="section-label">Projects</p>
-                        <h2>Selected work.</h2>
+                        <h2>Selected work</h2>
                     </div>
                     <Link
                         to="/projects"
