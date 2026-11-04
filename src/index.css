@@ -1,5 +1,4 @@
 :root {
-	color-scheme: light dark;
 	--bg: #fafafa;
 	--surface: #ffffff;
 	--line: #e5e5e5;
@@ -12,21 +11,6 @@
 	--on-accent: #ffffff;
 	--radius: 6px;
 	--max-width: 1120px;
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--bg: #111113;
-		--surface: #1a1a1e;
-		--line: #2a2a2f;
-		--text: #d4d4d4;
-		--muted: #a3a3a3;
-		--heading: #f5f5f5;
-		--accent: #a78bfa;
-		--accent-hover: #9b7bf5;
-		--accent-tint: #221d33;
-		--on-accent: #111113;
-	}
 }
 
 * {
