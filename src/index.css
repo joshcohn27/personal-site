@@ -116,16 +116,26 @@ select {
 .site-nav {
 	display: flex;
 	align-items: center;
-	gap: 24px;
+	gap: 8px;
 	flex-wrap: wrap;
+	/* line the outer links' text up with the container edge despite their padding */
+	margin-right: -8px;
 }
 
 .site-nav a {
+	padding: 4px 8px;
+	border: 1px solid transparent;
+	border-radius: var(--radius);
 	color: var(--muted);
 }
 
 .site-nav a:hover {
 	color: var(--heading);
+}
+
+.site-nav a.is-active {
+	border-color: var(--accent);
+	color: var(--accent);
 }
 
 .hero-section {
@@ -601,7 +611,9 @@ select {
 	}
 
 	.site-nav {
-		gap: 0.85rem;
+		gap: 4px;
+		margin-right: 0;
+		margin-left: -8px;
 	}
 
 	.project-card {
