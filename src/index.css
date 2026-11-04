@@ -321,6 +321,26 @@ select {
 	padding: 24px;
 }
 
+/* Homepage project cards lift slightly on hover */
+.project-grid .project-card {
+	transition: transform 150ms ease, border-color 150ms ease;
+}
+
+.project-grid .project-card:hover {
+	transform: translateY(-4px);
+	border-color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.project-grid .project-card {
+		transition: none;
+	}
+
+	.project-grid .project-card:hover {
+		transform: none;
+	}
+}
+
 .project-card h3 {
 	margin-top: 4px;
 	margin-bottom: 0;
