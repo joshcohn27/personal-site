@@ -49,7 +49,7 @@ function useHomeSection(enabled) {
 }
 
 export default function Header() {
-    const { pathname } = useLocation();
+    const { pathname, hash } = useLocation();
     const onHome = pathname === "/";
     const homeSection = useHomeSection(onHome);
 
@@ -64,6 +64,16 @@ export default function Header() {
             ? { className: "is-active", "aria-current": onHome ? "location" : "page" }
             : {};
 
+    // Clicking the section you're already on doesn't change the URL, so scroll to it directly.
+    const sectionLink = (id) => ({
+        to: `/#${id}`,
+        onClick: () => {
+            if (onHome && hash === `#${id}`) {
+                document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+            }
+        },
+    });
+
     return (
         <header className="site-header">
             <div className="container header-inner">
@@ -72,15 +82,15 @@ export default function Header() {
                 </Link>
 
                 <nav className="site-nav" aria-label="Primary navigation">
-                    <Link to="/projects" onClick={() => window.scrollTo(0, 0)} {...navProps("projects")}>
+                    <Link to="/projects" {...navProps("projects")}>
                         Projects
                     </Link>
 
-                    <a href="/#about" {...navProps("about")}>About</a>
-                    <a href="/#future" {...navProps("goals")}>Goals</a>
-                    <a href="/#interests" {...navProps("interests")}>Outside of Work</a>
-                    <a href="/poetry" {...navProps("poetry")}>Poetry</a>
-                    <a href="/#contact" {...navProps("contact")}>Contact</a>
+                    <Link {...sectionLink("about")} {...navProps("about")}>About</Link>
+                    <Link {...sectionLink("future")} {...navProps("goals")}>Goals</Link>
+                    <Link {...sectionLink("interests")} {...navProps("interests")}>Outside of Work</Link>
+                    <Link to="/poetry" {...navProps("poetry")}>Poetry</Link>
+                    <Link {...sectionLink("contact")} {...navProps("contact")}>Contact</Link>
                 </nav>
             </div>
         </header>
