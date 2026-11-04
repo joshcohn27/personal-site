@@ -241,6 +241,7 @@ select {
 	margin-bottom: 24px;
 }
 
+.section-heading h1,
 .section-heading h2,
 .contact h2 {
 	font-size: clamp(24px, 3vw, 32px);
@@ -371,6 +372,196 @@ select {
 	font-size: 14px;
 }
 
+.page-intro {
+	margin-top: 8px;
+	max-width: 60ch;
+}
+
+.muted-text {
+	color: var(--muted);
+}
+
+.text-button {
+	background: none;
+	border: 0;
+	padding: 0;
+	font: inherit;
+	color: var(--accent);
+	cursor: pointer;
+}
+
+.text-button:hover {
+	text-decoration: underline;
+}
+
+.text-button.is-active {
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+/* Poetry page */
+.poem-controls {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	margin-bottom: 24px;
+}
+
+.poem-search {
+	position: relative;
+	max-width: 480px;
+}
+
+.poem-search input {
+	width: 100%;
+	padding: 8px 40px 8px 16px;
+	min-height: 44px;
+	font: inherit;
+	color: var(--text);
+	background: var(--surface);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+}
+
+.poem-search input::placeholder {
+	color: var(--muted);
+}
+
+.poem-search-clear {
+	position: absolute;
+	right: 16px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: var(--muted);
+}
+
+.poem-sort {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 16px;
+}
+
+.poem-count {
+	margin-bottom: 16px;
+}
+
+.poem-list {
+	list-style: none;
+	border-top: 1px solid var(--line);
+}
+
+.poem-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	border-bottom: 1px solid var(--line);
+}
+
+.poem-title {
+	padding: 16px 0;
+	background: none;
+	border: 0;
+	font: inherit;
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--heading);
+	text-align: left;
+	cursor: pointer;
+}
+
+.poem-title:hover {
+	color: var(--accent);
+}
+
+.poem-note {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+}
+
+.poem-note-button {
+	display: flex;
+	padding: 4px;
+	background: none;
+	border: 0;
+	color: var(--muted);
+	cursor: pointer;
+}
+
+.poem-note-button:hover,
+.poem-note-button.is-open {
+	color: var(--accent);
+}
+
+.poem-note-text {
+	position: absolute;
+	bottom: calc(100% + 8px);
+	left: 0;
+	z-index: 10;
+	width: max-content;
+	max-width: min(320px, 70vw);
+	padding: 8px 16px;
+	font-size: 14px;
+	font-style: italic;
+	color: var(--text);
+	background: var(--surface);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+}
+
+.poem-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 100;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	overflow-y: auto;
+	padding: 32px 16px;
+	background: var(--bg);
+}
+
+.poem-panel {
+	width: 100%;
+	max-width: 640px;
+	padding: 32px;
+	background: var(--surface);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+}
+
+.poem-actions {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 16px;
+	margin-bottom: 16px;
+}
+
+.poem-heading {
+	font-size: 24px;
+	line-height: 1.25;
+}
+
+.poem-dedication {
+	margin-top: 8px;
+	font-size: 14px;
+	font-style: italic;
+	color: var(--muted);
+}
+
+.poem-body {
+	margin-top: 24px;
+	padding-top: 24px;
+	border-top: 1px solid var(--line);
+	font-family: inherit;
+	font-size: 16px;
+	line-height: 1.9;
+	white-space: pre-wrap;
+	color: var(--text);
+}
+
 @media (max-width: 960px) {
 
 	.hero-grid,
@@ -421,6 +612,10 @@ select {
 
 	.footer-inner {
 		flex-direction: column;
+	}
+
+	.poem-panel {
+		padding: 16px;
 	}
 }
 

@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 interface Poem {
     title: string;
@@ -40,22 +42,12 @@ function InfoTooltip({ text }: { text: string }) {
     }, []);
 
     return (
-        <div ref={ref} style={{ position: "relative", display: "inline-flex", alignItems: "center" }}>
+        <div ref={ref} className="poem-note">
             <button
+                type="button"
                 onClick={e => { e.stopPropagation(); setVisible(v => !v); }}
                 title="Note"
-                style={{
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    padding: "0 0.25rem",
-                    color: visible ? "#a78bfa" : "#94a3b8",
-                    display: "flex",
-                    alignItems: "center",
-                    transition: "color 0.15s",
-                }}
-                onMouseEnter={e => (e.currentTarget.style.color = "#a78bfa")}
-                onMouseLeave={e => { if (!visible) e.currentTarget.style.color = "#94a3b8"; }}
+                className={visible ? "poem-note-button is-open" : "poem-note-button"}
             >
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10" />
@@ -64,37 +56,8 @@ function InfoTooltip({ text }: { text: string }) {
                 </svg>
             </button>
             {visible && (
-                <div style={{
-                    position: "absolute",
-                    bottom: "calc(100% + 8px)",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    background: "#0f172a",
-                    border: "1px solid rgba(148, 163, 184, 0.25)",
-                    borderRadius: "10px",
-                    padding: "0.6rem 0.85rem",
-                    fontSize: "0.82rem",
-                    color: "#cbd5e1",
-                    boxShadow: "0 8px 24px rgba(2, 6, 23, 0.5)",
-                    zIndex: 10,
-                    fontStyle: "italic",
-                    fontWeight: 400,
-                    minWidth: "180px",
-                    maxWidth: "500px",
-                    whiteSpace: "normal",
-                }}>
+                <div className="poem-note-text">
                     {text}
-                    <div style={{
-                        position: "absolute",
-                        top: "100%",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        width: 0,
-                        height: 0,
-                        borderLeft: "6px solid transparent",
-                        borderRight: "6px solid transparent",
-                        borderTop: "6px solid rgba(148, 163, 184, 0.25)",
-                    }} />
                 </div>
             )}
         </div>
@@ -221,371 +184,102 @@ export default function Poetry() {
         return result;
     }, [poems, search, sort]);
 
-    const inputStyle: React.CSSProperties = {
-        width: "100%",
-        background: "rgba(15, 23, 42, 0.92)",
-        border: "1px solid rgba(148, 163, 184, 0.18)",
-        borderRadius: "12px",
-        padding: "0.75rem 1rem 0.75rem 2.75rem",
-        color: "#f8fafc",
-        fontSize: "0.95rem",
-        fontFamily: "inherit",
-        outline: "none",
-        transition: "border-color 0.18s",
-        boxSizing: "border-box",
-    };
-
-    const sortBtnStyle = (active: boolean): React.CSSProperties => ({
-        background: active ? "rgba(167, 139, 250, 0.14)" : "rgba(15, 23, 42, 0.92)",
-        border: `1px solid ${active ? "rgba(167, 139, 250, 0.35)" : "rgba(148, 163, 184, 0.18)"}`,
-        borderRadius: "999px",
-        padding: "0.4rem 0.85rem",
-        color: active ? "#a78bfa" : "#94a3b8",
-        fontSize: "0.82rem",
-        fontWeight: active ? 700 : 500,
-        fontFamily: "inherit",
-        cursor: "pointer",
-        transition: "all 0.15s",
-        whiteSpace: "nowrap" as const,
-    });
-
     return (
-        <>
-            <div style={{
-                minHeight: "100vh",
-                padding: "5rem 1.5rem 3rem",
-                boxSizing: "border-box",
-                maxWidth: "860px",
-                margin: "0 auto",
-            }}>
-                {/* Back button */}
-                <a
-                    href="/"
-                    style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "0.5rem",
-                        color: "#94a3b8",
-                        fontSize: "0.85rem",
-                        fontWeight: 500,
-                        marginBottom: "2rem",
-                        textDecoration: "none",
-                        cursor: "pointer",
-                        background: "rgba(15, 23, 42, 0.92)",
-                        border: "1px solid rgba(148, 163, 184, 0.18)",
-                        borderRadius: "999px",
-                        padding: "0.4rem 0.9rem 0.4rem 0.7rem",
-                        transition: "color 0.15s, border-color 0.15s, background 0.15s",
-                    }}
-                    onMouseEnter={e => {
-                        e.currentTarget.style.color = "#f8fafc";
-                        e.currentTarget.style.borderColor = "rgba(167, 139, 250, 0.35)";
-                        e.currentTarget.style.background = "rgba(167, 139, 250, 0.06)";
-                    }}
-                    onMouseLeave={e => {
-                        e.currentTarget.style.color = "#94a3b8";
-                        e.currentTarget.style.borderColor = "rgba(148, 163, 184, 0.18)";
-                        e.currentTarget.style.background = "rgba(15, 23, 42, 0.92)";
-                    }}
-                >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="19" y1="12" x2="5" y2="12" />
-                        <polyline points="12 19 5 12 12 5" />
-                    </svg>
-                    Back to Main Site
-                </a>
+        <div className="site-shell">
+            <Header />
+            <main>
+                <section className="section">
+                    <div className="container">
+                        <div className="section-heading">
+                            <h1>Poetry</h1>
+                            <p className="page-intro">
+                                Not everything I build is software. This is where I write poetry: personal, unfiltered, self-published.
+                            </p>
+                        </div>
 
-                {/* Page heading */}
-                <h1 style={{
-                    fontSize: "clamp(2rem, 4vw, 3.2rem)",
-                    fontWeight: 800,
-                    letterSpacing: "-0.03em",
-                    lineHeight: 1.1,
-                    color: "#f8fafc",
-                    marginBottom: "40px",
-                }}>
-                    Poetry
-                </h1>
-                <div style={{ marginBottom: "2rem" }}>
-                    <span style={{
-                        display: "inline-block",
-                        marginBottom: "0.75rem",
-                        padding: "0.45rem 0.8rem",
-                        borderRadius: "999px",
-                        background: "rgba(167, 139, 250, 0.14)",
-                        color: "#a78bfa",
-                        fontSize: "0.82rem",
-                        // fontWeight: 700,
-                        letterSpacing: "0.08em",
-                        // textTransform: "italics",
-                    }}>
-                        <i>Not everything I build is software. This is where I write poetry: personal, unfiltered, self-published.</i>
-                    </span>
-                </div>
+                        {/* Search + Sort */}
+                        <div className="poem-controls">
+                            <div className="poem-search">
+                                <input
+                                    type="text"
+                                    placeholder="Search by title or content..."
+                                    value={search}
+                                    onChange={e => setSearch(e.target.value)}
+                                />
+                                {search && (
+                                    <button type="button" className="text-button poem-search-clear" onClick={() => setSearch("")}>
+                                        x
+                                    </button>
+                                )}
+                            </div>
 
-                {/* Search + Sort */}
-                <div style={{ marginBottom: "1.75rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                    <div style={{ position: "relative" }}>
-                        <svg
-                            style={{ position: "absolute", left: "0.85rem", top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}
-                            width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                        >
-                            <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-                        </svg>
-                        <input
-                            type="text"
-                            placeholder="Search by title or content..."
-                            value={search}
-                            onChange={e => setSearch(e.target.value)}
-                            style={inputStyle}
-                            onFocus={e => (e.currentTarget.style.borderColor = "rgba(167, 139, 250, 0.45)")}
-                            onBlur={e => (e.currentTarget.style.borderColor = "rgba(148, 163, 184, 0.18)")}
-                        />
-                        {search && (
-                            <button
-                                onClick={() => setSearch("")}
-                                style={{
-                                    position: "absolute", right: "0.75rem", top: "50%", transform: "translateY(-50%)",
-                                    background: "none", border: "none", color: "#94a3b8", cursor: "pointer", fontSize: "1rem", lineHeight: 1,
-                                }}
-                            >
-                                x
-                            </button>
+                            <div className="poem-sort">
+                                <span className="muted-text">Sort:</span>
+                                {(Object.keys(SORT_LABELS) as SortOption[]).map(opt => (
+                                    <button
+                                        key={opt}
+                                        type="button"
+                                        onClick={() => setSort(opt)}
+                                        className={sort === opt ? "text-button is-active" : "text-button"}
+                                        aria-pressed={sort === opt}
+                                    >
+                                        {SORT_LABELS[opt]}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Results count */}
+                        {!loading && search && (
+                            <p className="muted-text poem-count">
+                                {filtered.length} {filtered.length === 1 ? "poem" : "poems"} found
+                            </p>
+                        )}
+
+                        {/* Poem list */}
+                        {loading ? null : filtered.length === 0 ? (
+                            <p>No poems match your search.</p>
+                        ) : (
+                            <ul className="poem-list">
+                                {filtered.map((poem) => (
+                                    <li key={poem.index} className="poem-row">
+                                        <button type="button" className="poem-title" onClick={() => openPoem(poem)}>
+                                            {poem.title}
+                                        </button>
+                                        {poem.dedication && <InfoTooltip text={poem.dedication} />}
+                                    </li>
+                                ))}
+                            </ul>
                         )}
                     </div>
+                </section>
+            </main>
+            <Footer />
 
-                    <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
-                        <span style={{ fontSize: "0.82rem", color: "#94a3b8", fontWeight: 500, marginRight: "0.25rem" }}>Sort:</span>
-                        {(Object.keys(SORT_LABELS) as SortOption[]).map(opt => (
-                            <button key={opt} onClick={() => setSort(opt)} style={sortBtnStyle(sort === opt)}>
-                                {SORT_LABELS[opt]}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Results count */}
-                {!loading && search && (
-                    <p style={{ fontSize: "0.85rem", color: "#94a3b8", marginBottom: "1rem" }}>
-                        {filtered.length} {filtered.length === 1 ? "poem" : "poems"} found
-                    </p>
-                )}
-
-                {/* Poem list */}
-                {loading ? (
-                    <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                        {Array.from({ length: 6 }).map((_, i) => (
-                            <div key={i} style={{
-                                height: "68px",
-                                borderRadius: "16px",
-                                background: "rgba(15, 23, 42, 0.92)",
-                                border: "1px solid rgba(148, 163, 184, 0.18)",
-                                animation: "pulse 1.4s ease-in-out infinite",
-                            }} />
-                        ))}
-                    </div>
-                ) : filtered.length === 0 ? (
-                    <p style={{ color: "#94a3b8", fontSize: "0.95rem" }}>No poems match your search.</p>
-                ) : (
-                    <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                        {filtered.map((poem) => (
-                            <li key={poem.index}>
-                                <button
-                                    onClick={() => openPoem(poem)}
-                                    style={{
-                                        width: "100%",
-                                        textAlign: "left",
-                                        background: "linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(11, 17, 32, 0.9))",
-                                        border: "1px solid rgba(148, 163, 184, 0.18)",
-                                        borderRadius: "16px",
-                                        padding: "1.1rem 1.4rem",
-                                        cursor: "pointer",
-                                        color: "#f8fafc",
-                                        fontSize: "1.05rem",
-                                        fontWeight: 600,
-                                        fontFamily: "inherit",
-                                        transition: "transform 0.18s ease, border-color 0.18s ease",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "space-between",
-                                        gap: "1rem",
-                                    }}
-                                    onMouseEnter={e => {
-                                        (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                                        (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(167, 139, 250, 0.35)";
-                                    }}
-                                    onMouseLeave={e => {
-                                        (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                                        (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(148, 163, 184, 0.18)";
-                                    }}
-                                >
-                                    <span style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                                        {poem.title}
-                                        {poem.dedication && <InfoTooltip text={poem.dedication} />}
-                                    </span>
-                                    <span style={{ color: "#94a3b8", fontSize: "1.1rem", flexShrink: 0 }}>
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <line x1="5" y1="12" x2="19" y2="12" />
-                                            <polyline points="12 5 19 12 12 19" />
-                                        </svg>
-                                    </span>
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </div>
-
-            {/* Fullscreen modal */}
+            {/* Fullscreen poem view */}
             {selectedPoem && (
-                <div
-                    onClick={closeModal}
-                    style={{
-                        position: "fixed",
-                        inset: 0,
-                        zIndex: 100,
-                        background: "rgba(8, 16, 31, 0.92)",
-                        backdropFilter: "blur(12px)",
-                        display: "flex",
-                        alignItems: "flex-start",
-                        justifyContent: "center",
-                        overflowY: "auto",
-                        padding: "4rem 1.5rem",
-                    }}
-                >
-                    <div
-                        onClick={e => e.stopPropagation()}
-                        style={{
-                            background: "linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(11, 17, 32, 0.98))",
-                            border: "1px solid rgba(148, 163, 184, 0.18)",
-                            borderRadius: "24px",
-                            padding: "2.5rem",
-                            width: "100%",
-                            maxWidth: "600px",
-                            position: "relative",
-                            boxShadow: "0 20px 60px rgba(2, 6, 23, 0.6)",
-                        }}
-                    >
-                        <div style={{
-                            position: "absolute",
-                            top: "1.25rem",
-                            right: "1.25rem",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "0.6rem",
-                        }}>
-                            {copied && (
-                                <span style={{
-                                    fontSize: "0.78rem",
-                                    color: "#a78bfa",
-                                    whiteSpace: "nowrap",
-                                }}>
-                                    Copied to clipboard
-                                </span>
-                            )}
-                            <button
-                                onClick={handleShare}
-                                title="Share this poem"
-                                style={{
-                                    background: "rgba(255,255,255,0.06)",
-                                    border: "1px solid rgba(148, 163, 184, 0.18)",
-                                    borderRadius: "999px",
-                                    color: "#94a3b8",
-                                    fontSize: "0.85rem",
-                                    fontWeight: 600,
-                                    cursor: "pointer",
-                                    padding: "0.3rem 0.75rem",
-                                    fontFamily: "inherit",
-                                    transition: "color 0.15s, background 0.15s",
-                                }}
-                                onMouseEnter={e => {
-                                    (e.currentTarget as HTMLButtonElement).style.color = "#f8fafc";
-                                    (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.1)";
-                                }}
-                                onMouseLeave={e => {
-                                    (e.currentTarget as HTMLButtonElement).style.color = "#94a3b8";
-                                    (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.06)";
-                                }}
-                            >
+                <div className="poem-overlay" onClick={closeModal}>
+                    <div className="poem-panel" onClick={e => e.stopPropagation()}>
+                        <div className="poem-actions">
+                            {copied && <span className="muted-text">Copied to clipboard</span>}
+                            <button type="button" className="text-button" onClick={handleShare} title="Share this poem">
                                 Share
                             </button>
-                            <button
-                                onClick={closeModal}
-                                style={{
-                                    background: "rgba(255,255,255,0.06)",
-                                    border: "1px solid rgba(148, 163, 184, 0.18)",
-                                    borderRadius: "999px",
-                                    color: "#94a3b8",
-                                    fontSize: "0.85rem",
-                                    fontWeight: 600,
-                                    cursor: "pointer",
-                                    padding: "0.3rem 0.75rem",
-                                    fontFamily: "inherit",
-                                    transition: "color 0.15s, background 0.15s",
-                                }}
-                                onMouseEnter={e => {
-                                    (e.currentTarget as HTMLButtonElement).style.color = "#f8fafc";
-                                    (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.1)";
-                                }}
-                                onMouseLeave={e => {
-                                    (e.currentTarget as HTMLButtonElement).style.color = "#94a3b8";
-                                    (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.06)";
-                                }}
-                            >
+                            <button type="button" className="text-button" onClick={closeModal}>
                                 X
                             </button>
                         </div>
 
-                        <h2 style={{
-                            fontSize: "1.4rem",
-                            fontWeight: 700,
-                            color: "#f8fafc",
-                            margin: "0 6.5rem 0.5rem 0",
-                            letterSpacing: "-0.02em",
-                            lineHeight: 1.2,
-                        }}>
-                            {selectedPoem.title}
-                        </h2>
+                        <h2 className="poem-heading">{selectedPoem.title}</h2>
 
                         {selectedPoem.dedication && (
-                            <p style={{
-                                fontSize: "0.85rem",
-                                color: "#64748b",
-                                fontStyle: "italic",
-                                margin: "0 0 1.25rem 0",
-                            }}>
-                                {selectedPoem.dedication}
-                            </p>
+                            <p className="poem-dedication">{selectedPoem.dedication}</p>
                         )}
 
-                        <div style={{
-                            height: "1px",
-                            background: "rgba(148, 163, 184, 0.18)",
-                            marginBottom: "1.75rem",
-                            marginTop: selectedPoem.dedication ? 0 : "1.25rem",
-                        }} />
-
-                        <pre style={{
-                            fontFamily: "Georgia, 'Times New Roman', serif",
-                            fontSize: "1rem",
-                            lineHeight: 1.9,
-                            whiteSpace: "pre-wrap",
-                            margin: 0,
-                            color: "#e5e7eb",
-                            textAlign: "left",
-                        }}>
-                            {selectedPoem.body}
-                        </pre>
+                        <pre className="poem-body">{selectedPoem.body}</pre>
                     </div>
                 </div>
             )}
-
-            <style>{`
-                @keyframes pulse {
-                    0%, 100% { opacity: 1; }
-                    50% { opacity: 0.4; }
-                }
-            `}</style>
-        </>
+        </div>
     );
 }
