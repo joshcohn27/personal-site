@@ -8,6 +8,7 @@ export default function About() {
 
                 <div className="about-columns">
                     <div className="text-block">
+                        <h3>Background</h3>
                         <p>
                             I'm a software engineer with a BS in Computing and Information
                             Technologies from RIT and a minor in Software Engineering.
@@ -27,8 +28,8 @@ export default function About() {
                     </div>
 
                     <div className="text-block">
-                        <h3>Technical Skills</h3>
-                        <ul className="bullet-list">
+                        <h3>Technical skills</h3>
+                        <ul className="skills-list">
                             <li><strong>Languages:</strong> Python, Java, TypeScript, JavaScript, C#, Dart, HTML, CSS</li>
                             <li><strong>Frameworks/Libraries:</strong> React, Node.js, Flutter, BLoC, Flask, FastAPI, Spring Boot, Angular, ASP.NET MVC</li>
                             <li><strong>Cloud/DevOps:</strong> Azure, Bicep, Docker, GitLab Pipelines, Git, Bash</li>
