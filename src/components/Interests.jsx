@@ -71,6 +71,15 @@ export default function Interests() {
                             safety, and CPR.
                         </p>
                     </article>
+
+                    <article className="interest">
+                        <h3>Camp Seneca Lake</h3>
+                        <p>
+                            I've spent 14 summers at Camp Seneca Lake, going from camper to counselor
+                            to the leadership team. My role changes from year to year, but I'm always
+                            responsible for a lot. It's a big part of my life.
+                        </p>
+                    </article>
                 </div>
             </div>
         </section>
