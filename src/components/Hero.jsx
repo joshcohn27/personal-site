@@ -3,20 +3,16 @@ export default function Hero() {
 		<section id="top" className="hero-section">
 			<div className="container hero-grid">
 				<div className="hero-copy">
-					<p className="eyebrow">Software Engineer · Drexel MS AI/ML · Philadelphia, PA</p>
+					<p className="hero-tagline">Software Engineer · React, TypeScript, Python · Philadelphia, PA</p>
 
 					<h1>
 						Josh Cohn
 					</h1>
 
 					<p className="hero-text">
-						I build software and care deeply about who it impacts. I graduated
-						from RIT with a BS in Computing and Information Technologies and a
-						minor in Software Engineering, and I'm now pursuing an MS in AI and
-						Machine Learning at Drexel. I've completed
-						two software engineering internships, building a cross-platform
-						Air Force app at Discovery Machine and deployment automation at
-						Chameleon Consulting Group.
+						I like building things that make life a little easier. I care about
+						doing right by the people who use them. Now I'm getting my MS in AI
+						and Machine Learning at Drexel.
 					</p>
 
 					<div className="hero-actions">
@@ -30,6 +26,28 @@ export default function Hero() {
 							className="button button-secondary"
 						>
 							View Resume
+						</a>
+					</div>
+
+					<div className="hero-links">
+						<a href="mailto:joshcohn27@gmail.com" className="text-link">
+							joshcohn27@gmail.com
+						</a>
+						<a
+							href="https://github.com/joshcohn27"
+							target="_blank"
+							rel="noreferrer"
+							className="text-link"
+						>
+							GitHub
+						</a>
+						<a
+							href="https://www.linkedin.com/in/josh-cohn-2226061ba/"
+							target="_blank"
+							rel="noreferrer"
+							className="text-link"
+						>
+							LinkedIn
 						</a>
 					</div>
 				</div>
