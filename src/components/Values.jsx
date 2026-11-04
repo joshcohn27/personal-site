@@ -6,7 +6,7 @@ export default function Values() {
                     <h2>Goals and values</h2>
                 </div>
 
-                <div className="text-stack">
+                <div className="about-columns values-columns">
                     <div className="text-block">
                         <h3>Where I am now</h3>
                         <p>

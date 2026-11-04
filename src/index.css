@@ -270,6 +270,10 @@ select {
 	border-top: 0;
 }
 
+.values-columns {
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
 .text-block p + p {
 	margin-top: 16px;
 }
@@ -384,6 +388,11 @@ select {
 		margin-top: 24px;
 		padding-top: 24px;
 		border-top: 1px solid var(--line);
+	}
+
+	.values-columns .text-block + .text-block {
+		padding-top: 0;
+		border-top: 0;
 	}
 }
 
