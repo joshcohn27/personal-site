@@ -24,7 +24,6 @@ export default function NotFound() {
 
                         <p style={{
                             color: "var(--text)",
-                            maxWidth: "60ch",
                             marginBottom: "24px",
                         }}>
                             The page you were trying to reach does not exist, may have been moved,

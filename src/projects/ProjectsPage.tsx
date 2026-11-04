@@ -101,7 +101,7 @@ export default function ProjectsPage() {
                     <div className="container">
                         <div className="section-heading" style={{ marginBottom: "2rem" }}>
                             <h2>Projects</h2>
-                            <p style={{ color: "var(--text)", marginTop: "0.6rem", maxWidth: "52ch", fontSize: "1.05rem" }}>
+                            <p className="page-intro">
                                 A mix of work projects, personal tools, and things I built because no one else had.
                             </p>
                         </div>
@@ -111,7 +111,7 @@ export default function ProjectsPage() {
                                 <article key={project.title} className="project-card">
                                     <p className="project-type">{project.type}</p>
                                     <h3>{project.title}</h3>
-                                    <p className="project-description" style={{ maxWidth: "72ch" }}>
+                                    <p className="project-description">
                                         {project.description}
                                     </p>
                                     <p className="project-stack">{project.stack.join(", ")}</p>
