@@ -10,20 +10,17 @@ export default function About() {
                     <div className="text-block">
                         <h3>Background</h3>
                         <p>
-                            I'm a software engineer with a BS in Computing and Information
-                            Technologies from RIT and a minor in Software Engineering.
-                            I've been coding since 2017, and I've worked on real engineering
-                            teams along the way. At Discovery Machine, I built a cross-platform
-                            mobile app in Flutter. At Chameleon Consulting Group LLC, I
-                            automated virtual machine spin-up in Docker, modified a Flask API in
-                            an air-gapped environment, and configured GitLab pipelines.
+                            I have a BS in Computing and Information Technologies from RIT with a
+                            minor in Software Engineering. I've been coding since 2017.
                         </p>
                         <p>
-                            I've built a range of projects both on my own and through school,
-                            including a VS Code extension to improve commit workflows, a full-stack
-                            financial platform with Spring Boot and Angular, and a beehive monitoring
-                            system. I care about writing software that is clear, maintainable, and
-                            useful to the people relying on it.
+                            At Discovery Machine, I built most of a cross-platform Air Force app in
+                            Flutter. At Chameleon Consulting Group, I automated virtual machine setup
+                            with Docker, worked on a Flask API, and set up GitLab pipelines.
+                        </p>
+                        <p>
+                            I care about writing software that's clear, maintainable, and useful to
+                            the people relying on it.
                         </p>
                     </div>
 
