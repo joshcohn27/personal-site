@@ -16,8 +16,8 @@ export default function Header() {
                     <a href="/#about">About</a>
                     <a href="/#future">Goals</a>
                     <a href="/#interests">Outside of Work</a>
-                    <a href="/#contact">Contact</a>
                     <a href="/poetry">Poetry</a>
+                    <a href="/#contact">Contact</a>
                 </nav>
             </div>
         </header>
