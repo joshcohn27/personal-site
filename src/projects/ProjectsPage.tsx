@@ -14,24 +14,6 @@ interface Project {
 
 const projects: Project[] = [
     {
-        title: "NHL Draft Lottery Simulator",
-        type: "Interactive Web App",
-        description:
-            "Built an interactive NHL draft lottery and mock draft simulator that combines two tools fans usually have to use separately. The app models real lottery constraints, visualizes the ping-pong ball draw, and then carries the finalized draft order directly into a mock draft workflow. What started as a small Python script became a full React and TypeScript project focused on accurate rules logic, data-driven rankings, and a smooth user experience.",
-        stack: ["React", "TypeScript", "CSV parsing", "game logic", "UI/UX"],
-        link: "https://hockeylotto.com",
-        linkLabel: "Open Simulator",
-    },
-    {
-        title: "Table Game Simulator",
-        type: "Interactive Web App",
-        description:
-            "Built a browser-based casino-style table game simulator focused on accurate game rules, clean interaction design, and complex state handling. The project includes multiple games and variants, each requiring careful logic for betting flows, hand evaluation, payouts, edge cases, and player/dealer actions. A small group of friends use it regularly, which has helped me improve the app through real feedback instead of just building in isolation.",
-        stack: ["React", "TypeScript", "state management", "game logic", "UI/UX"],
-        link: "https://casino.joshbcohn.com",
-        linkLabel: "Open Simulator",
-    },
-    {
         title: "Beehive Monitoring System",
         type: "Undergrad Senior Capstone",
         description:
@@ -41,11 +23,13 @@ const projects: Project[] = [
         linkLabel: "View Demo",
     },
     {
-        title: "Committed",
-        type: "VS Code Extension",
+        title: "NHL Draft Lottery Simulator",
+        type: "Interactive Web App",
         description:
-            "Built the VS Code interface for a team project that uses a local LLM to review uncommitted code changes and generate commit messages for developer approval. I owned the sidebar UI and extension integration work, connecting the user-facing VS Code experience with Git data and local model output. The project gave me hands-on experience designing AI-assisted developer tooling that keeps the human in control.",
-        stack: ["VS Code Extension API", "Node.js", "Ollama", "Git", "JavaScript"],
+            "Built an interactive NHL draft lottery and mock draft simulator that combines two tools fans usually have to use separately. The app models real lottery constraints, visualizes the ping-pong ball draw, and then carries the finalized draft order directly into a mock draft workflow. What started as a small Python script became a full React and TypeScript project focused on accurate rules logic, data-driven rankings, and a smooth user experience.",
+        stack: ["React", "TypeScript", "CSV parsing", "game logic", "UI/UX"],
+        link: "https://hockeylotto.com",
+        linkLabel: "Open Simulator",
     },
     {
         title: "OD Scheduler",
@@ -57,6 +41,13 @@ const projects: Project[] = [
         linkLabel: "Open Scheduler",
     },
     {
+        title: "Committed",
+        type: "VS Code Extension",
+        description:
+            "Built the VS Code interface for a team project that uses a local LLM to review uncommitted code changes and generate commit messages for developer approval. I owned the sidebar UI and extension integration work, connecting the user-facing VS Code experience with Git data and local model output. The project gave me hands-on experience designing AI-assisted developer tooling that keeps the human in control.",
+        stack: ["VS Code Extension API", "Node.js", "Ollama", "Git", "JavaScript"],
+    },
+    {
         title: "Autopick",
         type: "Interactive Web App",
         description:
@@ -66,15 +57,6 @@ const projects: Project[] = [
         linkLabel: "Open Autopick",
     },
     {
-        title: "Weekly Period Schedule Builder",
-        type: "Interactive Web App",
-        description:
-            "A schedule builder I made for camp staff to plan a four week session of activity periods, with auto-merging, Excel import and export, and one click schedule generation. A tracking tab counts program areas per bunk, and the auto generate button builds a full week while keeping totals fair across the session. It runs entirely in the browser with no backend.",
-        stack: ["React", "TypeScript", "Vite", "SheetJS"],
-        link: "https://weekly.joshbcohn.com",
-        linkLabel: "Open Builder",
-    },
-    {
         title: "Wrapped",
         type: "Interactive Web App",
         description:
@@ -82,6 +64,24 @@ const projects: Project[] = [
         stack: ["HTML", "CSS", "JavaScript", "Node.js", "Web Workers", "IndexedDB"],
         link: "https://wrapped.joshbcohn.com",
         linkLabel: "Open Wrapped",
+    },
+    {
+        title: "Table Game Simulator",
+        type: "Interactive Web App",
+        description:
+            "Built a browser-based casino-style table game simulator focused on accurate game rules, clean interaction design, and complex state handling. The project includes multiple games and variants, each requiring careful logic for betting flows, hand evaluation, payouts, edge cases, and player/dealer actions. A small group of friends use it regularly, which has helped me improve the app through real feedback instead of just building in isolation.",
+        stack: ["React", "TypeScript", "state management", "game logic", "UI/UX"],
+        link: "https://casino.joshbcohn.com",
+        linkLabel: "Open Simulator",
+    },
+    {
+        title: "Weekly Period Schedule Builder",
+        type: "Interactive Web App",
+        description:
+            "A schedule builder I made for camp staff to plan a four week session of activity periods, with auto-merging, Excel import and export, and one click schedule generation. A tracking tab counts program areas per bunk, and the auto generate button builds a full week while keeping totals fair across the session. It runs entirely in the browser with no backend.",
+        stack: ["React", "TypeScript", "Vite", "SheetJS"],
+        link: "https://weekly.joshbcohn.com",
+        linkLabel: "Open Builder",
     },
 ];
 

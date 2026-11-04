@@ -2,6 +2,14 @@ import { Link } from "react-router-dom";
 
 const featured = [
     {
+        title: "Beehive Monitoring System",
+        type: "Undergrad Senior Capstone",
+        description:
+            "A full-stack capstone project that turned physical hive sensor data into a React dashboard for monitoring inspections, observations, and hive conditions.",
+        link: "https://joshbcohn.com/projects/beehive",
+        linkLabel: "View Demo",
+    },
+    {
         title: "NHL Draft Lottery Simulator",
         type: "Interactive Web App",
         description:
@@ -10,12 +18,12 @@ const featured = [
         linkLabel: "Open Simulator",
     },
     {
-        title: "Beehive Monitoring System",
-        type: "Undergrad Senior Capstone",
+        title: "OD Scheduler",
+        type: "Interactive Web App",
         description:
-            "A full-stack capstone project that turned physical hive sensor data into a React dashboard for monitoring inspections, observations, and hive conditions.",
-        link: "https://joshbcohn.com/projects/beehive",
-        linkLabel: "View Demo",
+            "A scheduling engine built for Camp Seneca Lake that generates fair nightly on-duty coverage for 20-30 staff, replacing a manual process that took hours every session.",
+        link: "https://scheduler.joshbcohn.com",
+        linkLabel: "Open Scheduler",
     },
 ];
 
