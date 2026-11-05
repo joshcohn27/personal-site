@@ -643,14 +643,15 @@ select {
 .interest-rows {
 	display: flex;
 	flex-direction: column;
-	gap: var(--space-6);
+	gap: var(--space-5);
 }
 
+/* photo takes about 45% of the row; text starts at the top of the photo */
 .interest-row {
 	display: grid;
 	grid-template-columns: minmax(0, 9fr) minmax(0, 11fr);
 	gap: var(--space-5);
-	align-items: center;
+	align-items: start;
 }
 
 .interest-row.photo-right {
@@ -679,18 +680,16 @@ select {
 	gap: var(--space-5);
 }
 
-/* square photos with the screenshots' corners; no hover lift */
+/* photos keep their own shape, with the screenshots' corners; no hover lift */
 .outside-photo {
 	display: block;
 	width: 100%;
 	height: auto;
-	aspect-ratio: 1;
-	object-fit: cover;
 	border-radius: var(--radius-sm);
 }
 
 .values-columns .outside-photo {
-	margin-bottom: var(--space-3);
+	margin-top: var(--space-4);
 }
 
 .interests-grid {

@@ -18,10 +18,10 @@ export default function Values() {
                         engineering. I've really enjoyed frontend work lately, especially building
                         clean, easy-to-use interfaces, but I like working across the stack too.
                     </p>
+                    <OutsidePhoto name="laughing" />
                 </div>
 
                 <div className="text-block">
-                    <OutsidePhoto name="laughing" />
                     <h4>What I value</h4>
                     <p>
                         The best teams I've been on were the ones where people cared. They cared
