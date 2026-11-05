@@ -838,8 +838,20 @@ select {
 		padding: var(--space-3);
 	}
 
+	/* small skill groups sit two across on phones */
 	.skill-groups {
-		grid-template-columns: 1fr;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--space-4) var(--space-3);
+	}
+
+	/* photo leads the hero on phones, small, so the name and resume button stay on the first screen */
+	.hero-grid {
+		gap: var(--space-4);
+	}
+
+	.hero-photo {
+		order: -1;
+		width: 128px;
 	}
 
 	.button {
@@ -852,6 +864,12 @@ select {
 
 	.poem-panel {
 		padding: var(--space-3);
+	}
+}
+
+@media (max-width: 359px) {
+	.skill-groups {
+		grid-template-columns: 1fr;
 	}
 }
 
