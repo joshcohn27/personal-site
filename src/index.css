@@ -487,6 +487,9 @@ select {
 	aspect-ratio: 16 / 10;
 	object-fit: cover;
 	object-position: top;
+	/* the padding shows the light background as a frame, so white screenshots
+	   don't blend into the white card */
+	padding: var(--space-1);
 	background: var(--color-bg);
 	border: 1px solid var(--color-border);
 	border-radius: var(--radius-sm);

@@ -104,7 +104,7 @@ function HomePage() {
                 <HomePoetry />
                 <Contact />
             </main>
-            <Footer />
+            <Footer showLinks={false} />
         </div>
     );
 }
