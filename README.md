@@ -78,7 +78,8 @@ vite.config.js          Vite config (dev server on 127.0.0.1)
 eslint.config.js        ESLint config
 public/
   resume.pdf            Resume linked from the hero
-  jc.png                Favicon
+  favicon.svg           Favicon (plus favicon-16.png, favicon-32.png, apple-touch-icon.png)
+  jc.png                Full logo (no longer used as the favicon)
   poems/                One text file per poem (poem1.txt, poem2.txt, ...)
 src/
   main.jsx              React entry point
