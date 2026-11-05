@@ -836,6 +836,7 @@ select {
 }
 
 .poem-panel {
+	position: relative;
 	width: 100%;
 	max-width: 640px;
 	padding: var(--space-5);
@@ -844,15 +845,47 @@ select {
 	border-radius: var(--radius);
 }
 
+/* share and close, pinned to the card's top-right corner */
 .poem-actions {
+	position: absolute;
+	top: var(--space-2);
+	right: var(--space-2);
 	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	gap: var(--space-3);
-	margin-bottom: var(--space-3);
+	gap: var(--space-1);
 }
 
+.icon-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--tap-target);
+	height: var(--tap-target);
+	padding: 0;
+	background: none;
+	border: 0;
+	border-radius: 50%;
+	color: var(--color-text-muted);
+	cursor: pointer;
+}
+
+.icon-button:hover {
+	background: var(--color-lavender);
+	color: var(--color-heading);
+}
+
+/* "Link copied" sits just under the buttons */
+.poem-copied {
+	position: absolute;
+	top: calc(100% + var(--space-1));
+	right: 0;
+	font-size: var(--font-sm);
+	color: var(--color-text-muted);
+	white-space: nowrap;
+}
+
+/* keep the title clear of the two buttons on every screen width */
 .poem-heading {
+	padding-right: calc(2 * var(--tap-target) + var(--space-3));
 	font-size: var(--font-2xl);
 	line-height: 1.25;
 }

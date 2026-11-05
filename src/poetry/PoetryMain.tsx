@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import TextButton from "../components/ui/TextButton";
+import IconButton from "../components/ui/IconButton";
 import { parsePoem } from "./parsePoem";
 import type { Poem } from "./parsePoem";
 import DedicationNote from "./DedicationNote";
@@ -84,18 +85,21 @@ export default function Poetry() {
             return;
         }
         const url = `${window.location.origin}/poetry?poem=${selectedPoem.slug}`;
-        const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
-        if (isIOS) {
+
+        // phones (and some desktops) have a native share sheet
+        if (typeof navigator.share === "function") {
             try {
                 await navigator.share({ url, title: selectedPoem.title });
             } catch {
-                // user dismissed the native share sheet
+                // the visitor closed the share sheet
             }
-        } else {
-            await navigator.clipboard.writeText(url);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
+            return;
         }
+
+        // everywhere else, copy the link and say so for about 2 seconds
+        await navigator.clipboard.writeText(url);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
     }, [selectedPoem]);
 
     // while a poem is open: escape closes it, and tab stays inside it
@@ -277,17 +281,27 @@ export default function Poetry() {
                         tabIndex={-1}
                         onClick={e => e.stopPropagation()}
                     >
+                        {/* pinned to the card's top-right corner */}
                         <div className="poem-actions">
+                            <IconButton label="Share poem" onClick={handleShare}>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                    <circle cx="18" cy="5" r="3" />
+                                    <circle cx="6" cy="12" r="3" />
+                                    <circle cx="18" cy="19" r="3" />
+                                    <line x1="8.6" y1="13.5" x2="15.4" y2="17.5" />
+                                    <line x1="15.4" y1="6.5" x2="8.6" y2="10.5" />
+                                </svg>
+                            </IconButton>
+                            <IconButton label="Close poem" onClick={closeModal}>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                                    <line x1="6" y1="6" x2="18" y2="18" />
+                                    <line x1="18" y1="6" x2="6" y2="18" />
+                                </svg>
+                            </IconButton>
                             {/* announced to screen readers when the link is copied */}
-                            <span className="muted-text" role="status">
-                                {copied && "Copied to clipboard"}
+                            <span className="poem-copied" role="status">
+                                {copied && "Link copied"}
                             </span>
-                            <TextButton onClick={handleShare} title="Share this poem">
-                                Share
-                            </TextButton>
-                            <TextButton onClick={closeModal} label="Close poem">
-                                X
-                            </TextButton>
                         </div>
 
                         <h2 id="poem-dialog-title" className="poem-heading">{selectedPoem.title}</h2>
