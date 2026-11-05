@@ -21,7 +21,7 @@ export default function About() {
                             Information Technologies from RIT with a minor in Software Engineering.
                         </p>
                         <p>
-                            My internships at Discovery Machine and Chameleon Consulting Group let me
+                            My internships at Discovery Machine, Inc. and Chameleon Consulting Group LLC let me
                             keep learning while putting my skills to work on real teams. They taught me
                             things you can only learn on the job.
                         </p>
@@ -67,7 +67,7 @@ export default function About() {
                                     <li>FastAPI</li>
                                     <li>Spring Boot</li>
                                     <li>ASP.NET MVC</li>
-                                    <li>REST APIs</li>
+                                    <li>REST API</li>
                                 </ul>
                             </div>
                             <div className="skill-group">
@@ -90,7 +90,7 @@ export default function About() {
                                 <ul className="skill-tags">
                                     <li>Git</li>
                                     <li>Docker</li>
-                                    <li>GitLab CI/CD</li>
+                                    <li>GitLab Pipelines</li>
                                     <li>Azure</li>
                                     <li>Vercel</li>
                                     <li>Claude Code</li>
