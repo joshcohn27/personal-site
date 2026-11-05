@@ -1,7 +1,7 @@
 import * as Popover from "@radix-ui/react-popover";
 
 // accessible name for the info button; the visible note is the dedication itself
-const BUTTON_LABEL = "Note";
+const BUTTON_LABEL = "Dedication";
 
 interface DedicationNoteProps {
     text: string;
