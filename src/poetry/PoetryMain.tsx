@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -24,6 +24,8 @@ export default function Poetry() {
     const [sort, setSort] = useState<SortOption>("az");
     const [searchParams, setSearchParams] = useSearchParams();
     const [copied, setCopied] = useState(false);
+    const panelRef = useRef<HTMLDivElement>(null);
+    const openerRef = useRef<HTMLElement | null>(null);
 
     useEffect(() => {
         const fetchPoems = async () => {
@@ -55,6 +57,11 @@ export default function Poetry() {
 
     const closeModal = useCallback(() => {
         setSelectedPoem(null);
+        // put focus back on whatever opened the poem
+        if (openerRef.current) {
+            openerRef.current.focus();
+            openerRef.current = null;
+        }
         setSearchParams(prev => {
             const next = new URLSearchParams(prev);
             next.delete("poem");
@@ -63,6 +70,7 @@ export default function Poetry() {
     }, [setSearchParams]);
 
     const openPoem = useCallback((poem: Poem) => {
+        openerRef.current = document.activeElement as HTMLElement;
         setSelectedPoem(poem);
         setSearchParams(prev => {
             const next = new URLSearchParams(prev);
@@ -72,7 +80,9 @@ export default function Poetry() {
     }, [setSearchParams]);
 
     const handleShare = useCallback(async () => {
-        if (!selectedPoem) return;
+        if (!selectedPoem) {
+            return;
+        }
         const url = `${window.location.origin}/poetry?poem=${selectedPoem.slug}`;
         const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
         if (isIOS) {
@@ -88,25 +98,69 @@ export default function Poetry() {
         }
     }, [selectedPoem]);
 
+    // while a poem is open: escape closes it, and tab stays inside it
     useEffect(() => {
-        const handleKey = (e: KeyboardEvent) => {
-            if (e.key === "Escape") closeModal();
-        };
-        window.addEventListener("keydown", handleKey);
-        return () => window.removeEventListener("keydown", handleKey);
-    }, [closeModal]);
+        if (!selectedPoem) {
+            return;
+        }
 
+        const handleKey = (e: KeyboardEvent) => {
+            if (e.key === "Escape") {
+                closeModal();
+                return;
+            }
+            if (e.key !== "Tab" || !panelRef.current) {
+                return;
+            }
+            const focusable = panelRef.current.querySelectorAll<HTMLElement>("button, a[href]");
+            if (focusable.length === 0) {
+                return;
+            }
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            const inside = panelRef.current.contains(document.activeElement);
+            if (e.shiftKey && (document.activeElement === first || !inside)) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && (document.activeElement === last || !inside)) {
+                e.preventDefault();
+                first.focus();
+            }
+        };
+
+        window.addEventListener("keydown", handleKey);
+        return () => {
+            window.removeEventListener("keydown", handleKey);
+        };
+    }, [selectedPoem, closeModal]);
+
+    // move focus into the poem when it opens, and stop the page behind it from scrolling
     useEffect(() => {
-        document.body.style.overflow = selectedPoem ? "hidden" : "";
-        return () => { document.body.style.overflow = ""; };
+        if (!selectedPoem) {
+            document.body.style.overflow = "";
+            return;
+        }
+        document.body.style.overflow = "hidden";
+        if (panelRef.current) {
+            panelRef.current.focus();
+        }
+        return () => {
+            document.body.style.overflow = "";
+        };
     }, [selectedPoem]);
 
     useEffect(() => {
-        if (poems.length === 0) return;
+        if (poems.length === 0) {
+            return;
+        }
         const poemSlug = searchParams.get("poem");
-        if (!poemSlug) return;
+        if (!poemSlug) {
+            return;
+        }
         const match = poems.find(p => p.slug === poemSlug);
-        if (match) setSelectedPoem(match);
+        if (match) {
+            setSelectedPoem(match);
+        }
     }, [poems, searchParams]);
 
     const filtered = useMemo(() => {
@@ -166,9 +220,13 @@ export default function Poetry() {
 
                         {/* Search + Sort */}
                         <div className="poem-controls">
+                            <label htmlFor="poem-search" className="poem-search-label">
+                                Search poems
+                            </label>
                             <div className="poem-search">
                                 <input
-                                    type="text"
+                                    id="poem-search"
+                                    type="search"
                                     placeholder="Search by title or content..."
                                     value={search}
                                     onChange={e => setSearch(e.target.value)}
@@ -210,9 +268,20 @@ export default function Poetry() {
             {/* Fullscreen poem view */}
             {selectedPoem && (
                 <div className="poem-overlay" onClick={closeModal}>
-                    <div className="poem-panel" onClick={e => e.stopPropagation()}>
+                    <div
+                        ref={panelRef}
+                        className="poem-panel"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="poem-dialog-title"
+                        tabIndex={-1}
+                        onClick={e => e.stopPropagation()}
+                    >
                         <div className="poem-actions">
-                            {copied && <span className="muted-text">Copied to clipboard</span>}
+                            {/* announced to screen readers when the link is copied */}
+                            <span className="muted-text" role="status">
+                                {copied && "Copied to clipboard"}
+                            </span>
                             <TextButton onClick={handleShare} title="Share this poem">
                                 Share
                             </TextButton>
@@ -221,7 +290,7 @@ export default function Poetry() {
                             </TextButton>
                         </div>
 
-                        <h2 className="poem-heading">{selectedPoem.title}</h2>
+                        <h2 id="poem-dialog-title" className="poem-heading">{selectedPoem.title}</h2>
 
                         {selectedPoem.dedication && (
                             <p className="poem-dedication">{selectedPoem.dedication}</p>

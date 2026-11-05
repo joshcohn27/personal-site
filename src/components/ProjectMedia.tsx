@@ -51,7 +51,6 @@ export default function ProjectMedia({ screenshot, sizes, className }: ProjectMe
                 loop
                 playsInline
                 preload="metadata"
-                role="img"
                 aria-label={screenshot.alt}
             >
                 <source src={`${screenshot.video}.webm`} type="video/webm" />

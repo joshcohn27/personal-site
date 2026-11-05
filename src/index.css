@@ -682,9 +682,25 @@ select {
 	margin-bottom: var(--space-4);
 }
 
+.poem-search-label {
+	display: block;
+	margin-bottom: calc(-1 * var(--space-2));
+	font-weight: 700;
+	color: var(--color-heading);
+}
+
 .poem-search {
 	position: relative;
 	max-width: 480px;
+}
+
+/* hide the browser's own clear button; the page has its own */
+.poem-search input::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+}
+
+.poem-panel:focus {
+	outline: none;
 }
 
 .poem-search input {
