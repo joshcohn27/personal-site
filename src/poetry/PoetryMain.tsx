@@ -3,21 +3,8 @@ import { useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import TextButton from "../components/ui/TextButton";
-
-interface Poem {
-    title: string;
-    body: string;
-    index: number;
-    dedication?: string;
-    slug: string;
-}
-
-function slugify(title: string): string {
-    return title
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "");
-}
+import { parsePoem } from "./parsePoem";
+import type { Poem } from "./parsePoem";
 
 type SortOption = "newest" | "oldest" | "az" | "za";
 
@@ -82,21 +69,13 @@ export default function Poetry() {
             while (true) {
                 try {
                     const res = await fetch(`/poems/poem${i}.txt`);
-                    if (!res.ok || res.headers.get("content-type")?.includes("text/html")) break;
-                    const text = await res.text();
-                    const lines = text.split("\n");
-                    const title = lines[0].trim();
-
-                    let dedication: string | undefined;
-                    let bodyStart = 1;
-
-                    if (lines[1]?.toLowerCase().startsWith("dedication:")) {
-                        dedication = lines[1].slice("dedication:".length).trim();
-                        bodyStart = 2;
+                    // a missing number comes back as the site's html page, which means we're done
+                    const isHtml = res.headers.get("content-type")?.includes("text/html");
+                    if (!res.ok || isHtml) {
+                        break;
                     }
-
-                    const body = lines.slice(bodyStart).join("\n").trimStart();
-                    loaded.push({ title, body, index: i, dedication, slug: slugify(title) });
+                    const text = await res.text();
+                    loaded.push(parsePoem(text, i));
                     i++;
                 } catch {
                     break;
@@ -185,6 +164,29 @@ export default function Poetry() {
         return result;
     }, [poems, search, sort]);
 
+    let results = null;
+    if (!loading && filtered.length === 0) {
+        results = <p>No poems match your search.</p>;
+    } else if (!loading) {
+        results = (
+            <ul className="poem-list">
+                {filtered.map((poem) => (
+                    <li key={poem.index} className="poem-row">
+                        <button type="button" className="poem-title" onClick={() => openPoem(poem)}>
+                            {poem.title}
+                        </button>
+                        {poem.dedication && <InfoTooltip text={poem.dedication} />}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
+
+    let resultsClass = "poem-results";
+    if (loading) {
+        resultsClass = "poem-results is-loading";
+    }
+
     return (
         <div className="site-shell">
             <Header />
@@ -232,20 +234,10 @@ export default function Poetry() {
                         )}
 
                         {/* Poem list */}
-                        {loading ? null : filtered.length === 0 ? (
-                            <p>No poems match your search.</p>
-                        ) : (
-                            <ul className="poem-list">
-                                {filtered.map((poem) => (
-                                    <li key={poem.index} className="poem-row">
-                                        <button type="button" className="poem-title" onClick={() => openPoem(poem)}>
-                                            {poem.title}
-                                        </button>
-                                        {poem.dedication && <InfoTooltip text={poem.dedication} />}
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
+                        {/* keeps room for the list while poems load, so the footer doesn't jump */}
+                        <div className={resultsClass}>
+                            {results}
+                        </div>
                     </div>
                 </section>
             </main>
