@@ -109,14 +109,14 @@ export default function ProjectsPage() {
             <main>
                 <section className="section" style={{ paddingTop: "3.5rem" }}>
                     <div className="container">
-                        <div className="section-heading" style={{ marginBottom: "2rem" }}>
+                        <div className="section-heading" style={{ marginBottom: "var(--space-5)" }}>
                             <h2>Projects</h2>
                             <p className="page-intro">
                                 A mix of work projects, personal tools, and things I built because no one else had.
                             </p>
                         </div>
 
-                        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                        <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
                             {projects.map((project) => (
                                 <article key={project.title} className="project-card">
                                     <p className="project-type">{project.type}</p>
@@ -153,7 +153,7 @@ export default function ProjectsPage() {
                             ))}
                         </div>
 
-                        <div style={{ marginTop: "32px", paddingTop: "24px", borderTop: "1px solid var(--line)" }}>
+                        <div style={{ marginTop: "var(--space-5)", paddingTop: "var(--space-4)", borderTop: "1px solid var(--color-border)" }}>
                             <Link
                                 to="/"
                                 onClick={() => window.scrollTo(0, 0)}

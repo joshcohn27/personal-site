@@ -10,21 +10,21 @@ export default function NotFound() {
             <main>
                 <section className="section" style={{ minHeight: "60vh" }}>
                     <div className="container">
-                        <p style={{ color: "var(--muted)", marginBottom: "8px" }}>
+                        <p style={{ color: "var(--color-text-muted)", marginBottom: "var(--space-2)" }}>
                             404 Error
                         </p>
 
                         <h1 style={{
-                            fontSize: "clamp(36px, 5vw, 48px)",
+                            fontSize: "var(--font-page-title)",
                             lineHeight: 1.2,
-                            marginBottom: "16px",
+                            marginBottom: "var(--space-3)",
                         }}>
                             Page not found
                         </h1>
 
                         <p style={{
-                            color: "var(--text)",
-                            marginBottom: "24px",
+                            color: "var(--color-text)",
+                            marginBottom: "var(--space-4)",
                         }}>
                             The page you were trying to reach does not exist, may have been moved,
                             or has not been created yet.
@@ -33,8 +33,8 @@ export default function NotFound() {
                         <div style={{
                             display: "flex",
                             flexWrap: "wrap",
-                            gap: "16px",
-                            marginBottom: "32px",
+                            gap: "var(--space-3)",
+                            marginBottom: "var(--space-5)",
                         }}>
                             <Link to="/" className="button button-primary">
                                 Back to home
@@ -46,10 +46,10 @@ export default function NotFound() {
                         </div>
 
                         <div style={{
-                            borderTop: "1px solid var(--line)",
-                            paddingTop: "16px",
-                            fontSize: "14px",
-                            color: "var(--muted)",
+                            borderTop: "1px solid var(--color-border)",
+                            paddingTop: "var(--space-3)",
+                            fontSize: "var(--font-sm)",
+                            color: "var(--color-text-muted)",
                         }}>
                             joshbcohn.com
                         </div>
