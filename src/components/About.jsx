@@ -1,10 +1,12 @@
+import SectionHeader from "./ui/SectionHeader";
+import Values from "./Values";
+import Interests from "./Interests";
+
 export default function About() {
     return (
         <section id="about" className="section">
             <div className="container">
-                <div className="section-heading">
-                    <h2>Background and skills</h2>
-                </div>
+                <SectionHeader title="About" />
 
                 <div className="about-stack">
                     <div className="text-block full-width-text">
@@ -35,7 +37,7 @@ export default function About() {
                     </div>
 
                     <div className="text-block">
-                        <h3>Technical skills</h3>
+                        <h3>Skills</h3>
                         <div className="skill-groups">
                             <div className="skill-group">
                                 <h4>Languages</h4>
@@ -98,6 +100,9 @@ export default function About() {
                             </div>
                         </div>
                     </div>
+
+                    <Values />
+                    <Interests />
                 </div>
             </div>
         </section>

@@ -1,12 +1,14 @@
 import TextLink from "./ui/TextLink";
+import SectionHeader from "./ui/SectionHeader";
 
 export default function Contact() {
     return (
         <section id="contact" className="section">
             <div className="container">
+                <SectionHeader title="Contact" subtitle="Get in touch" />
+
                 <div className="contact">
                     <div>
-                        <h2>Get in touch</h2>
                         <p className="contact-text">
                             I'm always interested in opportunities to build, learn, and
                             contribute to projects that have real impact.

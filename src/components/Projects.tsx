@@ -1,6 +1,7 @@
 import ButtonLink from "./ui/ButtonLink";
 import TextLink from "./ui/TextLink";
 import TechChips from "./ui/TechChips";
+import SectionHeader from "./ui/SectionHeader";
 
 const featured = [
     {
@@ -39,21 +40,15 @@ export default function Projects() {
     return (
         <section id="projects" className="section">
             <div className="container">
-                <div
-                    className="section-heading"
-                    style={{
-                        display: "flex",
-                        alignItems: "flex-end",
-                        justifyContent: "space-between",
-                        flexWrap: "wrap",
-                        gap: "16px",
-                    }}
-                >
-                    <h2>Selected work</h2>
-                    <ButtonLink to="/projects" variant="secondary">
-                        View all projects
-                    </ButtonLink>
-                </div>
+                <SectionHeader
+                    title="Projects"
+                    subtitle="Selected work"
+                    action={
+                        <ButtonLink to="/projects" variant="secondary">
+                            View all projects
+                        </ButtonLink>
+                    }
+                />
 
                 <div className="project-grid">
                     {featured.map((project) => (
