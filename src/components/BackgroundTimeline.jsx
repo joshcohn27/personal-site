@@ -55,6 +55,7 @@ function Card({ label, date, center, stems, side, children }) {
 }
 
 const TEXT = {
+    drexel: "I came to Drexel for the co-op program and to be in Philadelphia. AI is everywhere now, and if I'm going to use it, I want to know how it actually works: the algorithms, the math, and the problem solving behind it. Right now that means search algorithms and a lot of math. By the end, I want to be able to build my own ML models and use AI with a real understanding of it.",
     highSchool: "I started coding in high school. My school offered programming classes all four years, which I was lucky to have, and I took every one. They were all taught by the same teacher, and he believed in my ability to solve problems. I learned Java and Python there and kept going.",
     rit: "At RIT, I learned real object-oriented programming and developed my problem-solving skills. I got my BS in Computing and Information Technologies with a minor in Software Engineering and an immersion in Creative Writing.",
     internships: "My internships at Discovery Machine, Inc. and Chameleon Consulting Group LLC let me keep learning while putting my skills to work on real teams. They taught me things you can only learn on the job.",
@@ -76,7 +77,9 @@ export default function BackgroundTimeline() {
                     <Card label="RIT" date="Aug 2021 – May 2026" center={ritMiddle} stems={[ritStem]} side="above">
                         <p>{TEXT.rit}</p>
                     </Card>
-                    <Card label="Drexel" date="Sep 2026 – Jun 2028 (expected)" center={drexelMiddle} stems={[drexelMiddle]} side="above" />
+                    <Card label="Drexel" date="Sep 2026 – Jun 2028 (expected)" center={drexelMiddle} stems={[drexelMiddle]} side="above">
+                        <p>{TEXT.drexel}</p>
+                    </Card>
                 </div>
 
                 <div className="tl2-axis" aria-hidden="true">
@@ -161,6 +164,7 @@ export default function BackgroundTimeline() {
                     <div className="tl2-card">
                         <h4>Drexel</h4>
                         <p className="tl2-date">Sep 2026 – Jun 2028 (expected)</p>
+                        <p>{TEXT.drexel}</p>
                     </div>
                 </li>
                 <li className="tl2m-item tl2m-drexel tl2m-quiet">
