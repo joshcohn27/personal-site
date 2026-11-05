@@ -493,6 +493,10 @@ select {
 	line-height: 1.3;
 }
 
+.project-title-link:hover {
+	text-decoration: underline;
+}
+
 /* card text runs the full card width */
 .project-card p {
 	max-width: none;
@@ -555,6 +559,33 @@ select {
 
 .page-intro {
 	margin-top: var(--space-2);
+}
+
+/* closing row on a page, like the back button */
+.page-end {
+	margin-top: var(--space-5);
+	padding-top: var(--space-4);
+	border-top: 1px solid var(--color-border);
+}
+
+/* project detail pages */
+.detail-title {
+	margin-top: var(--space-1);
+	font-size: var(--font-page-title);
+	line-height: 1.15;
+}
+
+.detail-description {
+	margin-top: var(--space-3);
+}
+
+.detail-section {
+	margin-top: var(--space-5);
+}
+
+.detail-section h2 {
+	font-size: var(--font-2xl);
+	margin-bottom: var(--space-2);
 }
 
 .muted-text {

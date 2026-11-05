@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { Project } from "../data/projects";
 import TextLink from "./ui/TextLink";
 import TechChips from "./ui/TechChips";
@@ -16,9 +17,15 @@ export default function ProjectCard({ project, useSummary = false, headingLevel 
         text = project.summary;
     }
 
-    let title = <h3 className="project-title">{project.title}</h3>;
+    // the title links to the project's detail page
+    const titleLink = (
+        <Link to={`/projects/${project.slug}`} className="project-title-link">
+            {project.title}
+        </Link>
+    );
+    let title = <h3 className="project-title">{titleLink}</h3>;
     if (headingLevel === 2) {
-        title = <h2 className="project-title">{project.title}</h2>;
+        title = <h2 className="project-title">{titleLink}</h2>;
     }
 
     const hasLinks = Boolean(project.link) || Boolean(project.repo);

@@ -16,6 +16,15 @@ export interface Project {
     repo?: string;
     // shown on the homepage
     featured?: boolean;
+    // detail page sections, filled in later; each one only shows once it has a heading and text
+    problem?: DetailSection;
+    built?: DetailSection;
+    role?: DetailSection;
+}
+
+export interface DetailSection {
+    heading: string;
+    text: string;
 }
 
 export const projects: Project[] = [
@@ -127,3 +136,7 @@ export const projects: Project[] = [
 ];
 
 export const featuredProjects = projects.filter((project) => project.featured);
+
+export function findProject(slug: string | undefined) {
+    return projects.find((project) => project.slug === slug);
+}

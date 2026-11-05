@@ -24,7 +24,7 @@ export default function ProjectsPage() {
                             ))}
                         </div>
 
-                        <div style={{ marginTop: "var(--space-5)", paddingTop: "var(--space-4)", borderTop: "1px solid var(--color-border)" }}>
+                        <div className="page-end">
                             <ButtonLink to="/" variant="secondary">
                                 Back to home
                             </ButtonLink>

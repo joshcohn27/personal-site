@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
 import Poetry from "./poetry/PoetryMain";
 import ProjectsPage from "./projects/ProjectsPage";
+import ProjectDetail from "./projects/ProjectDetail";
 
 // after each navigation, go to the #section in the url if there is one, otherwise to the top.
 // a new page jumps straight there; moving between sections on the same page scrolls smoothly.
@@ -64,6 +65,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/projects" element={<ProjectsPage />} />
+                <Route path="/projects/:slug" element={<ProjectDetail />} />
                 <Route path="/poetry" element={<Poetry />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
