@@ -5,6 +5,7 @@ import NotFound from "../components/NotFound";
 import ButtonLink from "../components/ui/ButtonLink";
 import TextLink from "../components/ui/TextLink";
 import TechChips from "../components/ui/TechChips";
+import ProjectMedia from "../components/ProjectMedia";
 import { findProject } from "../data/projects";
 import type { DetailSection } from "../data/projects";
 
@@ -43,6 +44,14 @@ export default function ProjectDetail() {
                         <Section section={project.problem} />
                         <Section section={project.built} />
                         <Section section={project.role} />
+
+                        {project.screenshot && (
+                            <ProjectMedia
+                                screenshot={project.screenshot}
+                                sizes="(max-width: 1152px) 100vw, 1120px"
+                                className="detail-media"
+                            />
+                        )}
 
                         <TechChips items={project.stack} />
 

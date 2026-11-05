@@ -473,6 +473,50 @@ select {
 	padding: var(--space-4);
 }
 
+.project-card-body {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+/* screenshots and the nhl clip */
+.project-media {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+	object-position: top;
+	background: var(--color-bg);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+}
+
+.card-media {
+	margin-bottom: var(--space-3);
+}
+
+/* Projects page: screenshot beside the text */
+.project-card-row {
+	display: grid;
+	grid-template-columns: 320px minmax(0, 1fr);
+	gap: var(--space-4);
+	align-items: start;
+}
+
+.project-card-row .card-media {
+	margin-bottom: 0;
+}
+
+/* a project with no screenshot reads as a text card that spans the full width */
+.project-card-row.no-media {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+.detail-media {
+	margin-top: var(--space-5);
+}
+
 /* Homepage project cards lift slightly on hover */
 .project-grid .project-card {
 	transition: transform 150ms ease, border-color 150ms ease;
@@ -836,6 +880,11 @@ select {
 
 	.project-card {
 		padding: var(--space-3);
+	}
+
+	.project-card-row {
+		grid-template-columns: minmax(0, 1fr);
+		gap: var(--space-3);
 	}
 
 	/* small skill groups sit two across on phones */

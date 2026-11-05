@@ -43,6 +43,8 @@ export default function Hero() {
 					alt="Josh Cohn"
 					width="640"
 					height="800"
+					loading="eager"
+					fetchPriority="high"
 				/>
 			</div>
 		</section>

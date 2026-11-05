@@ -18,10 +18,19 @@ export interface Project {
     featured?: boolean;
     // set to true to take a project off the site without deleting it
     hidden?: boolean;
+    // screenshot of the live demo; files are <src>-640.webp and <src>-1280.webp
+    screenshot?: Screenshot;
     // detail page sections, filled in later; each one only shows once it has a heading and text
     problem?: DetailSection;
     built?: DetailSection;
     role?: DetailSection;
+}
+
+export interface Screenshot {
+    src: string;
+    alt: string;
+    // short looping clip played instead of the still; files are <video>.webm and <video>.mp4
+    video?: string;
 }
 
 export interface DetailSection {
@@ -44,6 +53,10 @@ export const allProjects: Project[] = [
         linkLabel: "View Demo",
         repo: "https://github.com/joshcohn27/beehive-frontend",
         featured: true,
+        screenshot: {
+            src: "/screenshots/beehive",
+            alt: "BeeMonitor dashboard showing hive temperature, humidity, outside temperature, and the latest hive observation.",
+        },
     },
     {
         slug: "nhl-lottery",
@@ -58,6 +71,11 @@ export const allProjects: Project[] = [
         linkLabel: "Open Simulator",
         repo: "https://github.com/joshcohn27/nhl-lottery-sim",
         featured: true,
+        screenshot: {
+            src: "/screenshots/nhl-lottery",
+            alt: "NHL Draft Lottery Simulator for the 2027 draft, ready to draw the first lottery ball.",
+            video: "/screenshots/nhl-lottery-draw",
+        },
     },
     {
         slug: "od-scheduler",
@@ -72,6 +90,10 @@ export const allProjects: Project[] = [
         linkLabel: "Open Scheduler",
         repo: "https://github.com/joshcohn27/od_new",
         featured: true,
+        screenshot: {
+            src: "/screenshots/od-scheduler",
+            alt: "OD Scheduler showing a generated night duty schedule with three staff on duty each night.",
+        },
     },
     {
         slug: "committed",
@@ -115,6 +137,10 @@ export const allProjects: Project[] = [
         link: "https://casino.joshbcohn.com",
         linkLabel: "Open Simulator",
         repo: "https://github.com/joshcohn27/casino",
+        screenshot: {
+            src: "/screenshots/table-games",
+            alt: "Cohn Casino home page listing blackjack and poker table games with a shared bankroll.",
+        },
     },
     {
         slug: "weekly-schedule",
@@ -126,6 +152,10 @@ export const allProjects: Project[] = [
         link: "https://weekly.joshbcohn.com",
         linkLabel: "Open Builder",
         repo: "https://github.com/joshcohn27/weekly-schedule",
+        screenshot: {
+            src: "/screenshots/weekly-schedule",
+            alt: "Weekly Period Schedule Builder showing a generated week of activities for each bunk, period by period.",
+        },
     },
     {
         slug: "flight-overhead",
@@ -137,6 +167,10 @@ export const allProjects: Project[] = [
         link: "https://flight.joshbcohn.com",
         linkLabel: "Open Tracker",
         repo: "https://github.com/joshcohn27/flight-app",
+        screenshot: {
+            src: "/screenshots/flight-overhead",
+            alt: "Flight Overhead showing the nearest plane, its altitude and distance, and where to look in the sky.",
+        },
     },
 ];
 

@@ -20,7 +20,7 @@ export default function ProjectsPage() {
 
                         <div className="project-list">
                             {projects.map((project) => (
-                                <ProjectCard key={project.slug} project={project} headingLevel={2} />
+                                <ProjectCard key={project.slug} project={project} headingLevel={2} layout="row" />
                             ))}
                         </div>
 
