@@ -34,6 +34,14 @@ export default function ProjectMedia({ screenshot, sizes, className }: ProjectMe
     const still640 = `${screenshot.src}-640.webp`;
     const still1280 = `${screenshot.src}-1280.webp`;
 
+    // the biggest still on offer; also used as the clip's poster so it's as sharp as the clip
+    let largest = still1280;
+    let srcSet = `${still640} 640w, ${still1280} 1280w`;
+    if (screenshot.hiRes) {
+        largest = `${screenshot.src}-2560.webp`;
+        srcSet += `, ${largest} 2560w`;
+    }
+
     let classes = "project-media";
     if (className) {
         classes += " " + className;
@@ -43,7 +51,7 @@ export default function ProjectMedia({ screenshot, sizes, className }: ProjectMe
         return (
             <video
                 className={classes}
-                poster={still1280}
+                poster={largest}
                 width={1280}
                 height={800}
                 autoPlay
@@ -63,7 +71,7 @@ export default function ProjectMedia({ screenshot, sizes, className }: ProjectMe
         <img
             className={classes}
             src={still640}
-            srcSet={`${still640} 640w, ${still1280} 1280w`}
+            srcSet={srcSet}
             sizes={sizes}
             width={1280}
             height={800}

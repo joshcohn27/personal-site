@@ -31,6 +31,8 @@ export interface Screenshot {
     alt: string;
     // short looping clip played instead of the still; files are <video>.webm and <video>.mp4
     video?: string;
+    // there is also a <src>-2560.webp, for screenshots shown large enough to need it
+    hiRes?: boolean;
 }
 
 export interface DetailSection {
@@ -75,6 +77,7 @@ export const allProjects: Project[] = [
             src: "/screenshots/nhl-lottery",
             alt: "NHL Draft Lottery Simulator for the 2027 draft, ready to draw the first lottery ball.",
             video: "/screenshots/nhl-lottery-draw",
+            hiRes: true,
         },
     },
     {
