@@ -232,7 +232,7 @@ export default function Poetry() {
                                     onChange={e => setSearch(e.target.value)}
                                 />
                                 {search && (
-                                    <TextButton className="poem-search-clear" onClick={() => setSearch("")}>
+                                    <TextButton className="poem-search-clear" onClick={() => setSearch("")} label="Clear search">
                                         x
                                     </TextButton>
                                 )}
@@ -285,7 +285,7 @@ export default function Poetry() {
                             <TextButton onClick={handleShare} title="Share this poem">
                                 Share
                             </TextButton>
-                            <TextButton onClick={closeModal}>
+                            <TextButton onClick={closeModal} label="Close poem">
                                 X
                             </TextButton>
                         </div>
