@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import ButtonLink from "../components/ui/ButtonLink";
+import TextLink from "../components/ui/TextLink";
+import TechChips from "../components/ui/TechChips";
 
 interface Project {
     title: string;
@@ -124,28 +126,18 @@ export default function ProjectsPage() {
                                     <p className="project-description">
                                         {project.description}
                                     </p>
-                                    <p className="project-stack">{project.stack.join(", ")}</p>
+                                    <TechChips items={project.stack} />
                                     {(project.link || project.repo) && (
                                         <div className="project-links">
                                             {project.link && (
-                                                <a
-                                                    href={project.link}
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    className="project-link"
-                                                >
+                                                <TextLink href={project.link} newTab strong>
                                                     {project.linkLabel}
-                                                </a>
+                                                </TextLink>
                                             )}
                                             {project.repo && (
-                                                <a
-                                                    href={project.repo}
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    className="project-link"
-                                                >
+                                                <TextLink href={project.repo} newTab strong>
                                                     GitHub
-                                                </a>
+                                                </TextLink>
                                             )}
                                         </div>
                                     )}
@@ -154,13 +146,9 @@ export default function ProjectsPage() {
                         </div>
 
                         <div style={{ marginTop: "var(--space-5)", paddingTop: "var(--space-4)", borderTop: "1px solid var(--color-border)" }}>
-                            <Link
-                                to="/"
-                                onClick={() => window.scrollTo(0, 0)}
-                                className="button button-secondary"
-                            >
+                            <ButtonLink to="/" variant="secondary">
                                 Back to home
-                            </Link>
+                            </ButtonLink>
                         </div>
                     </div>
                 </section>

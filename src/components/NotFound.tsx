@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import ButtonLink from "./ui/ButtonLink";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -36,13 +36,13 @@ export default function NotFound() {
                             gap: "var(--space-3)",
                             marginBottom: "var(--space-5)",
                         }}>
-                            <Link to="/" className="button button-primary">
+                            <ButtonLink to="/">
                                 Back to home
-                            </Link>
+                            </ButtonLink>
 
-                            <a href="/projects" className="button button-secondary">
+                            <ButtonLink to="/projects" variant="secondary">
                                 View projects
-                            </a>
+                            </ButtonLink>
                         </div>
 
                         <div style={{

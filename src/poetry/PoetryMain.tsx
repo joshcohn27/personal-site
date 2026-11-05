@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import TextButton from "../components/ui/TextButton";
 
 interface Poem {
     title: string;
@@ -207,24 +208,18 @@ export default function Poetry() {
                                     onChange={e => setSearch(e.target.value)}
                                 />
                                 {search && (
-                                    <button type="button" className="text-button poem-search-clear" onClick={() => setSearch("")}>
+                                    <TextButton className="poem-search-clear" onClick={() => setSearch("")}>
                                         x
-                                    </button>
+                                    </TextButton>
                                 )}
                             </div>
 
                             <div className="poem-sort">
                                 <span className="muted-text">Sort:</span>
                                 {(Object.keys(SORT_LABELS) as SortOption[]).map(opt => (
-                                    <button
-                                        key={opt}
-                                        type="button"
-                                        onClick={() => setSort(opt)}
-                                        className={sort === opt ? "text-button is-active" : "text-button"}
-                                        aria-pressed={sort === opt}
-                                    >
+                                    <TextButton key={opt} onClick={() => setSort(opt)} active={sort === opt}>
                                         {SORT_LABELS[opt]}
-                                    </button>
+                                    </TextButton>
                                 ))}
                             </div>
                         </div>
@@ -262,12 +257,12 @@ export default function Poetry() {
                     <div className="poem-panel" onClick={e => e.stopPropagation()}>
                         <div className="poem-actions">
                             {copied && <span className="muted-text">Copied to clipboard</span>}
-                            <button type="button" className="text-button" onClick={handleShare} title="Share this poem">
+                            <TextButton onClick={handleShare} title="Share this poem">
                                 Share
-                            </button>
-                            <button type="button" className="text-button" onClick={closeModal}>
+                            </TextButton>
+                            <TextButton onClick={closeModal}>
                                 X
-                            </button>
+                            </TextButton>
                         </div>
 
                         <h2 className="poem-heading">{selectedPoem.title}</h2>
