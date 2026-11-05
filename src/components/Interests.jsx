@@ -35,7 +35,7 @@ const ITEMS = [
     {
         title: "Teaching",
         text: "I'm a certified American Red Cross instructor for lifeguarding, water safety, and CPR.",
-        photo: { name: "dock", alt: "Josh lifeguarding on a dock at Seneca Lake, holding a rescue tube." },
+        photo: { name: "dock-fit", alt: "Josh lifeguarding on a dock at Seneca Lake, holding a rescue tube." },
     },
     {
         title: "Writing Poetry",
