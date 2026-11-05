@@ -8,6 +8,7 @@ export default function HomePoetry() {
             <div className="container">
                 <SectionHeader
                     title="Poetry"
+                    subtitle="My creative outlet"
                     action={
                         <ButtonLink to="/poetry" variant="secondary">
                             View all poems
