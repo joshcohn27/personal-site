@@ -1,10 +1,11 @@
-import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import TextButton from "../components/ui/TextButton";
 import { parsePoem } from "./parsePoem";
 import type { Poem } from "./parsePoem";
+import DedicationNote from "./DedicationNote";
 
 type SortOption = "newest" | "oldest" | "az" | "za";
 
@@ -14,43 +15,6 @@ const SORT_LABELS: Record<SortOption, string> = {
     newest: "Newest",
     oldest: "Oldest",
 };
-
-function InfoTooltip({ text }: { text: string }) {
-    const [visible, setVisible] = useState(false);
-    const ref = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const handleClick = (e: MouseEvent) => {
-            if (ref.current && !ref.current.contains(e.target as Node)) {
-                setVisible(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClick);
-        return () => document.removeEventListener("mousedown", handleClick);
-    }, []);
-
-    return (
-        <div ref={ref} className="poem-note">
-            <button
-                type="button"
-                onClick={e => { e.stopPropagation(); setVisible(v => !v); }}
-                title="Note"
-                className={visible ? "poem-note-button is-open" : "poem-note-button"}
-            >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="8" strokeWidth="3" />
-                    <line x1="12" y1="12" x2="12" y2="16" />
-                </svg>
-            </button>
-            {visible && (
-                <div className="poem-note-text">
-                    {text}
-                </div>
-            )}
-        </div>
-    );
-}
 
 export default function Poetry() {
     const [poems, setPoems] = useState<Poem[]>([]);
@@ -175,7 +139,7 @@ export default function Poetry() {
                         <button type="button" className="poem-title" onClick={() => openPoem(poem)}>
                             {poem.title}
                         </button>
-                        {poem.dedication && <InfoTooltip text={poem.dedication} />}
+                        {poem.dedication && <DedicationNote text={poem.dedication} />}
                     </li>
                 ))}
             </ul>
