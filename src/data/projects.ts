@@ -75,7 +75,7 @@ export const allProjects: Project[] = [
         featured: true,
         screenshot: {
             src: "/screenshots/nhl-lottery",
-            alt: "NHL Draft Lottery Simulator for the 2027 draft, ready to draw the first lottery ball.",
+            alt: "NHL Draft Lottery Simulator's lottery draw panel, ready to draw the first ball.",
             video: "/screenshots/nhl-lottery-draw",
             hiRes: true,
         },
