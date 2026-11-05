@@ -9,8 +9,8 @@ const NAV_ITEMS = [
     { key: "projects", label: "Projects", section: "projects" },
     { key: "about", label: "About", section: "about" },
     { key: "poetry", label: "Poetry", section: "poetry" },
-    { key: "resume", label: "Resume", href: "/resume.pdf" },
     { key: "contact", label: "Contact", section: "contact" },
+    { key: "resume", label: "Resume", href: "/resume.pdf" },
 ];
 
 // matches the css breakpoint where the menu button replaces the nav links
