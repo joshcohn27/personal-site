@@ -1,3 +1,5 @@
+import OutsidePhoto from "./OutsidePhoto";
+
 export default function Values() {
     return (
         <div id="future" className="text-block about-part">
@@ -19,6 +21,7 @@ export default function Values() {
                 </div>
 
                 <div className="text-block">
+                    <OutsidePhoto name="laughing" />
                     <h4>What I value</h4>
                     <p>
                         The best teams I've been on were the ones where people cared. They cared

@@ -1,82 +1,113 @@
+import OutsidePhoto from "./OutsidePhoto";
+import TextLink from "./ui/TextLink";
+
 export default function Interests() {
     return (
         <div id="interests" className="text-block about-part">
             <h3>Outside of work</h3>
 
-            <div className="interests-grid">
-                <article className="interest">
-                    <h4>Philadelphia Sports</h4>
-                    <p>
-                        Lifelong Philly fan. Sports have always been a big part of my life.
-                        They have taught me a lot about resilience, patience, and sticking
-                        with something even when it is frustrating. Also helps that the Eagles
-                        have given me some unforgettable moments. At RIT, I was a member of
-                        Sports Fans of RIT and served as the club's treasurer.
-                    </p>
+            {/* one item per row, photo and text alternating sides on desktop */}
+            <div className="interest-rows">
+                <article className="interest-row">
+                    <OutsidePhoto name="flyers" />
+                    <div className="interest-text">
+                        <h4>Philadelphia Sports</h4>
+                        <p>
+                            Lifelong Philly fan. Sports have always been a big part of my life.
+                            They have taught me a lot about resilience, patience, and sticking
+                            with something even when it is frustrating. Also helps that the Eagles
+                            have given me some unforgettable moments. At RIT, I was a member of
+                            Sports Fans of RIT and served as the club's treasurer.
+                        </p>
+                    </div>
                 </article>
 
-                <article className="interest">
-                    <h4>Volunteering</h4>
-                    <p>
-                        I volunteer as a driver for the American Cancer Society Road
-                        to Recovery program, giving rides to patients traveling to and
-                        from cancer treatment. It is one of the most rewarding things I do,
-                        and it matters a lot to me.
-                    </p>
+                <article className="interest-row photo-right">
+                    <OutsidePhoto name="rainbow" />
+                    <div className="interest-text">
+                        <h4>The Outdoors</h4>
+                        <p>
+                            I spend time outside whenever I can. Whether it's being near water,
+                            going for walks, or just getting fresh air, it helps me slow down and
+                            think more clearly.
+                        </p>
+                    </div>
                 </article>
 
-                <article className="interest">
-                    <h4>The Outdoors</h4>
-                    <p>
-                        I spend time outside whenever I can. Whether it's being near water,
-                        going for walks, or just getting fresh air, it helps me slow down and
-                        think more clearly.
-                    </p>
+                <article className="interest-row">
+                    <OutsidePhoto name="pasta" />
+                    <div className="interest-text">
+                        <h4>Cooking</h4>
+                        <p>
+                            I enjoy trying new foods, but more than that I like cooking for other people.
+                            There is something satisfying about putting a meal in front of someone and
+                            watching them enjoy it. It is a different kind of joy for both of us.
+                        </p>
+                    </div>
                 </article>
 
-                <article className="interest">
-                    <h4>Cooking</h4>
-                    <p>
-                        I enjoy trying new foods, but more than that I like cooking for other people.
-                        There is something satisfying about putting a meal in front of someone and
-                        watching them enjoy it. It is a different kind of joy for both of us.
-                    </p>
+                <article className="interest-row photo-right">
+                    <OutsidePhoto name="catan" />
+                    <div className="interest-text">
+                        <h4>Catan</h4>
+                        <p>
+                            Strategy, negotiation, and a bit of luck. It is a great combination.
+                            I have been playing for years and have played around 1500 games.
+                            I am always up for one more.
+                        </p>
+                    </div>
                 </article>
 
-                <article className="interest">
-                    <h4>Catan</h4>
-                    <p>
-                        Strategy, negotiation, and a bit of luck. It is a great combination.
-                        I have been playing for years and have played around 1500 games.
-                        I am always up for one more.
-                    </p>
+                <article className="interest-row">
+                    <OutsidePhoto name="dock" />
+                    <div className="interest-text">
+                        <h4>Teaching</h4>
+                        <p>
+                            I'm a certified American Red Cross instructor for lifeguarding, water
+                            safety, and CPR.
+                        </p>
+                    </div>
                 </article>
 
-                <article className="interest">
-                    <h4>Writing Poetry</h4>
-                    <p>
-                        I spend a lot of time writing poetry. It is something I really enjoy
-                        and a way for me to slow down and think differently. It is how I
-                        process my thoughts and a more personal way of telling stories.
-                    </p>
+                <article className="interest-row photo-right">
+                    <OutsidePhoto name="torch" />
+                    <div className="interest-text">
+                        <h4>Camp Seneca Lake</h4>
+                        <p>
+                            I've spent 14 summers at Camp Seneca Lake, going from camper to counselor
+                            to the leadership team. My role changes from year to year, but I'm always
+                            responsible for a lot. It's a big part of my life.
+                        </p>
+                        <div className="interest-links">
+                            <TextLink to="/projects/od-scheduler">OD Scheduler</TextLink>
+                            <TextLink to="/projects/weekly-schedule">Weekly Period Schedule Builder</TextLink>
+                        </div>
+                    </div>
                 </article>
 
-                <article className="interest">
-                    <h4>Teaching</h4>
-                    <p>
-                        I'm a certified American Red Cross instructor for lifeguarding, water
-                        safety, and CPR.
-                    </p>
-                </article>
-
-                <article className="interest">
-                    <h4>Camp Seneca Lake</h4>
-                    <p>
-                        I've spent 14 summers at Camp Seneca Lake, going from camper to counselor
-                        to the leadership team. My role changes from year to year, but I'm always
-                        responsible for a lot. It's a big part of my life.
-                    </p>
-                </article>
+                {/* last row has no photos: two items side by side */}
+                <div className="interest-pair">
+                    <article className="interest-text">
+                        <h4>Volunteering</h4>
+                        <p>
+                            I volunteer as a driver for the American Cancer Society Road
+                            to Recovery program, giving rides to patients traveling to and
+                            from cancer treatment. It is one of the most rewarding things I do,
+                            and it matters a lot to me.
+                        </p>
+                    </article>
+                    <article className="interest-text">
+                        <h4>Writing Poetry</h4>
+                        <p>
+                            I spend a lot of time writing poetry. It is something I really enjoy
+                            and a way for me to slow down and think differently. It is how I
+                            process my thoughts and a more personal way of telling stories.
+                        </p>
+                        <div className="interest-links">
+                            <TextLink to="/#poetry">View my poems</TextLink>
+                        </div>
+                    </article>
+                </div>
             </div>
         </div>
     );

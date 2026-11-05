@@ -11,20 +11,57 @@ export default function About() {
                 <div className="about-stack">
                     <div className="text-block full-width-text">
                         <h3>Background</h3>
-                        <p>
-                            I started coding in high school. My school offered programming classes all
-                            four years, which I was lucky to have, and I took every one. They were all
-                            taught by the same teacher, and he believed in my ability to solve problems.
-                        </p>
-                        <p>
-                            I learned Java and Python there and kept going. I got my BS in Computing and
-                            Information Technologies from RIT with a minor in Software Engineering.
-                        </p>
-                        <p>
-                            My internships at Discovery Machine, Inc. and Chameleon Consulting Group LLC let me
-                            keep learning while putting my skills to work on real teams. They taught me
-                            things you can only learn on the job.
-                        </p>
+                        <ol className="timeline">
+                            <li className="timeline-stop">
+                                <div className="timeline-head">
+                                    <h4>High school</h4>
+                                    <p className="timeline-date">Graduated 2021</p>
+                                </div>
+                                <span className="timeline-dot" aria-hidden="true"></span>
+                                <div className="timeline-text">
+                                    <p>
+                                        I started coding in high school. My school offered programming classes all
+                                        four years, which I was lucky to have, and I took every one. They were all
+                                        taught by the same teacher, and he believed in my ability to solve problems.
+                                    </p>
+                                </div>
+                            </li>
+                            <li className="timeline-stop">
+                                <div className="timeline-head">
+                                    <h4>RIT</h4>
+                                    <p className="timeline-date">Aug 2021 – May 2026</p>
+                                </div>
+                                <span className="timeline-dot" aria-hidden="true"></span>
+                                <div className="timeline-text">
+                                    <p>
+                                        I learned Java and Python there and kept going. I got my BS in Computing and
+                                        Information Technologies from RIT with a minor in Software Engineering.
+                                    </p>
+                                </div>
+                            </li>
+                            <li className="timeline-stop">
+                                <div className="timeline-head">
+                                    <h4>Internships</h4>
+                                    <p className="timeline-date">Aug–Dec 2023 · Aug–Dec 2024</p>
+                                </div>
+                                <span className="timeline-dot" aria-hidden="true"></span>
+                                <div className="timeline-text">
+                                    <p>
+                                        My internships at Discovery Machine, Inc. and Chameleon Consulting Group LLC let me
+                                        keep learning while putting my skills to work on real teams. They taught me
+                                        things you can only learn on the job.
+                                    </p>
+                                </div>
+                            </li>
+                            <li className="timeline-stop">
+                                <div className="timeline-head">
+                                    <h4>Drexel</h4>
+                                    <p className="timeline-date">Sep 2026 – Jun 2028 (expected)</p>
+                                </div>
+                                <span className="timeline-dot" aria-hidden="true"></span>
+                            </li>
+                        </ol>
+
                         <p>
                             What keeps me going is that there's always something new to learn, big or
                             small. I love solving problems, especially when I get to find a different

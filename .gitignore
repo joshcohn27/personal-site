@@ -23,3 +23,6 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# original photos; only the webp versions in public/ are published
+assets-src/
