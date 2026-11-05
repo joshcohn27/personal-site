@@ -11,6 +11,8 @@
 	--color-text-soft: #333333;
 	--color-text-muted: #404040;
 	--color-border: #e5e5e5;
+	/* form-control outlines need 3:1 against their background */
+	--color-border-strong: #8a8a8a;
 
 	/* spacing scale */
 	--space-1: 4px;
@@ -539,7 +541,7 @@ select {
 	font: inherit;
 	color: var(--color-text);
 	background: var(--color-surface);
-	border: 1px solid var(--color-border);
+	border: 1px solid var(--color-border-strong);
 	border-radius: var(--radius);
 }
 
