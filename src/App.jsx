@@ -11,6 +11,7 @@ import NotFound from "./components/NotFound";
 import Poetry from "./poetry/PoetryMain";
 import ProjectsPage from "./projects/ProjectsPage";
 import ProjectDetail from "./projects/ProjectDetail";
+import { metaFor } from "./data/meta";
 
 // after each navigation, go to the #section in the url if there is one, otherwise to the top.
 // a new page jumps straight there; moving between sections on the same page scrolls smoothly.
@@ -42,6 +43,22 @@ function ScrollManager() {
     return null;
 }
 
+// keeps the tab title and description in step with the page when moving around inside the site
+function PageMeta() {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        const meta = metaFor(pathname);
+        document.title = meta.title;
+        const description = document.querySelector('meta[name="description"]');
+        if (description) {
+            description.setAttribute("content", meta.description);
+        }
+    }, [pathname]);
+
+    return null;
+}
+
 function HomePage() {
     return (
         <div className="site-shell">
@@ -62,6 +79,7 @@ export default function App() {
     return (
         <BrowserRouter>
             <ScrollManager />
+            <PageMeta />
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/projects" element={<ProjectsPage />} />

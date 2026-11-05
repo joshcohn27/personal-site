@@ -36,6 +36,18 @@
             "destination": "https://beehive-frontend-pi.vercel.app/:path*"
         },
         {
+            "source": "/projects",
+            "destination": "/projects/index.html"
+        },
+        {
+            "source": "/poetry",
+            "destination": "/poetry/index.html"
+        },
+        {
+            "source": "/projects/:slug",
+            "destination": "/projects/:slug/index.html"
+        },
+        {
             "source": "/(.*)",
             "destination": "/index.html"
         }
