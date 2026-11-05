@@ -40,6 +40,8 @@ export default function Hero() {
 				<img
 					className="hero-photo"
 					src="/headshot.jpg"
+					srcSet="/headshot-256.webp 256w, /headshot-400.webp 400w, /headshot-640.webp 640w"
+					sizes="(max-width: 720px) 128px, (max-width: 960px) 280px, 320px"
 					alt="Josh Cohn"
 					width="640"
 					height="800"

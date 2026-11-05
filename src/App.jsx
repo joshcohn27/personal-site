@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -8,10 +8,12 @@ import HomePoetry from "./components/HomePoetry";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
-import Poetry from "./poetry/PoetryMain";
 import ProjectsPage from "./projects/ProjectsPage";
 import ProjectDetail from "./projects/ProjectDetail";
 import { metaFor } from "./data/meta";
+
+// the poetry page (and the radix popover it uses) only downloads when someone opens it
+const Poetry = lazy(() => import("./poetry/PoetryMain"));
 
 // after each navigation, go to the #section in the url if there is one, otherwise to the top.
 // a new page jumps straight there; moving between sections on the same page scrolls smoothly.
@@ -84,7 +86,14 @@ export default function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/projects/:slug" element={<ProjectDetail />} />
-                <Route path="/poetry" element={<Poetry />} />
+                <Route
+                    path="/poetry"
+                    element={
+                        <Suspense fallback={null}>
+                            <Poetry />
+                        </Suspense>
+                    }
+                />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
