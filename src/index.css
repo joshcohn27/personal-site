@@ -522,6 +522,8 @@ select {
 
 /* Homepage project cards lift slightly on hover */
 .project-grid .project-card {
+	/* keeps the card on its own layer so the lift doesn't blur the screenshot */
+	will-change: transform;
 	transition: transform 150ms ease, border-color 150ms ease;
 }
 
