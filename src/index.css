@@ -551,10 +551,23 @@ select {
 	padding-top: var(--space-4);
 	display: flex;
 	justify-content: space-between;
+	align-items: flex-start;
 	gap: var(--space-3);
 	flex-wrap: wrap;
 	color: var(--color-text-muted);
 	font-size: var(--font-sm);
+}
+
+.footer-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-1) var(--space-4);
+}
+
+.footer-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2) var(--space-4);
 }
 
 .page-intro {
