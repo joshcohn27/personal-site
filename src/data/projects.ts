@@ -16,6 +16,8 @@ export interface Project {
     repo?: string;
     // shown on the homepage
     featured?: boolean;
+    // set to true to take a project off the site without deleting it
+    hidden?: boolean;
     // detail page sections, filled in later; each one only shows once it has a heading and text
     problem?: DetailSection;
     built?: DetailSection;
@@ -27,9 +29,10 @@ export interface DetailSection {
     text: string;
 }
 
-export const projects: Project[] = [
+// every project, including hidden ones; the site uses visibleProjects below
+export const allProjects: Project[] = [
     {
-        slug: "beehive",
+        slug: "beehive-monitoring",
         title: "Beehive Monitoring System",
         type: "Undergrad Senior Capstone",
         description:
@@ -88,6 +91,8 @@ export const projects: Project[] = [
         link: "https://autopick.joshbcohn.com",
         linkLabel: "Open Autopick",
         repo: "https://github.com/joshcohn27/autopick-react",
+        // hidden until the revamp
+        hidden: true,
     },
     {
         slug: "wrapped",
@@ -106,7 +111,7 @@ export const projects: Project[] = [
         type: "Interactive Web App",
         description:
             "Built a browser-based casino-style table game simulator focused on accurate game rules, clean interaction design, and complex state handling. The project includes multiple games and variants, each requiring careful logic for betting flows, hand evaluation, payouts, edge cases, and player/dealer actions. A small group of friends use it regularly, which has helped me improve the app through real feedback instead of just building in isolation.",
-        stack: ["React", "TypeScript", "state management", "game logic", "UI/UX"],
+        stack: ["React", "TypeScript"],
         link: "https://casino.joshbcohn.com",
         linkLabel: "Open Simulator",
         repo: "https://github.com/joshcohn27/casino",
@@ -135,8 +140,12 @@ export const projects: Project[] = [
     },
 ];
 
+// projects shown on the site, in Projects page order
+export const projects = allProjects.filter((project) => !project.hidden);
+
 export const featuredProjects = projects.filter((project) => project.featured);
 
+// hidden projects have no detail page
 export function findProject(slug: string | undefined) {
     return projects.find((project) => project.slug === slug);
 }
