@@ -9,7 +9,7 @@ export default function ProjectsPage() {
         <div className="site-shell">
             <Header />
             <main>
-                <section className="section" style={{ paddingTop: "3.5rem" }}>
+                <section className="section">
                     <div className="container">
                         <div className="section-heading" style={{ marginBottom: "var(--space-5)" }}>
                             <h1>Projects</h1>

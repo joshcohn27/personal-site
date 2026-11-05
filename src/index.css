@@ -20,6 +20,11 @@
 	--space-3: 16px;
 	--space-4: 24px;
 	--space-5: 32px;
+	--space-6: 48px;
+	--space-7: 64px;
+
+	/* space between major sections, and above the first heading on every page */
+	--section-gap: var(--space-7);
 
 	/* font sizes */
 	--font-sm: 14px;
@@ -36,6 +41,8 @@
 	--radius: 6px;
 	--radius-sm: 4px;
 	--max-width: 1120px;
+	/* one paragraph width for the whole site, about 65 characters of body text */
+	--paragraph-width: 38.5rem;
 	--header-height: 72px;
 	--header-height-mobile: 64px;
 	--tap-target: 44px;
@@ -81,10 +88,10 @@ h4 {
 	margin-bottom: var(--space-2);
 }
 
-/* Readable line length for all running text */
+/* readable line length for all running text */
 p,
 .poem-body {
-	max-width: 65ch;
+	max-width: var(--paragraph-width);
 }
 
 /* Background on the homepage spans the full content width to line up with the skills grid */
@@ -240,7 +247,7 @@ select {
 }
 
 .hero-section {
-	padding: var(--space-5) 0;
+	padding: var(--section-gap) 0;
 }
 
 .hero-grid {
@@ -260,7 +267,7 @@ select {
 
 .hero-tagline {
 	color: var(--color-text-muted);
-	margin-bottom: var(--space-2);
+	margin-bottom: var(--space-3);
 }
 
 .hero-copy h1 {
@@ -269,7 +276,7 @@ select {
 }
 
 .hero-text {
-	margin-top: var(--space-3);
+	margin-top: var(--space-4);
 }
 
 .hero-actions {
@@ -360,7 +367,7 @@ select {
 }
 
 .section {
-	padding: var(--space-5) 0;
+	padding: var(--section-gap) 0;
 }
 
 .section + .section {
@@ -368,7 +375,7 @@ select {
 }
 
 .section + .section > .container {
-	padding-top: var(--space-5);
+	padding-top: var(--section-gap);
 	border-top: 1px solid var(--color-border);
 }
 
@@ -823,6 +830,10 @@ select {
 }
 
 @media (max-width: 720px) {
+	:root {
+		--section-gap: var(--space-6);
+	}
+
 	.project-card {
 		padding: var(--space-3);
 	}

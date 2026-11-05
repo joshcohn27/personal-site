@@ -34,7 +34,7 @@ export default function ProjectDetail() {
         <div className="site-shell">
             <Header />
             <main>
-                <article className="section page-section">
+                <article className="section">
                     <div className="container">
                         <p className="project-type">{project.type}</p>
                         <h1 className="detail-title">{project.title}</h1>
