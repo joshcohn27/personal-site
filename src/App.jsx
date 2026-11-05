@@ -35,11 +35,43 @@ function ScrollManager() {
             target = document.getElementById(decodeURIComponent(hash.slice(1)));
         }
 
-        if (target) {
-            target.scrollIntoView({ behavior });
-        } else if (!samePage) {
-            window.scrollTo({ top: 0, behavior });
+        if (!target) {
+            if (!samePage) {
+                window.scrollTo({ top: 0, behavior });
+            }
+            return;
         }
+
+        target.scrollIntoView({ behavior });
+        if (samePage) {
+            return;
+        }
+
+        // arriving from another page: parts of the homepage (like the featured poems) load a moment
+        // later and can push the section down, so keep it lined up until the page settles.
+        // stop as soon as the visitor scrolls on their own.
+        let stopped = false;
+        const stop = () => {
+            stopped = true;
+        };
+        const keepAligned = new ResizeObserver(() => {
+            if (!stopped) {
+                target.scrollIntoView({ behavior: "instant" });
+            }
+        });
+        keepAligned.observe(document.body);
+        window.addEventListener("wheel", stop, { passive: true });
+        window.addEventListener("touchstart", stop, { passive: true });
+        window.addEventListener("keydown", stop);
+        const timer = setTimeout(stop, 2000);
+
+        return () => {
+            keepAligned.disconnect();
+            clearTimeout(timer);
+            window.removeEventListener("wheel", stop);
+            window.removeEventListener("touchstart", stop);
+            window.removeEventListener("keydown", stop);
+        };
     }, [pathname, hash]);
 
     return null;
