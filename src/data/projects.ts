@@ -126,6 +126,10 @@ export const allProjects: Project[] = [
         link: "https://wrapped.joshbcohn.com",
         linkLabel: "Open Wrapped",
         repo: "https://github.com/joshcohn27/wrapped",
+        screenshot: {
+            src: "/screenshots/wrapped",
+            alt: "Wrapped dashboard showing all-time Spotify listening stats.",
+        },
     },
     {
         slug: "table-games",
