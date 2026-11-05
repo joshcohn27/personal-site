@@ -47,7 +47,6 @@ export default function About() {
                                     <li>JavaScript</li>
                                     <li>Java</li>
                                     <li>C#</li>
-                                    <li>SQL</li>
                                 </ul>
                             </div>
                             <div className="skill-group">
@@ -72,11 +71,18 @@ export default function About() {
                                 </ul>
                             </div>
                             <div className="skill-group">
+                                <h4>Databases</h4>
+                                <ul className="skill-tags">
+                                    <li>SQL</li>
+                                    <li>Oracle</li>
+                                    <li>Supabase</li>
+                                </ul>
+                            </div>
+                            <div className="skill-group">
                                 <h4>Data and ML</h4>
                                 <ul className="skill-tags">
                                     <li>NumPy</li>
                                     <li>scikit-learn</li>
-                                    <li>Oracle</li>
                                 </ul>
                             </div>
                             <div className="skill-group">
@@ -87,7 +93,6 @@ export default function About() {
                                     <li>GitLab CI/CD</li>
                                     <li>Azure</li>
                                     <li>Vercel</li>
-                                    <li>Supabase</li>
                                     <li>Claude Code</li>
                                 </ul>
                             </div>
