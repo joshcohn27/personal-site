@@ -1,5 +1,3 @@
-import OutsidePhoto from "./OutsidePhoto";
-
 export default function Values() {
     return (
         <div id="future" className="text-block about-part">
@@ -18,7 +16,6 @@ export default function Values() {
                         engineering. I've really enjoyed frontend work lately, especially building
                         clean, easy-to-use interfaces, but I like working across the stack too.
                     </p>
-                    <OutsidePhoto name="laughing" />
                 </div>
 
                 <div className="text-block">
@@ -35,6 +32,18 @@ export default function Values() {
                         built with intention. That's why I want to study it, not just use it.
                     </p>
                 </div>
+
+                <img
+                    className="values-photo"
+                    src="/images/outside/laughing-portrait-560.webp"
+                    srcSet="/images/outside/laughing-portrait-560.webp 560w, /images/outside/laughing-portrait-1120.webp 1120w"
+                    sizes="(max-width: 960px) 100vw, 360px"
+                    width={560}
+                    height={700}
+                    alt="Josh laughing with his hands on his knees during a game at camp."
+                    loading="lazy"
+                    decoding="async"
+                />
             </div>
         </div>
     );
