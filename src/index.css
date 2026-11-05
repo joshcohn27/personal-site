@@ -721,8 +721,23 @@ select {
 	margin-bottom: var(--space-3);
 }
 
-/* homepage featured poems: titles are links, so give them the full row */
+/* homepage featured poems: title, then the poem's first two lines */
+.featured-poem {
+	padding: var(--space-3) 0;
+	border-bottom: 1px solid var(--color-border);
+}
+
 .featured-poems .poem-title {
+	display: inline-block;
+	padding: 0;
+}
+
+.poem-excerpt {
+	margin-top: var(--space-1);
+	color: var(--color-text-muted);
+}
+
+.poem-excerpt span {
 	display: block;
 }
 

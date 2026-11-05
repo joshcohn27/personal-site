@@ -5,8 +5,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { parsePoem } from "../src/poetry/parsePoem.ts";
 
-// how many opening lines of each poem go into the index
-const EXCERPT_LINES = 4;
+// how many opening lines of each poem go into the index (the dedication line is never one of them)
+const EXCERPT_LINES = 2;
 
 function buildIndex(poemsDir) {
     const poems = [];

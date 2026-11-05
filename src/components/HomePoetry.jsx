@@ -39,10 +39,15 @@ export default function HomePoetry() {
                 {featured.length > 0 && (
                     <ul className="poem-list featured-poems">
                         {featured.map((poem) => (
-                            <li key={poem.index} className="poem-row">
+                            <li key={poem.index} className="featured-poem">
                                 <Link to={`/poetry?poem=${poem.slug}`} className="poem-title">
                                     {poem.title}
                                 </Link>
+                                <p className="poem-excerpt">
+                                    {poem.excerpt.map((line, i) => (
+                                        <span key={i}>{line}</span>
+                                    ))}
+                                </p>
                             </li>
                         ))}
                     </ul>
