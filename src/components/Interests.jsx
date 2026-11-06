@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import TextLink from "./ui/TextLink";
 import IconButton from "./ui/IconButton";
@@ -120,6 +120,31 @@ export default function Interests() {
     const [canPrev, setCanPrev] = useState(false);
     const [canNext, setCanNext] = useState(true);
 
+    // the arrows sit level with the middle of the card photos, so they never cover the text
+    const rowRef = useRef(null);
+    const [arrowTop, setArrowTop] = useState(null);
+
+    useEffect(() => {
+        const row = rowRef.current;
+        if (!row) {
+            return;
+        }
+        const measure = () => {
+            const photo = row.querySelector(".outside-card-photo");
+            if (photo) {
+                const rowTop = row.getBoundingClientRect().top;
+                const box = photo.getBoundingClientRect();
+                setArrowTop(box.top - rowTop + box.height / 2);
+            }
+        };
+        measure();
+        const observer = new ResizeObserver(measure);
+        observer.observe(row);
+        return () => {
+            observer.disconnect();
+        };
+    }, []);
+
     const update = useCallback((api) => {
         setSelected(api.selectedScrollSnap());
         setSnapCount(api.scrollSnapList().length);
@@ -162,56 +187,83 @@ export default function Interests() {
         }
     };
 
+    // until the photo is measured, park the arrows near the top
+    let rowStyle = { "--arrow-top": "25%" };
+    if (arrowTop !== null) {
+        rowStyle = { "--arrow-top": `${arrowTop}px` };
+    }
+
+    // each dot jumps to its stop; screen readers hear the title of the card it starts on
+    const goTo = (index) => {
+        if (embla) {
+            embla.scrollTo(index, prefersReducedMotion());
+        }
+    };
     const dots = [];
     for (let i = 0; i < snapCount; i++) {
         let dotClass = "outside-dot";
+        let current;
         if (i === selected) {
             dotClass = "outside-dot is-current";
+            current = "true";
         }
-        dots.push(<span key={i} className={dotClass}></span>);
+        dots.push(
+            <button
+                key={i}
+                type="button"
+                className={dotClass}
+                aria-label={ITEMS[i].title}
+                aria-current={current}
+                onClick={() => goTo(i)}
+            ></button>,
+        );
     }
 
     return (
         <div id="interests" className="text-block about-part">
-            <div className="outside-head">
-                <h3 id="outside-title">Outside of work</h3>
-                <div className="outside-arrows">
-                    <IconButton label="Previous" onClick={goPrev} disabled={!canPrev}>
+            <h3 id="outside-title">Outside of work</h3>
+
+            <div className="outside-row" ref={rowRef} style={rowStyle}>
+                {/* Previous is hidden at the start, Next at the end */}
+                {canPrev && (
+                    <IconButton label="Previous" onClick={goPrev} className="carousel-arrow carousel-arrow-prev">
                         <ArrowIcon direction="prev" />
                     </IconButton>
-                    <IconButton label="Next" onClick={goNext} disabled={!canNext}>
+                )}
+                {canNext && (
+                    <IconButton label="Next" onClick={goNext} className="carousel-arrow carousel-arrow-next">
                         <ArrowIcon direction="next" />
                     </IconButton>
-                </div>
-            </div>
+                )}
 
-            <div
-                className="outside-viewport"
-                ref={viewportRef}
-                tabIndex={0}
-                role="region"
-                aria-roledescription="carousel"
-                aria-labelledby="outside-title"
-                onKeyDown={onKeyDown}
-            >
-                <div className="outside-track">
-                    {ITEMS.map((item) => (
-                        <div key={item.title} className="outside-slide">
-                            <article className="outside-card">
-                                <CardPhoto photo={item.photo} />
-                                <div className="outside-card-body">
-                                    <h4>{item.title}</h4>
-                                    <p>{item.text}</p>
-                                    <Extra title={item.title} />
-                                </div>
-                            </article>
-                        </div>
-                    ))}
+                <div
+                    className="outside-viewport"
+                    ref={viewportRef}
+                    tabIndex={0}
+                    role="region"
+                    aria-roledescription="carousel"
+                    aria-labelledby="outside-title"
+                    onKeyDown={onKeyDown}
+                >
+                    <div className="outside-track">
+                        {ITEMS.map((item) => (
+                            <div key={item.title} className="outside-slide">
+                                <article className="outside-card">
+                                    <CardPhoto photo={item.photo} />
+                                    <div className="outside-card-body">
+                                        <h4>{item.title}</h4>
+                                        <p>{item.text}</p>
+                                        <Extra title={item.title} />
+                                    </div>
+                                </article>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
             {/* which card you're on */}
-            <div className="outside-dots" aria-hidden="true">
+            <div className="outside-dots">
                 {dots}
             </div>
         </div>
