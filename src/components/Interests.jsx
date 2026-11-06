@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import TextLink from "./ui/TextLink";
 import IconButton from "./ui/IconButton";
@@ -120,31 +120,6 @@ export default function Interests() {
     const [canPrev, setCanPrev] = useState(false);
     const [canNext, setCanNext] = useState(true);
 
-    // the arrows sit level with the middle of the card photos, so they never cover the text
-    const rowRef = useRef(null);
-    const [arrowTop, setArrowTop] = useState(null);
-
-    useEffect(() => {
-        const row = rowRef.current;
-        if (!row) {
-            return;
-        }
-        const measure = () => {
-            const photo = row.querySelector(".outside-card-photo");
-            if (photo) {
-                const rowTop = row.getBoundingClientRect().top;
-                const box = photo.getBoundingClientRect();
-                setArrowTop(box.top - rowTop + box.height / 2);
-            }
-        };
-        measure();
-        const observer = new ResizeObserver(measure);
-        observer.observe(row);
-        return () => {
-            observer.disconnect();
-        };
-    }, []);
-
     const update = useCallback((api) => {
         setSelected(api.selectedScrollSnap());
         setSnapCount(api.scrollSnapList().length);
@@ -187,12 +162,6 @@ export default function Interests() {
         }
     };
 
-    // until the photo is measured, park the arrows near the top
-    let rowStyle = { "--arrow-top": "25%" };
-    if (arrowTop !== null) {
-        rowStyle = { "--arrow-top": `${arrowTop}px` };
-    }
-
     // each dot jumps to its stop; screen readers hear the title of the card it starts on
     const goTo = (index) => {
         if (embla) {
@@ -223,7 +192,7 @@ export default function Interests() {
         <div id="interests" className="text-block about-part">
             <h3 id="outside-title">Outside of work</h3>
 
-            <div className="outside-row" ref={rowRef} style={rowStyle}>
+            <div className="outside-row">
                 {/* Previous is hidden at the start, Next at the end */}
                 {canPrev && (
                     <IconButton label="Previous" onClick={goPrev} className="carousel-arrow carousel-arrow-prev">

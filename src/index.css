@@ -1208,10 +1208,10 @@ section,
 	position: relative;
 }
 
-/* level with the middle of the card photos (measured in Interests.jsx) */
+/* the cards are all the same height and fill the row, so the row's middle is the cards' middle */
 .carousel-arrow {
 	position: absolute;
-	top: var(--arrow-top);
+	top: 50%;
 	z-index: 2;
 	color: var(--color-heading);
 	background: var(--color-surface);
