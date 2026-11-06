@@ -754,24 +754,52 @@ select {
 	margin-bottom: var(--space-3);
 }
 
-/* homepage featured poems: title, then the poem's first two lines */
-.featured-poem {
-	padding: var(--space-3) 0;
-	border-bottom: 1px solid var(--color-border);
+/* homepage poem cards: title, the poem's first two lines, then a link */
+.poem-cards {
+	list-style: none;
 }
 
-.featured-poems .poem-title {
-	display: inline-block;
-	padding: 0;
+/* the link's ::after covers the card, so the whole card is clickable */
+.poem-card {
+	position: relative;
+	cursor: pointer;
 }
 
-.poem-excerpt {
-	margin-top: var(--space-1);
-	color: var(--color-text-muted);
+.poem-card-lines {
+	margin-top: var(--space-2);
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: var(--font-lg);
+	font-style: italic;
+	line-height: 1.5;
+	color: var(--color-text);
 }
 
-.poem-excerpt span {
+.poem-card-lines span {
 	display: block;
+}
+
+/* pushed to the bottom so the links line up across the row */
+.poem-card-link {
+	margin-top: auto;
+	padding-top: var(--space-3);
+	font-size: var(--font-sm);
+}
+
+.poem-card-link::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: var(--radius);
+}
+
+/* keyboard focus rings the whole card instead of just the link text */
+.poem-card-link:focus-visible {
+	outline: none;
+}
+
+.poem-card-link:focus-visible::after {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
 }
 
 /* while poems load, hold the space the list will take */
