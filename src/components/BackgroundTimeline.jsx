@@ -26,8 +26,6 @@ const DREXEL_END = at(2028, 6);
 // internship dots sit at the middle of each Aug to Dec stretch
 const CHAMELEON = at(2023, 10);
 const DISCOVERY = at(2024, 10);
-const CAMP_2021 = at(2021, 7);
-const CAMP_2023 = at(2023, 7);
 
 // cards are a quarter of the axis wide, centered on their date but kept inside the axis
 const CARD_WIDTH = 25;
@@ -99,12 +97,6 @@ export default function BackgroundTimeline() {
                     {YEARS.map((year) => (
                         <span key={year} className="tl2-year" style={{ left: `${at(year, 1) - 0.5}%` }}>{year}</span>
                     ))}
-
-                    {/* quieter second row for camp, right under the years */}
-                    <span className="tl2-camp-title">Camp Seneca Lake</span>
-                    <span className="tl2-camp-line"></span>
-                    <span className="tl2-camp-mark" style={{ left: `${CAMP_2021}%` }}>Summer 2021: First-year staff</span>
-                    <span className="tl2-camp-mark" style={{ left: `${CAMP_2023}%` }}>Summer 2023: Joined the leadership team</span>
                 </div>
 
                 <div className="tl2-row tl2-row-below">
@@ -128,10 +120,6 @@ export default function BackgroundTimeline() {
                         <p>{TEXT.highSchool}</p>
                     </div>
                 </li>
-                <li className="tl2m-item tl2m-quiet">
-                    <span className="tl2m-dot" aria-hidden="true"></span>
-                    <p className="tl2m-note">Summer 2021: First-year staff</p>
-                </li>
                 <li className="tl2m-item tl2m-rit">
                     <span className="tl2m-dot tl2m-dot-ring" aria-hidden="true"></span>
                     <div className="tl2-card">
@@ -139,10 +127,6 @@ export default function BackgroundTimeline() {
                         <p className="tl2-date">Aug 2021 – May 2026</p>
                         <p>{TEXT.rit}</p>
                     </div>
-                </li>
-                <li className="tl2m-item tl2m-rit tl2m-quiet">
-                    <span className="tl2m-dot" aria-hidden="true"></span>
-                    <p className="tl2m-note">Summer 2023: Joined the leadership team</p>
                 </li>
                 <li className="tl2m-item tl2m-rit">
                     <span className="tl2m-dot tl2m-dot-ring" aria-hidden="true"></span>

@@ -1055,7 +1055,7 @@ section,
 	grid-area: 1 / 1;
 }
 
-/* the axis is 128px tall: company labels, the line at 48px, years, then the camp row */
+/* the axis is 80px tall: company labels, the line at 48px, then the years */
 .tl2-row-above {
 	align-items: end;
 	padding-bottom: 20px;
@@ -1100,16 +1100,16 @@ section,
 	height: 68px;
 }
 
-/* below the line the stems pass behind the years and the camp row */
+/* below the line the stems pass behind the years */
 .tl2-card-below .tl2-stem {
 	bottom: 100%;
-	height: 100px;
+	height: 52px;
 }
 
 .tl2-axis {
 	position: relative;
 	z-index: 1;
-	height: 128px;
+	height: 80px;
 }
 
 /* one hue: light lavender on the left to the primary purple on the right */
@@ -1187,46 +1187,6 @@ section,
 	top: 58px;
 	font-size: var(--font-sm);
 	color: var(--color-text-muted);
-}
-
-/* camp: a quieter second row right under the years */
-.tl2-camp-title {
-	position: absolute;
-	top: 84px;
-	left: 0;
-	font-size: var(--font-sm);
-	font-weight: 700;
-	color: var(--color-text-muted);
-}
-
-.tl2-camp-line {
-	position: absolute;
-	top: 113px;
-	left: 0;
-	right: 0;
-	height: 1px;
-	background: var(--color-border);
-}
-
-.tl2-camp-mark {
-	position: absolute;
-	top: 103px;
-	padding: 0 var(--space-1) 0 14px;
-	font-size: var(--font-sm);
-	color: var(--color-text-muted);
-	white-space: nowrap;
-	background: var(--color-bg);
-}
-
-.tl2-camp-mark::before {
-	content: "";
-	position: absolute;
-	top: 7px;
-	left: 0;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background: var(--color-border-strong);
 }
 
 /* phones: vertical version, hidden on desktop */
