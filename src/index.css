@@ -600,6 +600,7 @@ select {
 }
 
 .contact-text {
+	max-width: none;
 	color: var(--color-text);
 }
 
@@ -638,7 +639,9 @@ select {
 	gap: var(--space-2) var(--space-4);
 }
 
+/* page intros run the full width instead of wrapping early */
 .page-intro {
+	max-width: none;
 	margin-top: var(--space-2);
 }
 

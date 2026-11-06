@@ -103,11 +103,10 @@ export default function PoemDialog({ poem, onClose }: PoemDialogProps) {
                 <div className="poem-actions">
                     <IconButton label="Share poem" onClick={handleShare}>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <circle cx="18" cy="5" r="3" />
-                            <circle cx="6" cy="12" r="3" />
-                            <circle cx="18" cy="19" r="3" />
-                            <line x1="8.6" y1="13.5" x2="15.4" y2="17.5" />
-                            <line x1="15.4" y1="6.5" x2="8.6" y2="10.5" />
+                            {/* box open at the top with an arrow coming out of it */}
+                            <path d="M9 9H6a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1h-3" />
+                            <line x1="12" y1="2" x2="12" y2="15" />
+                            <polyline points="8 6 12 2 16 6" />
                         </svg>
                     </IconButton>
                     <IconButton label="Close poem" onClick={onClose}>
