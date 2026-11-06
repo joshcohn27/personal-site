@@ -10,7 +10,7 @@ const NAV_ITEMS = [
     { key: "about", label: "About", section: "about" },
     { key: "poetry", label: "Poetry", section: "poetry" },
     { key: "contact", label: "Contact", section: "contact" },
-    { key: "resume", label: "Resume", href: "/resume.pdf" },
+    { key: "resume", label: "Resume", href: "/JoshuaCohnResume.pdf" },
 ];
 
 // matches the css breakpoint where the menu button replaces the nav links

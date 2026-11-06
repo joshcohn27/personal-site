@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 interface ButtonLinkProps {
     // internal route, e.g. "/projects"
     to?: string;
-    // external url or file, e.g. "/resume.pdf"
+    // external url or file, e.g. "/JoshuaCohnResume.pdf"
     href?: string;
     variant?: "primary" | "secondary";
     newTab?: boolean;

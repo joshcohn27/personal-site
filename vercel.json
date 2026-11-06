@@ -1,6 +1,11 @@
 {
     "redirects": [
         {
+            "source": "/resume.pdf",
+            "destination": "/JoshuaCohnResume.pdf",
+            "permanent": true
+        },
+        {
             "source": "/projects/beehive",
             "destination": "/projects/beehive/",
             "permanent": false

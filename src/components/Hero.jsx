@@ -19,7 +19,7 @@ export default function Hero() {
 					</p>
 
 					<div className="hero-actions">
-						<ButtonLink href="/resume.pdf" newTab>
+						<ButtonLink href="/JoshuaCohnResume.pdf" newTab>
 							View Resume
 						</ButtonLink>
 					</div>
