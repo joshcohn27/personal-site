@@ -398,7 +398,9 @@ select {
 	line-height: 1.25;
 }
 
+/* short intros under a heading run full width; longer paragraphs keep the limit */
 .section-subheader {
+	max-width: none;
 	margin-top: var(--space-1);
 	font-size: var(--font-xl);
 	color: var(--color-text-muted);
@@ -639,7 +641,6 @@ select {
 	gap: var(--space-2) var(--space-4);
 }
 
-/* page intros run the full width instead of wrapping early */
 .page-intro {
 	max-width: none;
 	margin-top: var(--space-2);
