@@ -1,0 +1,83 @@
+import { useEffect, useState } from "react";
+import type { Screenshot } from "../data/projects";
+
+interface ProjectMediaProps {
+    screenshot: Screenshot;
+    // css sizes hint so the browser picks the 640 or 1280 file
+    sizes: string;
+    className?: string;
+}
+
+// true when the visitor has asked their system to reduce motion
+function usePrefersReducedMotion() {
+    const query = "(prefers-reduced-motion: reduce)";
+    const [reduced, setReduced] = useState(() => window.matchMedia(query).matches);
+
+    useEffect(() => {
+        const media = window.matchMedia(query);
+        const onChange = () => {
+            setReduced(media.matches);
+        };
+        media.addEventListener("change", onChange);
+        return () => {
+            media.removeEventListener("change", onChange);
+        };
+    }, []);
+
+    return reduced;
+}
+
+// screenshot for a project card or detail page; plays the looping clip when there is one,
+// unless the visitor prefers reduced motion
+export default function ProjectMedia({ screenshot, sizes, className }: ProjectMediaProps) {
+    const reducedMotion = usePrefersReducedMotion();
+    const still640 = `${screenshot.src}-640.webp`;
+    const still1280 = `${screenshot.src}-1280.webp`;
+
+    // the biggest still on offer; also used as the clip's poster so it's as sharp as the clip
+    let largest = still1280;
+    let srcSet = `${still640} 640w, ${still1280} 1280w`;
+    if (screenshot.hiRes) {
+        largest = `${screenshot.src}-2560.webp`;
+        srcSet += `, ${largest} 2560w`;
+    }
+
+    let classes = "project-media";
+    if (className) {
+        classes += " " + className;
+    }
+
+    if (screenshot.video && !reducedMotion) {
+        return (
+            <video
+                className={classes}
+                poster={largest}
+                width={1280}
+                height={800}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label={screenshot.alt}
+            >
+                <source src={`${screenshot.video}.webm`} type="video/webm" />
+                <source src={`${screenshot.video}.mp4`} type="video/mp4" />
+            </video>
+        );
+    }
+
+    return (
+        <img
+            className={classes}
+            src={still640}
+            srcSet={srcSet}
+            sizes={sizes}
+            width={1280}
+            height={800}
+            alt={screenshot.alt}
+            loading="lazy"
+            decoding="async"
+        />
+    );
+}

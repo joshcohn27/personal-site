@@ -1,22 +1,12 @@
-import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-
-interface Poem {
-    title: string;
-    body: string;
-    index: number;
-    dedication?: string;
-    slug: string;
-}
-
-function slugify(title: string): string {
-    return title
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "");
-}
+import TextButton from "../components/ui/TextButton";
+import { parsePoem } from "./parsePoem";
+import type { Poem } from "./parsePoem";
+import DedicationNote from "./DedicationNote";
+import PoemDialog from "./PoemDialog";
 
 type SortOption = "newest" | "oldest" | "az" | "za";
 
@@ -27,43 +17,6 @@ const SORT_LABELS: Record<SortOption, string> = {
     oldest: "Oldest",
 };
 
-function InfoTooltip({ text }: { text: string }) {
-    const [visible, setVisible] = useState(false);
-    const ref = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const handleClick = (e: MouseEvent) => {
-            if (ref.current && !ref.current.contains(e.target as Node)) {
-                setVisible(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClick);
-        return () => document.removeEventListener("mousedown", handleClick);
-    }, []);
-
-    return (
-        <div ref={ref} className="poem-note">
-            <button
-                type="button"
-                onClick={e => { e.stopPropagation(); setVisible(v => !v); }}
-                title="Note"
-                className={visible ? "poem-note-button is-open" : "poem-note-button"}
-            >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="8" strokeWidth="3" />
-                    <line x1="12" y1="12" x2="12" y2="16" />
-                </svg>
-            </button>
-            {visible && (
-                <div className="poem-note-text">
-                    {text}
-                </div>
-            )}
-        </div>
-    );
-}
-
 export default function Poetry() {
     const [poems, setPoems] = useState<Poem[]>([]);
     const [selectedPoem, setSelectedPoem] = useState<Poem | null>(null);
@@ -71,7 +24,6 @@ export default function Poetry() {
     const [search, setSearch] = useState("");
     const [sort, setSort] = useState<SortOption>("az");
     const [searchParams, setSearchParams] = useSearchParams();
-    const [copied, setCopied] = useState(false);
 
     useEffect(() => {
         const fetchPoems = async () => {
@@ -81,21 +33,13 @@ export default function Poetry() {
             while (true) {
                 try {
                     const res = await fetch(`/poems/poem${i}.txt`);
-                    if (!res.ok || res.headers.get("content-type")?.includes("text/html")) break;
-                    const text = await res.text();
-                    const lines = text.split("\n");
-                    const title = lines[0].trim();
-
-                    let dedication: string | undefined;
-                    let bodyStart = 1;
-
-                    if (lines[1]?.toLowerCase().startsWith("dedication:")) {
-                        dedication = lines[1].slice("dedication:".length).trim();
-                        bodyStart = 2;
+                    // a missing number comes back as the site's html page, which means we're done
+                    const isHtml = res.headers.get("content-type")?.includes("text/html");
+                    if (!res.ok || isHtml) {
+                        break;
                     }
-
-                    const body = lines.slice(bodyStart).join("\n").trimStart();
-                    loaded.push({ title, body, index: i, dedication, slug: slugify(title) });
+                    const text = await res.text();
+                    loaded.push(parsePoem(text, i));
                     i++;
                 } catch {
                     break;
@@ -127,42 +71,18 @@ export default function Poetry() {
         });
     }, [setSearchParams]);
 
-    const handleShare = useCallback(async () => {
-        if (!selectedPoem) return;
-        const url = `${window.location.origin}/poetry?poem=${selectedPoem.slug}`;
-        const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
-        if (isIOS) {
-            try {
-                await navigator.share({ url, title: selectedPoem.title });
-            } catch {
-                // user dismissed the native share sheet
-            }
-        } else {
-            await navigator.clipboard.writeText(url);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
+    useEffect(() => {
+        if (poems.length === 0) {
+            return;
         }
-    }, [selectedPoem]);
-
-    useEffect(() => {
-        const handleKey = (e: KeyboardEvent) => {
-            if (e.key === "Escape") closeModal();
-        };
-        window.addEventListener("keydown", handleKey);
-        return () => window.removeEventListener("keydown", handleKey);
-    }, [closeModal]);
-
-    useEffect(() => {
-        document.body.style.overflow = selectedPoem ? "hidden" : "";
-        return () => { document.body.style.overflow = ""; };
-    }, [selectedPoem]);
-
-    useEffect(() => {
-        if (poems.length === 0) return;
         const poemSlug = searchParams.get("poem");
-        if (!poemSlug) return;
+        if (!poemSlug) {
+            return;
+        }
         const match = poems.find(p => p.slug === poemSlug);
-        if (match) setSelectedPoem(match);
+        if (match) {
+            setSelectedPoem(match);
+        }
     }, [poems, searchParams]);
 
     const filtered = useMemo(() => {
@@ -184,6 +104,29 @@ export default function Poetry() {
         return result;
     }, [poems, search, sort]);
 
+    let results = null;
+    if (!loading && filtered.length === 0) {
+        results = <p>No poems match your search.</p>;
+    } else if (!loading) {
+        results = (
+            <ul className="poem-list">
+                {filtered.map((poem) => (
+                    <li key={poem.index} className="poem-row">
+                        <button type="button" className="poem-title" onClick={() => openPoem(poem)}>
+                            {poem.title}
+                        </button>
+                        {poem.dedication && <DedicationNote text={poem.dedication} />}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
+
+    let resultsClass = "poem-results";
+    if (loading) {
+        resultsClass = "poem-results is-loading";
+    }
+
     return (
         <div className="site-shell">
             <Header />
@@ -199,32 +142,30 @@ export default function Poetry() {
 
                         {/* Search + Sort */}
                         <div className="poem-controls">
+                            <label htmlFor="poem-search" className="poem-search-label">
+                                Search poems
+                            </label>
                             <div className="poem-search">
                                 <input
-                                    type="text"
+                                    id="poem-search"
+                                    type="search"
                                     placeholder="Search by title or content..."
                                     value={search}
                                     onChange={e => setSearch(e.target.value)}
                                 />
                                 {search && (
-                                    <button type="button" className="text-button poem-search-clear" onClick={() => setSearch("")}>
+                                    <TextButton className="poem-search-clear" onClick={() => setSearch("")} label="Clear search">
                                         x
-                                    </button>
+                                    </TextButton>
                                 )}
                             </div>
 
                             <div className="poem-sort">
                                 <span className="muted-text">Sort:</span>
                                 {(Object.keys(SORT_LABELS) as SortOption[]).map(opt => (
-                                    <button
-                                        key={opt}
-                                        type="button"
-                                        onClick={() => setSort(opt)}
-                                        className={sort === opt ? "text-button is-active" : "text-button"}
-                                        aria-pressed={sort === opt}
-                                    >
+                                    <TextButton key={opt} onClick={() => setSort(opt)} active={sort === opt}>
                                         {SORT_LABELS[opt]}
-                                    </button>
+                                    </TextButton>
                                 ))}
                             </div>
                         </div>
@@ -237,49 +178,17 @@ export default function Poetry() {
                         )}
 
                         {/* Poem list */}
-                        {loading ? null : filtered.length === 0 ? (
-                            <p>No poems match your search.</p>
-                        ) : (
-                            <ul className="poem-list">
-                                {filtered.map((poem) => (
-                                    <li key={poem.index} className="poem-row">
-                                        <button type="button" className="poem-title" onClick={() => openPoem(poem)}>
-                                            {poem.title}
-                                        </button>
-                                        {poem.dedication && <InfoTooltip text={poem.dedication} />}
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
+                        {/* keeps room for the list while poems load, so the footer doesn't jump */}
+                        <div className={resultsClass}>
+                            {results}
+                        </div>
                     </div>
                 </section>
             </main>
             <Footer />
 
             {/* Fullscreen poem view */}
-            {selectedPoem && (
-                <div className="poem-overlay" onClick={closeModal}>
-                    <div className="poem-panel" onClick={e => e.stopPropagation()}>
-                        <div className="poem-actions">
-                            {copied && <span className="muted-text">Copied to clipboard</span>}
-                            <button type="button" className="text-button" onClick={handleShare} title="Share this poem">
-                                Share
-                            </button>
-                            <button type="button" className="text-button" onClick={closeModal}>
-                                X
-                            </button>
-                        </div>
-
-                        <h2 className="poem-heading">{selectedPoem.title}</h2>
-
-                        {selectedPoem.dedication && (
-                            <p className="poem-dedication">{selectedPoem.dedication}</p>
-                        )}
-
-                        <pre className="poem-body">{selectedPoem.body}</pre>
-                    </div>
-                </div>
-            )}
+            {selectedPoem && <PoemDialog poem={selectedPoem} onClose={closeModal} />}
         </div>
     );
 }

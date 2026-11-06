@@ -1,32 +1,43 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-// Homepage sections, top to bottom, and the nav item each one highlights.
-// The hero ("top") highlights nothing.
-const HOME_SECTIONS = [
-    ["projects", "projects"],
-    ["about", "about"],
-    ["future", "goals"],
-    ["interests", "interests"],
-    ["contact", "contact"],
-];
+// homepage sections the nav can highlight, in page order
+const HOME_SECTIONS = ["projects", "about", "poetry", "contact"];
 
-// Nav items in display order. `section` items are homepage anchors; `to` items are pages.
+// nav items in display order; "section" items scroll to a homepage section
 const NAV_ITEMS = [
-    { key: "projects", label: "Projects", to: "/projects" },
+    { key: "projects", label: "Projects", section: "projects" },
     { key: "about", label: "About", section: "about" },
-    { key: "goals", label: "Goals", section: "future" },
-    { key: "interests", label: "Outside of Work", section: "interests" },
-    { key: "poetry", label: "Poetry", to: "/poetry" },
+    { key: "poetry", label: "Poetry", section: "poetry" },
     { key: "contact", label: "Contact", section: "contact" },
+    { key: "resume", label: "Resume", href: "/JoshuaCohnResume.pdf" },
 ];
 
-// Matches the CSS breakpoint where the menu button replaces the nav links.
+// matches the css breakpoint where the menu button replaces the nav links
 const MOBILE_QUERY = "(max-width: 767px)";
 
-// Which homepage section is under the sticky header right now.
-function useHomeSection(enabled) {
+// window height, so the observer below can be rebuilt when the window is resized
+function useViewportHeight() {
+    const [height, setHeight] = useState(window.innerHeight);
+
+    useEffect(() => {
+        const onResize = () => {
+            setHeight(window.innerHeight);
+        };
+        window.addEventListener("resize", onResize);
+        return () => {
+            window.removeEventListener("resize", onResize);
+        };
+    }, []);
+
+    return height;
+}
+
+// which homepage section is in view, tracked with IntersectionObserver.
+// a section is "in view" when it crosses a thin line just below the sticky header.
+function useHomeSection(enabled, hash) {
     const [current, setCurrent] = useState(null);
+    const viewportHeight = useViewportHeight();
 
     useEffect(() => {
         if (!enabled) {
@@ -34,48 +45,111 @@ function useHomeSection(enabled) {
             return;
         }
 
-        const update = () => {
-            const headerHeight = document.querySelector(".site-header")?.offsetHeight ?? 0;
-            const line = headerHeight + 24;
-            const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+        const header = document.querySelector(".site-header");
+        let headerHeight = 0;
+        if (header) {
+            headerHeight = header.offsetHeight;
+        }
 
-            let found = null;
-            for (const [id, key] of HOME_SECTIONS) {
-                const el = document.getElementById(id);
-                if (el && el.getBoundingClientRect().top <= line) found = key;
+        // the line sits 24px below the header and is 1px tall
+        const lineTop = headerHeight + 24;
+        const lineBottom = viewportHeight - lineTop - 1;
+
+        let onLine = null;
+        const onScreen = new Set();
+        let footerVisible = false;
+
+        const pick = () => {
+            // the last sections are short and can't reach the line, so at the bottom of the page
+            // use the section that was clicked if it's on screen, otherwise contact
+            if (footerVisible) {
+                const clicked = hash.slice(1);
+                if (HOME_SECTIONS.includes(clicked) && onScreen.has(clicked)) {
+                    setCurrent(clicked);
+                } else {
+                    setCurrent("contact");
+                }
+                return;
             }
-            // The last section is short, so treat reaching the bottom as being on it.
-            if (atBottom) found = HOME_SECTIONS[HOME_SECTIONS.length - 1][1];
-            setCurrent(found);
+            setCurrent(onLine);
         };
 
-        update();
-        window.addEventListener("scroll", update, { passive: true });
-        window.addEventListener("resize", update);
+        const lineObserver = new IntersectionObserver(
+            (entries) => {
+                for (const entry of entries) {
+                    if (entry.isIntersecting) {
+                        onLine = entry.target.id;
+                    } else if (onLine === entry.target.id) {
+                        onLine = null;
+                    }
+                }
+                pick();
+            },
+            { rootMargin: `-${lineTop}px 0px -${lineBottom}px 0px` },
+        );
+
+        const screenObserver = new IntersectionObserver((entries) => {
+            for (const entry of entries) {
+                if (entry.isIntersecting) {
+                    onScreen.add(entry.target.id);
+                } else {
+                    onScreen.delete(entry.target.id);
+                }
+            }
+            pick();
+        });
+
+        const footerObserver = new IntersectionObserver((entries) => {
+            footerVisible = entries[0].isIntersecting;
+            pick();
+        });
+
+        for (const id of HOME_SECTIONS) {
+            const el = document.getElementById(id);
+            if (el) {
+                lineObserver.observe(el);
+                screenObserver.observe(el);
+            }
+        }
+        const footer = document.querySelector(".site-footer");
+        if (footer) {
+            footerObserver.observe(footer);
+        }
+
         return () => {
-            window.removeEventListener("scroll", update);
-            window.removeEventListener("resize", update);
+            lineObserver.disconnect();
+            screenObserver.disconnect();
+            footerObserver.disconnect();
         };
-    }, [enabled]);
+    }, [enabled, hash, viewportHeight]);
 
     return current;
 }
 
 function MenuIcon({ open }) {
+    if (open) {
+        return (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                <line x1="6" y1="6" x2="18" y2="18" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+            </svg>
+        );
+    }
     return (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-            {open ? (
-                <>
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                </>
-            ) : (
-                <>
-                    <line x1="4" y1="7" x2="20" y2="7" />
-                    <line x1="4" y1="12" x2="20" y2="12" />
-                    <line x1="4" y1="17" x2="20" y2="17" />
-                </>
-            )}
+            <line x1="4" y1="7" x2="20" y2="7" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="17" x2="20" y2="17" />
+        </svg>
+    );
+}
+
+function ExternalIcon() {
+    return (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M14 4h6v6" />
+            <path d="M20 4l-9 9" />
+            <path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" />
         </svg>
     );
 }
@@ -83,37 +157,51 @@ function MenuIcon({ open }) {
 export default function Header() {
     const { pathname, hash, key: locationKey } = useLocation();
     const onHome = pathname === "/";
-    const homeSection = useHomeSection(onHome);
+    const homeSection = useHomeSection(onHome, hash);
     const [menuOpen, setMenuOpen] = useState(false);
     const headerRef = useRef(null);
     const toggleRef = useRef(null);
 
     let active = null;
-    if (onHome) active = homeSection;
-    else if (pathname.startsWith("/projects")) active = "projects";
-    else if (pathname.startsWith("/poetry")) active = "poetry";
+    if (onHome) {
+        active = homeSection;
+    } else if (pathname.startsWith("/projects")) {
+        active = "projects";
+    } else if (pathname.startsWith("/poetry")) {
+        active = "poetry";
+    }
 
-    // Close the menu on any navigation, including clicking the link you're already on.
+    // close the menu on any navigation, including clicking the link you're already on
     useEffect(() => {
         setMenuOpen(false);
     }, [pathname, hash, locationKey]);
 
-    // While open: Escape closes (and returns focus to the button), a tap outside the header closes,
-    // and widening past the breakpoint closes it so it isn't left open behind the desktop nav.
+    // while open: escape closes (focus back on the button), a tap outside closes,
+    // and widening past the breakpoint closes it
     useEffect(() => {
-        if (!menuOpen) return;
+        if (!menuOpen) {
+            return;
+        }
 
         const onKey = (e) => {
             if (e.key === "Escape") {
                 setMenuOpen(false);
-                toggleRef.current?.focus();
+                if (toggleRef.current) {
+                    toggleRef.current.focus();
+                }
             }
         };
         const onPointer = (e) => {
-            if (headerRef.current && !headerRef.current.contains(e.target)) setMenuOpen(false);
+            if (headerRef.current && !headerRef.current.contains(e.target)) {
+                setMenuOpen(false);
+            }
         };
         const media = window.matchMedia(MOBILE_QUERY);
-        const onMedia = () => { if (!media.matches) setMenuOpen(false); };
+        const onMedia = () => {
+            if (!media.matches) {
+                setMenuOpen(false);
+            }
+        };
 
         document.addEventListener("keydown", onKey);
         document.addEventListener("pointerdown", onPointer);
@@ -125,34 +213,66 @@ export default function Header() {
         };
     }, [menuOpen]);
 
-    // Renders the nav links; used for both the desktop nav and the mobile panel.
+    // the brand always goes to the top of the homepage, even when already there
+    const goToTop = () => {
+        setMenuOpen(false);
+        if (onHome) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    };
+
+    // section links: on the homepage the url may not change, so scroll directly
+    const goToSection = (id) => {
+        setMenuOpen(false);
+        if (onHome && hash === `#${id}`) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    };
+
+    let menuLabel = "Open menu";
+    if (menuOpen) {
+        menuLabel = "Close menu";
+    }
+
+    // used for both the desktop nav and the mobile panel
     const renderLinks = () =>
         NAV_ITEMS.map((item) => {
-            const isActive = active === item.key;
-            const activeProps = isActive
-                ? { className: "is-active", "aria-current": onHome ? "location" : "page" }
-                : {};
+            let activeProps = {};
+            if (active === item.key) {
+                let current = "page";
+                if (onHome) {
+                    current = "location";
+                }
+                activeProps = { className: "is-active", "aria-current": current };
+            }
 
-            if (item.section) {
+            if (item.href) {
                 return (
-                    <Link
+                    <a
                         key={item.key}
-                        to={`/#${item.section}`}
-                        // Clicking the section you're already on doesn't change the URL, so scroll to it directly.
-                        onClick={() => {
-                            setMenuOpen(false);
-                            if (onHome && hash === `#${item.section}`) {
-                                document.getElementById(item.section)?.scrollIntoView({ behavior: "smooth" });
-                            }
-                        }}
-                        {...activeProps}
+                        href={item.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={() => setMenuOpen(false)}
                     >
-                        {item.label}
-                    </Link>
+                        <span className="nav-external">
+                            {item.label}
+                            <ExternalIcon />
+                        </span>
+                    </a>
                 );
             }
+
             return (
-                <Link key={item.key} to={item.to} onClick={() => setMenuOpen(false)} {...activeProps}>
+                <Link
+                    key={item.key}
+                    to={`/#${item.section}`}
+                    onClick={() => goToSection(item.section)}
+                    {...activeProps}
+                >
                     {item.label}
                 </Link>
             );
@@ -161,7 +281,7 @@ export default function Header() {
     return (
         <header className="site-header" ref={headerRef}>
             <div className="container header-inner">
-                <Link to="/" className="brand">
+                <Link to="/" className="brand" onClick={goToTop}>
                     Josh Cohn
                 </Link>
 
@@ -173,7 +293,7 @@ export default function Header() {
                     ref={toggleRef}
                     type="button"
                     className="menu-toggle"
-                    aria-label={menuOpen ? "Close menu" : "Open menu"}
+                    aria-label={menuLabel}
                     aria-expanded={menuOpen}
                     aria-controls="mobile-menu"
                     onClick={() => setMenuOpen((open) => !open)}

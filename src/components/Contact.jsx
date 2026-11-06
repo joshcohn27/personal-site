@@ -1,10 +1,14 @@
+import TextLink from "./ui/TextLink";
+import SectionHeader from "./ui/SectionHeader";
+
 export default function Contact() {
     return (
         <section id="contact" className="section">
             <div className="container">
+                <SectionHeader title="Contact" subtitle="Get in touch" />
+
                 <div className="contact">
                     <div>
-                        <h2>Get in touch</h2>
                         <p className="contact-text">
                             I'm always interested in opportunities to build, learn, and
                             contribute to projects that have real impact.
@@ -12,28 +16,18 @@ export default function Contact() {
                     </div>
 
                     <div className="contact-links">
-                        <a href="mailto:joshcohn27@gmail.com" className="text-link">
+                        <TextLink href="mailto:joshcohn27@gmail.com">
                             joshcohn27@gmail.com
-                        </a>
-                        {/* <a href="tel:+16102902280" className="text-link">
+                        </TextLink>
+                        {/* <TextLink href="tel:+16102902280">
                             (610) 290-2280
-                        </a> */}
-                        <a
-                            href="https://github.com/joshcohn27"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-link"
-                        >
+                        </TextLink> */}
+                        <TextLink href="https://github.com/joshcohn27" newTab>
                             GitHub
-                        </a>
-                        <a
-                            href="https://www.linkedin.com/in/josh-cohn-2226061ba/"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-link"
-                        >
+                        </TextLink>
+                        <TextLink href="https://www.linkedin.com/in/josh-cohn-2226061ba/" newTab>
                             LinkedIn
-                        </a>
+                        </TextLink>
                     </div>
                 </div>
             </div>

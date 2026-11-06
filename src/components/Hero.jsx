@@ -1,3 +1,6 @@
+import ButtonLink from "./ui/ButtonLink";
+import TextLink from "./ui/TextLink";
+
 export default function Hero() {
 	return (
 		<section id="top" className="hero-section">
@@ -16,45 +19,34 @@ export default function Hero() {
 					</p>
 
 					<div className="hero-actions">
-						<a
-							href="/resume.pdf"
-							target="_blank"
-							rel="noreferrer"
-							className="button button-primary"
-						>
+						<ButtonLink href="/JoshuaCohnResume.pdf" newTab>
 							View Resume
-						</a>
+						</ButtonLink>
 					</div>
 
 					<div className="hero-links">
-						<a href="mailto:joshcohn27@gmail.com" className="text-link">
+						<TextLink href="mailto:joshcohn27@gmail.com">
 							joshcohn27@gmail.com
-						</a>
-						<a
-							href="https://github.com/joshcohn27"
-							target="_blank"
-							rel="noreferrer"
-							className="text-link"
-						>
+						</TextLink>
+						<TextLink href="https://github.com/joshcohn27" newTab>
 							GitHub
-						</a>
-						<a
-							href="https://www.linkedin.com/in/josh-cohn-2226061ba/"
-							target="_blank"
-							rel="noreferrer"
-							className="text-link"
-						>
+						</TextLink>
+						<TextLink href="https://www.linkedin.com/in/josh-cohn-2226061ba/" newTab>
 							LinkedIn
-						</a>
+						</TextLink>
 					</div>
 				</div>
 
 				<img
 					className="hero-photo"
 					src="/headshot.jpg"
+					srcSet="/headshot-256.webp 256w, /headshot-400.webp 400w, /headshot-640.webp 640w"
+					sizes="(max-width: 720px) 128px, (max-width: 960px) 280px, 320px"
 					alt="Josh Cohn"
 					width="640"
 					height="800"
+					loading="eager"
+					fetchPriority="high"
 				/>
 			</div>
 		</section>

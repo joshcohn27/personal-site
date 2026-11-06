@@ -1,16 +1,51 @@
 :root {
-	--bg: #f4f4f1;
-	--surface: #ffffff;
-	--line: #e5e5e5;
-	--text: #1a1a1a;
-	--muted: #404040;
-	--heading: #111111;
-	--accent: #6d28d9;
-	--accent-hover: #5b21b6;
-	--accent-tint: #f3effd;
-	--on-accent: #ffffff;
+	/* colors */
+	--color-primary: #6d28d9;
+	--color-primary-hover: #5b21b6;
+	--color-on-primary: #ffffff;
+	--color-lavender: #e9e2fb;
+	--color-bg: #f4f4f1;
+	--color-surface: #ffffff;
+	--color-heading: #111111;
+	--color-text: #1a1a1a;
+	--color-text-soft: #333333;
+	--color-text-muted: #404040;
+	--color-border: #e5e5e5;
+	/* form-control outlines need 3:1 against their background */
+	--color-border-strong: #8a8a8a;
+
+	/* spacing scale */
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 16px;
+	--space-4: 24px;
+	--space-5: 32px;
+	--space-6: 48px;
+	--space-7: 64px;
+
+	/* space between major sections, and above the first heading on every page */
+	--section-gap: var(--space-7);
+
+	/* font sizes */
+	--font-sm: 14px;
+	--font-tag: 15px;
+	--font-base: 17px;
+	--font-lg: 18px;
+	--font-xl: 20px;
+	--font-2xl: 24px;
+	--font-section: clamp(24px, 3vw, 32px);
+	--font-page-title: clamp(36px, 5vw, 48px);
+	--font-hero: clamp(40px, 6vw, 64px);
+
+	/* layout */
 	--radius: 6px;
+	--radius-sm: 4px;
 	--max-width: 1120px;
+	/* one paragraph width for the whole site, about 65 characters of body text */
+	--paragraph-width: 38.5rem;
+	--header-height: 72px;
+	--header-height-mobile: 64px;
+	--tap-target: 44px;
 }
 
 * {
@@ -25,30 +60,38 @@ html {
 
 body {
 	font-family: -apple-system, Helvetica, Arial, sans-serif;
-	font-size: 17px;
-	background: var(--bg);
-	color: var(--text);
+	font-size: var(--font-base);
+	background: var(--color-bg);
+	color: var(--color-text);
 	line-height: 1.6;
 }
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
 	font-weight: 700;
-	color: var(--heading);
+	color: var(--color-heading);
 }
 
-/* One subheading style for the whole site */
+/* part titles inside a section, like Background or Skills */
 h3 {
-	font-size: 20px;
-	line-height: 1.3;
-	margin-bottom: 8px;
+	font-size: var(--font-2xl);
+	line-height: 1.25;
+	margin-bottom: var(--space-3);
 }
 
-/* Readable line length for all running text */
+/* item titles, like Where I am now or Cooking */
+h4 {
+	font-size: var(--font-xl);
+	line-height: 1.3;
+	margin-bottom: var(--space-2);
+}
+
+/* readable line length for all running text */
 p,
 .poem-body {
-	max-width: 65ch;
+	max-width: var(--paragraph-width);
 }
 
 /* Background on the homepage spans the full content width to line up with the skills grid */
@@ -62,7 +105,7 @@ a {
 }
 
 :focus-visible {
-	outline: 2px solid var(--accent);
+	outline: 2px solid var(--color-primary);
 	outline-offset: 2px;
 }
 
@@ -82,7 +125,7 @@ select {
 }
 
 .container {
-	width: min(calc(100% - 2rem), var(--max-width));
+	width: min(calc(100% - 2 * var(--space-3)), var(--max-width));
 	margin: 0 auto;
 }
 
@@ -90,46 +133,52 @@ select {
 	position: sticky;
 	top: 0;
 	z-index: 20;
-	background: var(--bg);
-	border-bottom: 1px solid var(--line);
+	background: var(--color-bg);
+	border-bottom: 1px solid var(--color-border);
 }
 
 .header-inner {
-	min-height: 72px;
+	min-height: var(--header-height);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 24px;
+	gap: var(--space-4);
 }
 
 .brand {
 	font-weight: 400;
-	color: var(--heading);
+	color: var(--color-heading);
 }
 
 .site-nav {
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	gap: var(--space-2);
 	flex-wrap: wrap;
 	/* line the outer links' text up with the container edge despite their padding */
 	margin-right: -8px;
 }
 
 .site-nav a {
-	padding: 4px 8px;
+	padding: var(--space-1) var(--space-2);
 	border: 1px solid transparent;
 	border-radius: var(--radius);
-	color: var(--muted);
+	color: var(--color-text-muted);
 }
 
 .site-nav a:hover {
-	color: var(--heading);
+	color: var(--color-heading);
 }
 
 .site-nav a.is-active {
-	border-color: var(--accent);
-	color: var(--accent);
+	background: var(--color-lavender);
+	color: var(--color-primary);
+}
+
+.nav-external {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-1);
 }
 
 /* Mobile menu: button and panel only appear below 768px */
@@ -140,7 +189,7 @@ select {
 
 @media (max-width: 767px) {
 	.header-inner {
-		min-height: 64px;
+		min-height: var(--header-height-mobile);
 	}
 
 	.site-nav {
@@ -151,15 +200,15 @@ select {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 44px;
-		height: 44px;
+		width: var(--tap-target);
+		height: var(--tap-target);
 		/* line the icon up with the container edge */
 		margin-right: -10px;
 		padding: 0;
 		background: none;
 		border: 0;
 		border-radius: var(--radius);
-		color: #111111;
+		color: var(--color-heading);
 		cursor: pointer;
 	}
 
@@ -170,41 +219,41 @@ select {
 		top: calc(100% + 1px);
 		left: 0;
 		right: 0;
-		background: #ffffff;
-		border-bottom: 1px solid #e5e5e5;
+		background: var(--color-surface);
+		border-bottom: 1px solid var(--color-border);
 	}
 
 	.mobile-menu a {
 		display: flex;
 		align-items: center;
 		min-height: 48px;
-		padding: 0 16px;
-		color: var(--heading);
+		padding: 0 var(--space-3);
+		color: var(--color-heading);
 	}
 
 	.mobile-menu a + a {
-		border-top: 1px solid #e5e5e5;
+		border-top: 1px solid var(--color-border);
 	}
 
 	.mobile-menu a:hover {
-		color: var(--accent);
+		color: var(--color-primary);
 	}
 
 	.mobile-menu a.is-active {
-		color: var(--accent);
+		color: var(--color-primary);
 		font-weight: 700;
-		background: var(--accent-tint);
+		background: var(--color-lavender);
 	}
 }
 
 .hero-section {
-	padding: 32px 0;
+	padding: var(--section-gap) 0;
 }
 
 .hero-grid {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) auto;
-	gap: 32px;
+	gap: var(--space-5);
 	align-items: center;
 }
 
@@ -217,84 +266,108 @@ select {
 }
 
 .hero-tagline {
-	color: var(--muted);
-	margin-bottom: 8px;
+	color: var(--color-text-muted);
+	margin-bottom: var(--space-3);
 }
 
 .hero-copy h1 {
-	font-size: clamp(40px, 6vw, 64px);
+	font-size: var(--font-hero);
 	line-height: 1.1;
 }
 
 .hero-text {
-	margin-top: 16px;
+	margin-top: var(--space-4);
 }
 
 .hero-actions {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 16px;
-	margin-top: 24px;
+	gap: var(--space-3);
+	margin-top: var(--space-4);
 }
 
 .hero-links {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 8px 24px;
-	margin-top: 16px;
+	gap: var(--space-2) var(--space-4);
+	margin-top: var(--space-3);
 }
 
 .button {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 44px;
-	padding: 8px 24px;
-	border: 1px solid var(--accent);
+	min-height: var(--tap-target);
+	padding: var(--space-2) var(--space-4);
+	border: 1px solid transparent;
 	border-radius: var(--radius);
 	font-weight: 700;
 }
 
 .button-primary {
-	background: var(--accent);
-	color: var(--on-accent);
+	background: var(--color-primary);
+	border-color: var(--color-primary);
+	color: var(--color-on-primary);
 }
 
 .button-primary:hover {
-	background: var(--accent-hover);
-	border-color: var(--accent-hover);
+	background: var(--color-primary-hover);
+	border-color: var(--color-primary-hover);
 }
 
 .button-secondary {
 	background: transparent;
-	color: var(--accent);
+	border-color: var(--color-border-strong);
+	color: var(--color-heading);
 }
 
 .button-secondary:hover {
-	background: var(--accent-tint);
+	background: var(--color-lavender);
+	border-color: var(--color-heading);
 }
 
 .text-link {
-	color: var(--accent);
+	color: var(--color-primary);
 }
 
 .text-link:hover {
 	text-decoration: underline;
 }
 
+.text-link-strong {
+	font-weight: 700;
+}
+
+.tech-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin-top: var(--space-3);
+	list-style: none;
+}
+
+.tech-chip {
+	padding: var(--space-1) var(--space-2);
+	font-size: var(--font-sm);
+	line-height: 1.4;
+	color: var(--color-text);
+	background: var(--color-lavender);
+	border-radius: var(--radius-sm);
+}
+
 .project-card {
-	background: var(--surface);
-	border: 1px solid var(--line);
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
 	border-radius: var(--radius);
 }
 
 .project-type {
-	font-size: 14px;
-	color: var(--muted);
+	font-size: var(--font-sm);
+	color: var(--color-text-muted);
 }
 
 .section {
-	padding: 32px 0;
+	padding: var(--section-gap) 0;
 }
 
 .section + .section {
@@ -302,31 +375,47 @@ select {
 }
 
 .section + .section > .container {
-	padding-top: 32px;
-	border-top: 1px solid var(--line);
+	padding-top: var(--section-gap);
+	border-top: 1px solid var(--color-border);
 }
 
 .section-heading {
-	margin-bottom: 24px;
+	margin-bottom: var(--space-4);
+}
+
+/* title and subtitle on the left, optional button on the right */
+.section-heading-row {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: var(--space-3);
 }
 
 .section-heading h1,
-.section-heading h2,
-.contact h2 {
-	font-size: clamp(24px, 3vw, 32px);
+.section-heading h2 {
+	font-size: var(--font-section);
 	line-height: 1.25;
 }
 
+/* short intros under a heading run full width; longer paragraphs keep the limit */
+.section-subheader {
+	max-width: none;
+	margin-top: var(--space-1);
+	font-size: var(--font-xl);
+	color: var(--color-text-muted);
+}
+
 .text-block + .text-block {
-	margin-top: 24px;
-	padding-top: 24px;
-	border-top: 1px solid var(--line);
+	margin-top: var(--space-4);
+	padding-top: var(--space-4);
+	border-top: 1px solid var(--color-border);
 }
 
 .about-columns {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-	gap: 32px;
+	gap: var(--space-5);
 	align-items: start;
 }
 
@@ -336,64 +425,125 @@ select {
 	border-top: 0;
 }
 
+/* Goals and values: two text columns and the photo, all top-aligned */
+.values-columns {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.values-photo {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: var(--radius-sm);
+}
+
 .text-block p + p {
-	margin-top: 16px;
+	margin-top: var(--space-3);
 }
 
 .text-block p {
-	color: var(--text);
+	color: var(--color-text);
 }
 
 .skill-groups {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 24px 32px;
+	gap: var(--space-4) var(--space-5);
 }
 
 .skill-group h4 {
-	margin-bottom: 8px;
-	font-size: 15px;
+	margin-bottom: var(--space-2);
+	font-size: var(--font-tag);
 	font-weight: 700;
-	color: var(--heading);
+	color: var(--color-heading);
 }
 
 .skill-tags {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 8px;
+	gap: var(--space-2);
 	list-style: none;
 }
 
 .skill-tags li {
-	padding: 3px 8px;
-	font-size: 15px;
+	padding: 3px var(--space-2);
+	font-size: var(--font-tag);
 	line-height: 1.5;
-	color: #333333;
-	background: var(--surface);
-	border: 1px solid var(--line);
-	border-radius: 4px;
+	color: var(--color-text-soft);
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
 }
 
 .project-grid {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 16px;
+	gap: var(--space-3);
 }
 
 .project-card {
 	display: flex;
 	flex-direction: column;
-	padding: 24px;
+	padding: var(--space-4);
+}
+
+.project-card-body {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+/* screenshots and the nhl clip */
+.project-media {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+	object-position: top;
+	/* the padding shows the light background as a frame, so white screenshots
+	   don't blend into the white card */
+	padding: var(--space-1);
+	background: var(--color-bg);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+}
+
+.card-media {
+	margin-bottom: var(--space-3);
+}
+
+/* Projects page: screenshot beside the text */
+.project-card-row {
+	display: grid;
+	grid-template-columns: 320px minmax(0, 1fr);
+	gap: var(--space-4);
+	align-items: start;
+}
+
+.project-card-row .card-media {
+	margin-bottom: 0;
+}
+
+/* a project with no screenshot reads as a text card that spans the full width */
+.project-card-row.no-media {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+.detail-media {
+	margin-top: var(--space-5);
 }
 
 /* Homepage project cards lift slightly on hover */
 .project-grid .project-card {
+	/* keeps the card on its own layer so the lift doesn't blur the screenshot */
+	will-change: transform;
 	transition: transform 150ms ease, border-color 150ms ease;
 }
 
 .project-grid .project-card:hover {
 	transform: translateY(-4px);
-	border-color: var(--accent);
+	border-color: var(--color-border-strong);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -406,73 +556,125 @@ select {
 	}
 }
 
-.project-card h3 {
-	margin-top: 4px;
+.project-title {
+	margin-top: var(--space-1);
 	margin-bottom: 0;
+	font-size: var(--font-xl);
+	line-height: 1.3;
+}
+
+.project-title-link:hover {
+	text-decoration: underline;
+}
+
+/* card text runs the full card width */
+.project-card p {
+	max-width: none;
+}
+
+.project-list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-3);
 }
 
 .project-description {
-	margin-top: 8px;
-	color: var(--text);
-}
-
-.project-stack {
-	margin-top: 8px;
-	font-size: 14px;
-	color: var(--muted);
+	margin-top: var(--space-2);
+	color: var(--color-text);
 }
 
 .project-links {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 8px 24px;
+	gap: var(--space-2) var(--space-4);
 	margin-top: auto;
-	padding-top: 16px;
+	padding-top: var(--space-3);
 }
 
 .interests-grid {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 24px 32px;
+	gap: var(--space-4) var(--space-5);
 }
 
 .interest p {
-	color: var(--text);
+	color: var(--color-text);
 }
 
 .contact-text {
-	margin-top: 8px;
-	color: var(--text);
+	max-width: none;
+	color: var(--color-text);
 }
 
 .contact-links {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 8px 24px;
-	margin-top: 16px;
+	gap: var(--space-2) var(--space-4);
+	margin-top: var(--space-3);
 }
 
 .site-footer {
-	padding: 1.5rem 0 2.5rem;
+	padding: var(--space-4) 0 var(--space-5);
 }
 
 .footer-inner {
-	border-top: 1px solid var(--line);
-	padding-top: 1.25rem;
+	border-top: 1px solid var(--color-border);
+	padding-top: var(--space-4);
 	display: flex;
 	justify-content: space-between;
-	gap: 1rem;
+	align-items: flex-start;
+	gap: var(--space-3);
 	flex-wrap: wrap;
-	color: var(--muted);
-	font-size: 14px;
+	color: var(--color-text-muted);
+	font-size: var(--font-sm);
+}
+
+.footer-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-1) var(--space-4);
+}
+
+.footer-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2) var(--space-4);
 }
 
 .page-intro {
-	margin-top: 8px;
+	max-width: none;
+	margin-top: var(--space-2);
+}
+
+/* closing row on a page, like the back button */
+.page-end {
+	margin-top: var(--space-5);
+	padding-top: var(--space-4);
+	border-top: 1px solid var(--color-border);
+}
+
+/* project detail pages */
+.detail-title {
+	margin-top: var(--space-1);
+	font-size: var(--font-page-title);
+	line-height: 1.15;
+}
+
+.detail-description {
+	margin-top: var(--space-3);
+}
+
+.detail-section {
+	margin-top: var(--space-5);
+}
+
+.detail-section h2 {
+	font-size: var(--font-2xl);
+	margin-bottom: var(--space-2);
 }
 
 .muted-text {
-	color: var(--muted);
+	color: var(--color-text-muted);
 }
 
 .text-button {
@@ -480,7 +682,7 @@ select {
 	border: 0;
 	padding: 0;
 	font: inherit;
-	color: var(--accent);
+	color: var(--color-primary);
 	cursor: pointer;
 }
 
@@ -497,8 +699,15 @@ select {
 .poem-controls {
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
-	margin-bottom: 24px;
+	gap: var(--space-3);
+	margin-bottom: var(--space-4);
+}
+
+.poem-search-label {
+	display: block;
+	margin-bottom: calc(-1 * var(--space-2));
+	font-weight: 700;
+	color: var(--color-heading);
 }
 
 .poem-search {
@@ -506,19 +715,28 @@ select {
 	max-width: 480px;
 }
 
+/* hide the browser's own clear button; the page has its own */
+.poem-search input::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+}
+
+.poem-panel:focus {
+	outline: none;
+}
+
 .poem-search input {
 	width: 100%;
-	padding: 8px 40px 8px 16px;
-	min-height: 44px;
+	padding: var(--space-2) 40px var(--space-2) var(--space-3);
+	min-height: var(--tap-target);
 	font: inherit;
-	color: var(--text);
-	background: var(--surface);
-	border: 1px solid var(--line);
+	color: var(--color-text);
+	background: var(--color-surface);
+	border: 1px solid var(--color-border-strong);
 	border-radius: var(--radius);
 }
 
 .poem-search input::placeholder {
-	color: var(--muted);
+	color: var(--color-text-muted);
 }
 
 .poem-search-clear {
@@ -526,81 +744,131 @@ select {
 	right: 16px;
 	top: 50%;
 	transform: translateY(-50%);
-	color: var(--muted);
+	color: var(--color-text-muted);
 }
 
 .poem-sort {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	gap: 8px 16px;
+	gap: var(--space-2) var(--space-3);
 }
 
 .poem-count {
-	margin-bottom: 16px;
+	margin-bottom: var(--space-3);
+}
+
+/* homepage poem cards: title, the poem's first two lines, then a link */
+.poem-cards {
+	list-style: none;
+}
+
+/* the link's ::after covers the card, so the whole card is clickable */
+.poem-card {
+	position: relative;
+	cursor: pointer;
+}
+
+.poem-card-lines {
+	margin-top: var(--space-2);
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: var(--font-lg);
+	font-style: italic;
+	line-height: 1.5;
+	color: var(--color-text);
+}
+
+.poem-card-lines span {
+	display: block;
+}
+
+/* pushed to the bottom so the links line up across the row */
+.poem-card-link {
+	margin-top: auto;
+	padding-top: var(--space-3);
+	font-size: var(--font-sm);
+}
+
+.poem-card-link::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: var(--radius);
+}
+
+/* keyboard focus rings the whole card instead of just the link text */
+.poem-card-link:focus-visible {
+	outline: none;
+}
+
+.poem-card-link:focus-visible::after {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+}
+
+/* while poems load, hold the space the list will take */
+.poem-results.is-loading {
+	min-height: 100vh;
 }
 
 .poem-list {
 	list-style: none;
-	border-top: 1px solid var(--line);
+	border-top: 1px solid var(--color-border);
 }
 
 .poem-row {
 	display: flex;
 	align-items: center;
-	gap: 8px;
-	border-bottom: 1px solid var(--line);
+	gap: var(--space-2);
+	border-bottom: 1px solid var(--color-border);
 }
 
 .poem-title {
-	padding: 16px 0;
+	padding: var(--space-3) 0;
 	background: none;
 	border: 0;
 	font: inherit;
-	font-size: 18px;
+	font-size: var(--font-lg);
 	font-weight: 700;
-	color: var(--heading);
+	color: var(--color-heading);
 	text-align: left;
 	cursor: pointer;
 }
 
 .poem-title:hover {
-	color: var(--accent);
+	text-decoration: underline;
 }
 
-.poem-note {
-	position: relative;
-	display: inline-flex;
-	align-items: center;
-}
-
+/* full tap target around a small icon */
 .poem-note-button {
 	display: flex;
-	padding: 4px;
+	align-items: center;
+	justify-content: center;
+	width: var(--tap-target);
+	height: var(--tap-target);
+	padding: 0;
 	background: none;
 	border: 0;
-	color: var(--muted);
+	color: var(--color-text-muted);
 	cursor: pointer;
 }
 
 .poem-note-button:hover,
-.poem-note-button.is-open {
-	color: var(--accent);
+.poem-note-button[data-state="open"] {
+	color: var(--color-heading);
 }
 
+/* radix places this next to the button */
 .poem-note-text {
-	position: absolute;
-	bottom: calc(100% + 8px);
-	left: 0;
 	z-index: 10;
-	width: max-content;
-	max-width: min(320px, 70vw);
-	padding: 8px 16px;
-	font-size: 14px;
+	max-width: min(320px, calc(100vw - 2 * var(--space-3)));
+	overflow-wrap: anywhere;
+	padding: var(--space-2) var(--space-3);
+	font-size: var(--font-sm);
 	font-style: italic;
-	color: var(--text);
-	background: var(--surface);
-	border: 1px solid var(--line);
+	color: var(--color-text);
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
 	border-radius: var(--radius);
 }
 
@@ -612,48 +880,81 @@ select {
 	justify-content: center;
 	align-items: flex-start;
 	overflow-y: auto;
-	padding: 32px 16px;
-	background: var(--bg);
+	padding: var(--space-5) var(--space-3);
+	background: var(--color-bg);
 }
 
 .poem-panel {
+	position: relative;
 	width: 100%;
 	max-width: 640px;
-	padding: 32px;
-	background: var(--surface);
-	border: 1px solid var(--line);
+	padding: var(--space-5);
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
 	border-radius: var(--radius);
 }
 
+/* share and close, pinned to the card's top-right corner */
 .poem-actions {
+	position: absolute;
+	top: var(--space-2);
+	right: var(--space-2);
 	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	gap: 16px;
-	margin-bottom: 16px;
+	gap: var(--space-1);
 }
 
+.icon-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--tap-target);
+	height: var(--tap-target);
+	padding: 0;
+	background: none;
+	border: 0;
+	border-radius: 50%;
+	color: var(--color-text-muted);
+	cursor: pointer;
+}
+
+.icon-button:hover {
+	background: var(--color-lavender);
+	color: var(--color-heading);
+}
+
+/* "Link copied" sits just under the buttons */
+.poem-copied {
+	position: absolute;
+	top: calc(100% + var(--space-1));
+	right: 0;
+	font-size: var(--font-sm);
+	color: var(--color-text-muted);
+	white-space: nowrap;
+}
+
+/* keep the title clear of the two buttons on every screen width */
 .poem-heading {
-	font-size: 24px;
+	padding-right: calc(2 * var(--tap-target) + var(--space-3));
+	font-size: var(--font-2xl);
 	line-height: 1.25;
 }
 
 .poem-dedication {
-	margin-top: 8px;
-	font-size: 14px;
+	margin-top: var(--space-2);
+	font-size: var(--font-sm);
 	font-style: italic;
-	color: var(--muted);
+	color: var(--color-text-muted);
 }
 
 .poem-body {
-	margin-top: 24px;
-	padding-top: 24px;
-	border-top: 1px solid var(--line);
+	margin-top: var(--space-4);
+	padding-top: var(--space-4);
+	border-top: 1px solid var(--color-border);
 	font-family: inherit;
 	font-size: inherit;
 	line-height: 1.6;
 	white-space: pre-wrap;
-	color: var(--text);
+	color: var(--color-text);
 }
 
 @media (max-width: 960px) {
@@ -674,9 +975,9 @@ select {
 	}
 
 	.about-columns .text-block + .text-block {
-		margin-top: 24px;
-		padding-top: 24px;
-		border-top: 1px solid var(--line);
+		margin-top: var(--space-4);
+		padding-top: var(--space-4);
+		border-top: 1px solid var(--color-border);
 	}
 
 	.values-columns .text-block + .text-block {
@@ -686,12 +987,33 @@ select {
 }
 
 @media (max-width: 720px) {
-	.project-card {
-		padding: 16px;
+	:root {
+		--section-gap: var(--space-6);
 	}
 
+	.project-card {
+		padding: var(--space-3);
+	}
+
+	.project-card-row {
+		grid-template-columns: minmax(0, 1fr);
+		gap: var(--space-3);
+	}
+
+	/* small skill groups sit two across on phones */
 	.skill-groups {
-		grid-template-columns: 1fr;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--space-4) var(--space-3);
+	}
+
+	/* photo leads the hero on phones, small, so the name and resume button stay on the first screen */
+	.hero-grid {
+		gap: var(--space-4);
+	}
+
+	.hero-photo {
+		order: -1;
+		width: 128px;
 	}
 
 	.button {
@@ -703,19 +1025,437 @@ select {
 	}
 
 	.poem-panel {
-		padding: 16px;
+		padding: var(--space-3);
 	}
 }
 
-section {
-	scroll-margin-top: 80px;
+@media (max-width: 359px) {
+	.skill-groups {
+		grid-template-columns: 1fr;
+	}
 }
 
-.project-link {
-	color: var(--accent);
+/* keep section titles clear of the sticky header when jumping to them */
+section,
+.about-part {
+	scroll-margin-top: calc(var(--header-height) + var(--space-2));
+}
+
+/* ---------- Background timeline: proportional axis (desktop) ---------- */
+.tl2 {
+	margin: var(--space-3) 0 var(--space-5);
+}
+
+/* every card in a row shares one grid cell and is placed by its date */
+.tl2-row {
+	display: grid;
+}
+
+.tl2-row > * {
+	grid-area: 1 / 1;
+}
+
+/* the axis is 128px tall: company labels, the line at 48px, years, then the camp row */
+.tl2-row-above {
+	align-items: end;
+	padding-bottom: 20px;
+}
+
+.tl2-row-below {
+	align-items: start;
+	padding-top: 20px;
+}
+
+.tl2-card {
+	position: relative;
+	padding: var(--space-3);
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+}
+
+.tl2-card h4 {
+	margin-bottom: 0;
+}
+
+.tl2-card p {
+	max-width: none;
+}
+
+.tl2-date {
+	margin-bottom: var(--space-2);
+	font-size: var(--font-sm);
+	color: var(--color-text-muted);
+}
+
+/* thin stems from a card to the line: 20px of row padding plus the distance to the line's center */
+.tl2-stem {
+	position: absolute;
+	width: 1px;
+	background: var(--color-border-strong);
+}
+
+.tl2-card-above .tl2-stem {
+	top: 100%;
+	height: 68px;
+}
+
+/* below the line the stems pass behind the years and the camp row */
+.tl2-card-below .tl2-stem {
+	bottom: 100%;
+	height: 100px;
+}
+
+.tl2-axis {
+	position: relative;
+	z-index: 1;
+	height: 128px;
+}
+
+/* one hue: light lavender on the left to the primary purple on the right */
+.tl2-line {
+	position: absolute;
+	top: 46px;
+	left: 0;
+	right: 0;
+	height: 4px;
+	border-radius: 2px;
+	background: linear-gradient(90deg, var(--color-lavender), var(--color-primary));
+}
+
+.tl2-band {
+	position: absolute;
+	top: 41px;
+	height: 14px;
+	border-radius: 7px;
+}
+
+.tl2-band-rit {
+	background: rgba(109, 40, 217, 0.22);
+}
+
+.tl2-band-drexel {
+	background: rgba(109, 40, 217, 0.5);
+}
+
+/* ringed dot: purple center, a gap, then a thin purple ring */
+.tl2-dot {
+	position: absolute;
+	top: 41px;
+	width: 14px;
+	height: 14px;
+	margin-left: -7px;
+	border-radius: 50%;
+	background: var(--color-primary);
+	border: 3px solid var(--color-surface);
+	outline: 1px solid var(--color-primary);
+}
+
+/* company names, centered over their dots; they wrap to two lines so they don't collide */
+.tl2-dot-label {
+	position: absolute;
+	top: 0;
+	width: 140px;
+	transform: translateX(-50%);
+	font-size: var(--font-sm);
+	line-height: 1.3;
+	text-align: center;
+	color: var(--color-text-muted);
+}
+
+.tl2-now {
+	position: absolute;
+	top: 38px;
+	width: 2px;
+	height: 20px;
+	margin-left: -1px;
+	background: var(--color-heading);
+}
+
+.tl2-now-label {
+	position: absolute;
+	bottom: calc(100% + 2px);
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: var(--font-sm);
 	font-weight: 700;
+	color: var(--color-heading);
 }
 
-.project-link:hover {
-	text-decoration: underline;
+.tl2-year {
+	position: absolute;
+	top: 58px;
+	font-size: var(--font-sm);
+	color: var(--color-text-muted);
+}
+
+/* camp: a quieter second row right under the years */
+.tl2-camp-title {
+	position: absolute;
+	top: 84px;
+	left: 0;
+	font-size: var(--font-sm);
+	font-weight: 700;
+	color: var(--color-text-muted);
+}
+
+.tl2-camp-line {
+	position: absolute;
+	top: 113px;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background: var(--color-border);
+}
+
+.tl2-camp-mark {
+	position: absolute;
+	top: 103px;
+	padding: 0 var(--space-1) 0 14px;
+	font-size: var(--font-sm);
+	color: var(--color-text-muted);
+	white-space: nowrap;
+	background: var(--color-bg);
+}
+
+.tl2-camp-mark::before {
+	content: "";
+	position: absolute;
+	top: 7px;
+	left: 0;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--color-border-strong);
+}
+
+/* phones: vertical version, hidden on desktop */
+.tl2-mobile {
+	display: none;
+}
+
+/* ---------- Outside of work: card row (embla) ---------- */
+/* holds the row and its arrows; the arrows hang over the row's left and right edges */
+.outside-row {
+	position: relative;
+}
+
+/* the cards are all the same height and fill the row, so the row's middle is the cards' middle */
+.carousel-arrow {
+	position: absolute;
+	top: 50%;
+	z-index: 2;
+	color: var(--color-heading);
+	background: var(--color-surface);
+	box-shadow: 0 1px 4px rgba(17, 17, 17, 0.25);
+}
+
+.carousel-arrow:hover {
+	background: var(--color-surface);
+	color: var(--color-primary);
+}
+
+/* overlap the card edges slightly */
+.carousel-arrow-prev {
+	left: 0;
+	transform: translate(-40%, -50%);
+}
+
+.carousel-arrow-next {
+	right: 0;
+	transform: translate(40%, -50%);
+}
+
+.icon-button:disabled {
+	opacity: 0.35;
+	cursor: default;
+}
+
+.icon-button:disabled:hover {
+	background: none;
+	color: var(--color-text-muted);
+}
+
+.outside-viewport {
+	overflow: hidden;
+	border-radius: var(--radius);
+}
+
+/* slides space themselves with left padding, so the track pulls left by the same amount */
+.outside-track {
+	display: flex;
+	margin-left: calc(-1 * var(--space-3));
+	touch-action: pan-y pinch-zoom;
+}
+
+/* about three cards with the next one peeking in on desktop */
+.outside-slide {
+	display: flex;
+	flex: 0 0 31%;
+	min-width: 0;
+	padding-left: var(--space-3);
+}
+
+/* every card in the row is the same height */
+.outside-card {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	overflow: hidden;
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+}
+
+.outside-card-photo {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+}
+
+.outside-card-body {
+	padding: var(--space-3);
+}
+
+.outside-card-body h4 {
+	margin-bottom: var(--space-1);
+}
+
+.outside-card-body p {
+	max-width: none;
+	color: var(--color-text);
+}
+
+/* the Camp and Writing Poetry links */
+.interest-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2) var(--space-4);
+	margin-top: var(--space-3);
+}
+
+.outside-dots {
+	display: flex;
+	justify-content: center;
+	margin-top: var(--space-2);
+}
+
+/* a 24px tap area around a small dot */
+.outside-dot {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	padding: 0;
+	background: none;
+	border: 0;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.outside-dot::before {
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--color-border-strong);
+}
+
+.outside-dot:hover::before {
+	background: var(--color-text-muted);
+}
+
+.outside-dot.is-current::before {
+	background: var(--color-primary);
+}
+
+@media (max-width: 960px) {
+	.tl2 {
+		display: none;
+	}
+
+	.tl2-mobile {
+		display: block;
+		margin: var(--space-3) 0 var(--space-5);
+		list-style: none;
+	}
+
+	.tl2m-item {
+		position: relative;
+		padding: 0 0 var(--space-4) 32px;
+	}
+
+	/* the line down the left; bands are wider shaded stretches of it */
+	.tl2m-item::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 6px;
+		width: 2px;
+		background: var(--color-lavender);
+	}
+
+	.tl2m-item:last-child::before {
+		bottom: auto;
+		height: 12px;
+	}
+
+	.tl2m-rit::before {
+		left: 3px;
+		width: 8px;
+		background: rgba(109, 40, 217, 0.22);
+	}
+
+	.tl2m-drexel::before {
+		left: 3px;
+		width: 8px;
+		background: rgba(109, 40, 217, 0.5);
+	}
+
+	.tl2m-dot {
+		position: absolute;
+		top: 5px;
+		left: 1px;
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background: var(--color-border-strong);
+	}
+
+	.tl2m-dot-ring {
+		background: var(--color-primary);
+		border: 3px solid var(--color-surface);
+		outline: 1px solid var(--color-primary);
+	}
+
+	.tl2m-dot-now {
+		background: var(--color-heading);
+	}
+
+	.tl2m-quiet {
+		padding-bottom: var(--space-3);
+	}
+
+	.tl2m-note {
+		font-size: var(--font-sm);
+		color: var(--color-text-muted);
+	}
+
+	.tl2m-note + .tl2-card {
+		margin-top: var(--space-2);
+	}
+
+	/* one card at a time with the next one peeking */
+	.outside-slide {
+		flex-basis: 85%;
+	}
+
+	/* swiping is enough on phones */
+	.carousel-arrow {
+		display: none;
+	}
 }

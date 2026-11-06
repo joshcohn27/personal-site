@@ -20,7 +20,7 @@ The site is a single page React app with client side routing. The routes are def
 
 The homepage is a stack of sections, in this order:
 
-- **Hero**: short intro, an experience list, what I'm focused on, and buttons for the projects page and my resume (`/resume.pdf`)
+- **Hero**: short intro, an experience list, what I'm focused on, and buttons for the projects page and my resume (`/JoshuaCohnResume.pdf`)
 - **Selected work**: two featured projects with a link to the full projects page
 - **About**: background and a technical skills list
 - **What I'm looking for next**: where I'm headed and what I care about in the work
@@ -77,8 +77,9 @@ vercel.json             Redirects and rewrites for Vercel
 vite.config.js          Vite config (dev server on 127.0.0.1)
 eslint.config.js        ESLint config
 public/
-  resume.pdf            Resume linked from the hero
-  jc.png                Favicon
+  JoshuaCohnResume.pdf  Resume linked from the hero
+  favicon.svg           Favicon (plus favicon-16.png, favicon-32.png, apple-touch-icon.png)
+  jc.png                Full logo (no longer used as the favicon)
   poems/                One text file per poem (poem1.txt, poem2.txt, ...)
 src/
   main.jsx              React entry point
@@ -96,7 +97,7 @@ src/
 - **Poems**: add a new file to `public/poems/` using the next number, like `poem23.txt`. The first line is the title. An optional second line starting with `Dedication:` adds a dedication. Everything after that is the poem. The numbers have to be consecutive, because the page loads files in order and stops at the first one that is missing. Newest and oldest sorting goes by that number.
 - **Homepage text**: each section is its own file in `src/components/` (`Hero.jsx`, `About.jsx`, `Values.jsx`, `Interests.jsx`, `Contact.jsx`)
 - **Nav links**: `src/components/Header.jsx`
-- **Resume**: replace `public/resume.pdf`
+- **Resume**: replace `public/JoshuaCohnResume.pdf`
 
 ### Leftovers
 
