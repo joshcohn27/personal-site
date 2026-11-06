@@ -31,24 +31,26 @@ const CAMP_2023 = at(2023, 7);
 
 // cards are a quarter of the axis wide, centered on their date but kept inside the axis
 const CARD_WIDTH = 25;
+// the Drexel card has the most text and open space to its left, so it runs wider and stays short
+const DREXEL_WIDTH = 44;
 
-function cardLeft(center) {
-    return Math.min(100 - CARD_WIDTH, Math.max(0, center - CARD_WIDTH / 2));
+function cardLeft(center, width = CARD_WIDTH) {
+    return Math.min(100 - width, Math.max(0, center - width / 2));
 }
 
-function Card({ label, date, center, stems, side, children }) {
-    const left = cardLeft(center);
+function Card({ label, date, center, stems, side, width = CARD_WIDTH, children }) {
+    const left = cardLeft(center, width);
     let className = "tl2-card tl2-card-below";
     if (side === "above") {
         className = "tl2-card tl2-card-above";
     }
     return (
-        <article className={className} style={{ marginLeft: `${left}%`, width: `${CARD_WIDTH}%` }}>
+        <article className={className} style={{ marginLeft: `${left}%`, width: `${width}%` }}>
             <h4>{label}</h4>
             <p className="tl2-date">{date}</p>
             {children}
             {stems.map((x) => (
-                <span key={x} className="tl2-stem" style={{ left: `${((x - left) / CARD_WIDTH) * 100}%` }} aria-hidden="true"></span>
+                <span key={x} className="tl2-stem" style={{ left: `${((x - left) / width) * 100}%` }} aria-hidden="true"></span>
             ))}
         </article>
     );
@@ -77,7 +79,7 @@ export default function BackgroundTimeline() {
                     <Card label="RIT" date="Aug 2021 – May 2026" center={ritMiddle} stems={[ritStem]} side="above">
                         <p>{TEXT.rit}</p>
                     </Card>
-                    <Card label="Drexel" date="Sep 2026 – Jun 2028 (expected)" center={drexelMiddle} stems={[drexelMiddle]} side="above">
+                    <Card label="Drexel" date="Sep 2026 – Jun 2028 (expected)" center={drexelMiddle} stems={[drexelMiddle]} side="above" width={DREXEL_WIDTH}>
                         <p>{TEXT.drexel}</p>
                     </Card>
                 </div>
