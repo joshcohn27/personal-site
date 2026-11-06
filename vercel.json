@@ -1,4 +1,15 @@
 {
+    "headers": [
+        {
+            "source": "/JoshuaCohnResume.pdf",
+            "headers": [
+                {
+                    "key": "Content-Disposition",
+                    "value": "inline; filename=\"JoshuaCohnResume.pdf\""
+                }
+            ]
+        }
+    ],
     "redirects": [
         {
             "source": "/resume.pdf",
